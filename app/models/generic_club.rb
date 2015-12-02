@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: generic_clubs
+#
+#  id              :integer          not null, primary key
+#  type            :string
+#  brand           :string
+#  male            :boolean
+#  righty          :boolean
+#  head_feature    :string
+#  shaft_stiffness :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class GenericClub < ActiveRecord::Base
   belongs_to :club 
 end

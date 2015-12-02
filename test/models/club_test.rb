@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: clubs
+#
+#  id              :integer          not null, primary key
+#  provider_id     :integer
+#  club_set_id     :integer
+#  generic_club_id :integer
+#  condition       :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'test_helper'
 
 class ClubTest < ActiveSupport::TestCase
