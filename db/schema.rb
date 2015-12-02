@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202141637) do
+ActiveRecord::Schema.define(version: 20151202210108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,18 +25,23 @@ ActiveRecord::Schema.define(version: 20151202141637) do
   end
 
   create_table "clubs", force: :cascade do |t|
-    t.integer  "provider_profile_id"
+    t.integer  "provider_id"
     t.integer  "club_set_id"
+    t.string   "condition"
+    t.integer  "generic_club_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "generic_clubs", force: :cascade do |t|
     t.string   "type"
     t.string   "brand"
-    t.string   "shaft_stiffness"
     t.boolean  "male"
     t.boolean  "righty"
-    t.string   "feature"
-    t.string   "condition"
-    t.integer  "price"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "head_feature"
+    t.string   "shaft_stiffness"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "listings", force: :cascade do |t|
@@ -44,31 +49,32 @@ ActiveRecord::Schema.define(version: 20151202141637) do
     t.integer  "listable_id"
     t.datetime "start_date"
     t.datetime "finish_date"
+    t.integer  "price"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   add_index "listings", ["listable_id", "listable_type"], name: "index_listings_on_listable_id_and_listable_type", using: :btree
 
-  create_table "provider_profiles", force: :cascade do |t|
+  create_table "providers", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "renter_profiles", force: :cascade do |t|
+  create_table "renters", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "renter_profile_id"
+    t.integer  "renter_id"
     t.datetime "start_date"
     t.datetime "finish_date"
     t.integer  "listing_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "reviews", force: :cascade do |t|

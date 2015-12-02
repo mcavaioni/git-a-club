@@ -5,6 +5,7 @@ class CreateListings < ActiveRecord::Migration
       t.integer :listable_id
       t.datetime :start_date
       t.datetime :finish_date
+      t.integer :price
        
       t.timestamps null: false
     end

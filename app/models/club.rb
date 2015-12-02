@@ -1,5 +1,6 @@
 class Club < ActiveRecord::Base
-  belongs_to :provider_profile
+  has_one :generic_club
+  belongs_to :provider
   belongs_to :club_set
   has_many :listings, as: :listable
  

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many: provider_profiles
-  has_many: renter_profiles
+  has_many: providers
+  has_many: renters
   
 end
