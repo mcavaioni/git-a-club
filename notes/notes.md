@@ -1,16 +1,16 @@
-/ #=> pages#welcome
+/ #=> pages#welcome - HM
 
-/login #=> sessions#new
-/logout #=> sessions#destroy
+/login #=> sessions#new - HM
+/logout #=> sessions#destroy - HM
 
-/signup #=> users#new
-/users/:id #=> users#show
-/users/:id/listings/index #=> listings#index
-/users/:id/listings/new #=> listings#new
-/users/:id/clubs #=> CRUD
-/users/:id/club_sets #=> CRUD
-/users/:id/reservations/index #=> reservation#index
+/signup #=> users#new - HM
+/users/:id #=> users#show - AJ
+/users/:id/listings/index #=> listings#index -AJ
+/users/:id/listings/new #=> listings#new - AJ
+/users/:id/clubs #=> CRUD - AJ
+/users/:id/club_sets #=> CRUD - AJ
+/users/:id/reservations/index #=> reservation#index -AJ
 
-/listings #=> listings#index
-/listings/:id #=> listings#show
-/listings/:id/reservations/new #=> reservations#new
+/listings #=> listings#index - HM
+/listings/:id #=> listings#show - HM
+/listings/:id/reservations/new #=> reservations#new - HM
