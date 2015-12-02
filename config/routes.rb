@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
   root 'page#welcome'
 
-  resources :user do 
+  resources :users do
     get 'listings/index' => 'listings#user_listings'
+    get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
     resources :listing, except: [:index]
-    resources :reservation
-    resources :club
-    resources :club_set
-    resources :review
+    resources :reservations
+    resources :clubs, except: ['new']
+    resources :club_sets
+    resources :reviews
   end
 
-  resources :listing do
-    resources :reservation 
-    resources :review
+  resources :listings do
+    resources :reservations
+    resources :reviews
   end
-  
-  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
