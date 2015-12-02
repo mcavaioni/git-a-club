@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.string :reviewable_type
       t.integer :reviewable_id
       t.string :content
+      t.integer :rating
 
       t.timestamps null: false
     end
