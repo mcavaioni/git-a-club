@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  renter_profile_id: 1
+  start_date: 2015-12-02 09:16:37
+  finish_date: 2015-12-02 09:16:37
+  listing_id: 1
+
+two:
+  renter_profile_id: 1
+  start_date: 2015-12-02 09:16:37
+  finish_date: 2015-12-02 09:16:37
+  listing_id: 1

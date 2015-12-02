@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider_profile_id: 1
+  set_id: 1
+  type: 
+  brand: MyString
+  shaft_stiffness: MyString
+  male: false
+  righty: false
+  feature: MyString
+  price: 1
+
+two:
+  provider_profile_id: 1
+  set_id: 1
+  type: 
+  brand: MyString
+  shaft_stiffness: MyString
+  male: false
+  righty: false
+  feature: MyString
+  price: 1
