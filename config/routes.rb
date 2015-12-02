@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   root 'page#welcome'
 
   resources :user do 
-    get 'listings/index' => 
-    'listings#user_listings'
+    get 'listings/index' => 'listings#user_listings'
     resources :listing, except: [:index]
     resources :reservation
     resources :club
