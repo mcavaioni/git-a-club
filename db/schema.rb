@@ -16,26 +16,27 @@ ActiveRecord::Schema.define(version: 20151202141637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "club_sets", force: :cascade do |t|
+    t.string   "summary"
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "clubs", force: :cascade do |t|
     t.integer  "provider_profile_id"
-    t.integer  "golf_set_id"
+    t.integer  "club_set_id"
     t.string   "type"
     t.string   "brand"
     t.string   "shaft_stiffness"
     t.boolean  "male"
     t.boolean  "righty"
     t.string   "feature"
+    t.string   "condition"
     t.integer  "price"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-  end
-
-  create_table "golf_sets", force: :cascade do |t|
-    t.string   "summary"
-    t.string   "name"
-    t.integer  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "listings", force: :cascade do |t|
