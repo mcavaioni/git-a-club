@@ -1,2 +1,0 @@
-class ProviderController < ApplicationController
-end

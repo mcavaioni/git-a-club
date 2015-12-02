@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'page#welcome'
 
   resources :user do 
     resources :listing
