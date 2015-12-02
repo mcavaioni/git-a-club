@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
+  resources :user do 
+    resources :listing
+    resources :reservation
+    resources :club
+    resources :club_set
+    resources :review
+  end
 
-
-
-  resources :user
-  resources :provider_profile
-  resources :renter_profile
-  resources :club
-  resources :club_set
-  resources :listing
-  resources :reservation
-  resources :review
+  resources :listing do 
+    resources :review
+  end
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

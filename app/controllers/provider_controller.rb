@@ -1,2 +1,2 @@
-class ProviderProfileController < ApplicationController
+class ProviderController < ApplicationController
 end
