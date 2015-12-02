@@ -1,2 +1,0 @@
-class RenterProfileController < ApplicationController
-end
