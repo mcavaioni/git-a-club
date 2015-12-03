@@ -1,6 +1,5 @@
 <ul>
-  <%= clubs.each do |club|%>
-    <% binding.pry %>
+  <% clubs.each do |club|%>
     <%= render partial: 'clubs/club', locals:{club:club, generic_club:club.generic_club} %>
   <% end %>
 </ul>
