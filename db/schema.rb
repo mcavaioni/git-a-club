@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151202210108) do
   end
 
   create_table "clubs", force: :cascade do |t|
-    t.integer  "provider_id"
+    t.integer  "supplier_id"
     t.integer  "club_set_id"
     t.integer  "generic_club_id"
     t.string   "condition"
