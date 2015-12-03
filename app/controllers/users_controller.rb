@@ -5,9 +5,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_params)
-    @user.save #=> change to if when validation is added
-    flash[:notice] = "Welcome #{@user.first_name.capitalize}"
-    redirect_to @user
+    if @user.save #=> change to if when validation is added
+      session[:user_id] = @user.id
+      flash[:notice] = "Welcome #{@user.first_name.capitalize}"
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   def show
