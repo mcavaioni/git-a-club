@@ -34,6 +34,15 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "rspec-rails"
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "factory_girl_rails"
+  gem "simplecov"
+  gem "database_cleaner"
+  gem "sqlite3"
 end
 
 group :development do
