@@ -11,25 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202210108) do
+ActiveRecord::Schema.define(version: 20151203202248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "club_set_clubs", force: :cascade do |t|
+    t.integer  "club_set_id"
+    t.integer  "club_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "club_sets", force: :cascade do |t|
     t.string   "summary"
     t.string   "name"
     t.string   "picture"
+    t.boolean  "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "clubs", force: :cascade do |t|
     t.integer  "supplier_id"
-    t.integer  "club_set_id"
     t.integer  "generic_club_id"
     t.string   "condition"
     t.string   "picture"
+    t.boolean  "active"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

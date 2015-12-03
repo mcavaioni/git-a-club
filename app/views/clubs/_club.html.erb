@@ -1,9 +1,13 @@
 <li>
   <p>
+
     <h3><%= "#{generic_club.brand} : #{generic_club.club_type}" %></h3>
     <h4><%= GenericClubViewObject.new(generic_club).gender_handed %></h4>
     Head Feature: <%= generic_club.head_feature %><br>
     Shaft Stiffness: <%= generic_club.shaft_stiffness %><br>
-    Condition: <%= club.condition %>
+    Condition: <%= club.condition %><br>
+    <%= form_for(club, url: supplier_clubs_path(supplier)) do |f| %>
+  
+    <% end %>
   </p>
 </li>

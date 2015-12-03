@@ -1,0 +1,6 @@
+<ul>
+
+  <% club_sets.each do |club_set|%>
+    <%= render partial: 'club_sets/club_set', locals:{club_set:club_set, generic_club:club.generic_club, supplier:supplier} %>
+  <% end %>
+</ul>

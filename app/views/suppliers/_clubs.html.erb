@@ -1,5 +1,5 @@
 <ul>
   <% clubs.each do |club|%>
-    <%= render partial: 'clubs/club', locals:{club:club, generic_club:club.generic_club} %>
+    <%= render partial: 'clubs/club', locals:{club:club, generic_club:club.generic_club, supplier:supplier} %>
   <% end %>
 </ul>

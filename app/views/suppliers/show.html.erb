@@ -4,4 +4,10 @@
 
 <h2>Your Clubs</h2>
 
-<%= render partial:'clubs', locals: {clubs: @clubs} %>
+<%= render partial:'clubs', locals: {clubs: @clubs, supplier: @supplier} %>
+
+<br>
+
+<h2>Your Sets</h2>
+
+<%= render partial:'club_sets', locals: {club_sets: @club_sets, supplier: @supplier} %>

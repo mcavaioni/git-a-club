@@ -4,18 +4,19 @@
 #
 #  id              :integer          not null, primary key
 #  supplier_id     :integer
-#  club_set_id     :integer
 #  generic_club_id :integer
 #  condition       :string
 #  picture         :string
+#  active          :boolean
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class Club < ActiveRecord::Base
+  has_many :club_set_clubs
+  has_many :club_sets, through: :club_set_clubs
   belongs_to :generic_club
   belongs_to :supplier
-  belongs_to :club_set
   has_many :listings, as: :listable
 
   accepts_nested_attributes_for :generic_club
