@@ -9,6 +9,7 @@ class ListingsController < ApplicationController
   end
 
   def supplier_listings
+    # binding.pry
     @listings = @supplier.listings
     render 'listings/index.html.erb'
   end
@@ -19,16 +20,17 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    # binding.pry
   end
 
   def create
     if @club
       @listing_club = @club.listings.build(listing_params)
+      # set listable and listable_id
       @listing_club.save
       redirect_to supplier_club_listing_path(@supplier, @club, @listing_club)
     else
       @listing_club_set = @club_set.listings.build(listing_params)
+      # set listable and listable_id
       @listing_club_set.save
       redirect_to supplier_club_set_listing_path(@supplier, @club_set, @listing_club_set)
     end
