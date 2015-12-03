@@ -1,7 +1,17 @@
 class ClubsController < ApplicationController
-
+  before_action :find_user
   def new
-    binding.pry
     @club = Club.new
   end
+
+  def create
+    binding.pry
+  end
+
+private
+
+  def find_user
+    @user = User.find(params[:user_id])
+  end
+
 end

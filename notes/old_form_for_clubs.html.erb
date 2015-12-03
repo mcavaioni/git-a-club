@@ -1,4 +1,3 @@
-<h1>New Club</h1>
 <%= form_for(@club, url: user_clubs_path(@user)) do |f| %>
 
   <%= f.fields_for :generic_club do |field|%>
@@ -12,17 +11,8 @@
     </p>
     <p>
       <%= f.label :gender %>:
-      <%= field.radio_button :male, true, checked: true%>Male
+      <%= field.radio_button :male, true%>Male
       <%= field.radio_button :male, false%>Female
-    </p>
-    <p>
-      <%= f.label :righty %>:
-      <%= field.radio_button :righty, true, checked: true%>Righty
-      <%= field.radio_button :righty, false%>Lefty
-    </p>
-    <p>
-      <%= f.label :generic_club_head_feature %>
-      <%= field.select :type, GenericClub::HeadFeatures %>
     </p>
   <% end %>
 

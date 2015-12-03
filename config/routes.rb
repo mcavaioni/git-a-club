@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'listings/index' => 'listings#user_listings'
-    get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
+    # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
     resources :listing, except: [:index]
     resources :reservations
-    resources :clubs, except: ['new']
+    resources :clubs
     resources :club_sets
     resources :reviews
   end

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id              :integer          not null, primary key
+#  reviewable_type :string
+#  reviewable_id   :integer
+#  content         :string
+#  rating          :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
