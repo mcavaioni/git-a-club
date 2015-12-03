@@ -3,6 +3,7 @@
     <h3><%= club_set.name %></h3>
     <%= club_set.clubs.each do |club| %>
     <h3><%= "#{club.generic_club.club_type} : #{club.generic_club.brand}" %></h3><br>
+  
     <% end %>
   </p>
 </li>
