@@ -16,9 +16,13 @@
 #
 
 class User < ActiveRecord::Base
+
   has_one :supplier
   has_one :renter
   # has_many :listings, through: :providers
   # has_many :reservations, through: :renters
+
+  has_secure_password
+
 
 end
