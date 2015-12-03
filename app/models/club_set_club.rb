@@ -10,6 +10,6 @@
 #
 
 class ClubSetClub < ActiveRecord::Base
-  has_many :club_sets
-  has_many :clubs
+  belongs_to :club_set
+  belongs_to :club
 end
