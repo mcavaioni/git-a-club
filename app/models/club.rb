@@ -17,6 +17,8 @@ class Club < ActiveRecord::Base
   belongs_to :club_set
   has_many :listings, as: :listable
 
+  # accepts_nested_attributes_for :generic_club
+
   # These conditions were taken from Kelley Blue Book
   Conditions = ['excellent','very_good','good','fair']
 
