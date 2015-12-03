@@ -5,6 +5,7 @@ class CreateClubs < ActiveRecord::Migration
       t.integer :club_set_id
       t.integer :generic_club_id
       t.string :condition
+      t.string :picture
 
       t.timestamps null: false
     end
