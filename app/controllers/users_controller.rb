@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_params)
+    @user.supplier = Supplier.new
+    @user.renter = Renter.new
     if @user.save #=> change to if when validation is added
       session[:user_id] = @user.id
       flash[:notice] = "Welcome #{@user.first_name.capitalize}"
