@@ -3,10 +3,11 @@
 # Table name: clubs
 #
 #  id              :integer          not null, primary key
-#  provider_id     :integer
+#  supplier_id     :integer
 #  club_set_id     :integer
 #  generic_club_id :integer
 #  condition       :string
+#  picture         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

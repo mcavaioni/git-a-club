@@ -3,8 +3,8 @@ class CreateListings < ActiveRecord::Migration
     create_table :listings do |t|
       t.string :listable_type
       t.integer :listable_id
-      t.datetime :start_date
-      t.datetime :finish_date
+      t.date :start_date
+      t.date :finish_date
       t.integer :price
        
       t.timestamps null: false
