@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
 
   private
 
-  def find_user
-    @listing = Listing.find_by(id: params[:id])
-  end
+    def find_user
+      @listing = Listing.find_by(id: params[:id])
+    end
 end
