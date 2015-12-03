@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-  before_action :find_user
+  before_action :find_supplier
   def new
     @club = Club.new
   end
@@ -16,8 +16,8 @@ private
   end
 
 
-  def find_user
-    @user = User.find(params[:user_id])
+  def find_supplier
+    @supplier = Supplier.find(params[:supplier_id])
   end
 
 end
