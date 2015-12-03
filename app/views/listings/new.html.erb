@@ -1,0 +1,5 @@
+<% if @club %>
+  <%= render :partial => 'new_form', locals: {listing: @listing, url: supplier_club_listings_path(@supplier, @club)} %>
+<% else %>
+  <%= render :partial => 'new_form', locals: {listing: @listing, url: supplier_club_set_listings_path(@supplier, @club_set)} %>
+<% end %>

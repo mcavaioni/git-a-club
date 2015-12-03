@@ -4,10 +4,13 @@
 #
 #  id              :integer          not null, primary key
 #  supplier_id     :integer
+
 #  generic_club_id :integer
-#  condition       :string
+
 #  picture         :string
 #  active          :boolean
+#  condition       :string
+
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -17,7 +20,7 @@
 one:
   provider_profile_id: 1
   set_id: 1
-  type: 
+  type:
   brand: MyString
   shaft_stiffness: MyString
   male: false
@@ -28,7 +31,7 @@ one:
 two:
   provider_profile_id: 1
   set_id: 1
-  type: 
+  type:
   brand: MyString
   shaft_stiffness: MyString
   male: false

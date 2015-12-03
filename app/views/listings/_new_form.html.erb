@@ -1,0 +1,9 @@
+<%= form_for listing, url: url do |f| %>
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, value: Date.current %>
+  <%= f.label :finish_date %>
+  <%= f.date_field :finish_date %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <%= f.submit %>
+<% end %>

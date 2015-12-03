@@ -2,16 +2,20 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   resources :users do
-    get 'listings/index' => 'listings#user_listings'
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
-    resources :listing, except: [:index]
+    # resources :listings, except: [:index]
     resources :reservations
     resources :reviews
   end
 
   resources :suppliers do
-    resources :clubs
-    resources :club_sets
+    get 'listings/index' => 'listings#supplier_listings'
+    resources :clubs do
+      resources :listings, except: [:index]
+    end
+    resources :club_sets do
+      resources :listings, except: [:index]
+    end   
   end
 
   resources :listings do

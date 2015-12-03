@@ -4,8 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  renter_id   :integer
-#  start_date  :datetime
-#  finish_date :datetime
+#  start_date  :date
+#  finish_date :date
 #  listing_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
