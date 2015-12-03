@@ -7,8 +7,12 @@ class ReservationsController < ApplicationController
   def create
     @listing = Listing.find(params[:listing_id])
     @reservation = @listing.reservations.build(reservation_params)
-    @reservation.save
-    redirect_to listing_reservation_path(@listing, @reservation)
+    if @reservation.save
+      redirect_to listing_reservation_path(@listing, @reservation)
+    else
+      flash.now[:notice] = 'Dates are not available.'
+      render :new
+    end
   end
 
   def show
