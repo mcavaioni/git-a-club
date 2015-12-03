@@ -1,4 +1,16 @@
 <h1>New Club</h1>
+
+<% if @club.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@club.errors.count, "error") %> prohibited this club from being saved:</h2>
+     <ul>
+     <% @club.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
 <%= form_for(@club, url: supplier_clubs_path(@supplier)) do |f| %>
 
   <%= f.fields_for :generic_club, GenericClub.new do |field|%>

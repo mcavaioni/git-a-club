@@ -25,7 +25,6 @@ class Club < ActiveRecord::Base
 
   def generic_club_attributes=(generic_club_attributes_hash)
     generic_club_attributes_hash[:brand].downcase!
-    binding.pry
     GenericClub.find_or_create_by(generic_club_attributes_hash)
   end
 

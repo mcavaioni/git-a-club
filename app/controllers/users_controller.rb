@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user
+
   def new
     @user = User.new
   end
@@ -23,5 +25,9 @@ class UsersController < ApplicationController
 
   def users_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :password, :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end
