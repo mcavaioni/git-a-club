@@ -11,7 +11,7 @@ class ClubsController < ApplicationController
 private
 
   def club_params
-    params.require(:club).permit(:condition, :generic_club => [:type, :brand, :male, :righty])
+    params.require(:club).permit(:condition, :generic_club_attributes => [:type, :brand, :male, :righty])
     # department_params.permitted? => true
   end
 

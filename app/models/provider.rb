@@ -10,4 +10,8 @@
 
 class Provider < ActiveRecord::Base
   belongs_to :user
+  has_many :clubs
+  has_many :club_sets, through: :clubs
+  has_many :listings, through: :clubs
+  has_many :listings, through: :club_sets
 end

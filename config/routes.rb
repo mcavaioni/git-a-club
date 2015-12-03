@@ -6,9 +6,12 @@ Rails.application.routes.draw do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
     resources :listing, except: [:index]
     resources :reservations
+    resources :reviews
+  end
+
+  resources :providers do
     resources :clubs
     resources :club_sets
-    resources :reviews
   end
 
   resources :listings do

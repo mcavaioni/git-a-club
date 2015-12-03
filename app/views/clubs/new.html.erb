@@ -1,7 +1,7 @@
 <h1>New Club</h1>
 <%= form_for(@club, url: user_clubs_path(@user)) do |f| %>
 
-  <%= f.fields_for :generic_club do |field|%>
+  <%= f.fields_for :generic_club, GenericClub.new do |field|%>
     <p>
       <%= f.label :generic_club_type %>
       <%= field.select :type, GenericClub::Types %>
