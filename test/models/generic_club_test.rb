@@ -3,7 +3,7 @@
 # Table name: generic_clubs
 #
 #  id              :integer          not null, primary key
-#  type            :string
+#  club_type       :string
 #  brand           :string
 #  male            :boolean
 #  righty          :boolean

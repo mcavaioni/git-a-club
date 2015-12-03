@@ -11,6 +11,7 @@
 #  email           :string
 #  phone_number    :string
 #  password_digest :string
+#  picture         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

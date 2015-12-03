@@ -4,7 +4,7 @@
   <%= f.fields_for :generic_club, GenericClub.new do |field|%>
     <p>
       <%= f.label :generic_club_type %>
-      <%= field.select :type, GenericClub::Types %>
+      <%= field.select :club_type, GenericClub::ClubTypes %>
     </p>
     <p>
       <%= f.label :generic_club_brand %>
@@ -22,11 +22,11 @@
     </p>
     <p>
       <%= f.label :generic_club_head_feature %>
-      <%= field.select :type, GenericClub::HeadFeatures %>
+      <%= field.select :head_feature, GenericClub::HeadFeatures %>
     </p>
     <p>
       <%= f.label :generic_club_shaft_stiffness %>
-      <%= field.select :type, GenericClub::ShaftStiffnesses %>
+      <%= field.select :shaft_stiffness, GenericClub::ShaftStiffnesses %>
     </p>
   <% end %>
 

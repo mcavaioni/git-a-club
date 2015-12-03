@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20151202210108) do
   create_table "club_sets", force: :cascade do |t|
     t.string   "summary"
     t.string   "name"
-    t.integer  "price"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,14 +27,15 @@ ActiveRecord::Schema.define(version: 20151202210108) do
   create_table "clubs", force: :cascade do |t|
     t.integer  "supplier_id"
     t.integer  "club_set_id"
-    t.string   "condition"
     t.integer  "generic_club_id"
+    t.string   "condition"
+    t.string   "picture"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   create_table "generic_clubs", force: :cascade do |t|
-    t.string   "type"
+    t.string   "club_type"
     t.string   "brand"
     t.boolean  "male"
     t.boolean  "righty"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151202210108) do
     t.string   "reviewable_type"
     t.integer  "reviewable_id"
     t.string   "content"
+    t.integer  "rating"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -96,6 +98,7 @@ ActiveRecord::Schema.define(version: 20151202210108) do
     t.string   "email"
     t.string   "phone_number"
     t.string   "password_digest"
+    t.string   "picture"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

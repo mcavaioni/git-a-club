@@ -1,7 +1,7 @@
 class CreateGenericClubs < ActiveRecord::Migration
   def change
     create_table :generic_clubs do |t|
-      t.string :type
+      t.string :club_type
       t.string :brand
       t.boolean :male
       t.boolean :righty
