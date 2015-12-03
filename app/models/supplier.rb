@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: providers
+# Table name: suppliers
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Provider < ActiveRecord::Base
+class Supplier < ActiveRecord::Base
   belongs_to :user
   has_many :clubs
   has_many :club_sets, through: :clubs

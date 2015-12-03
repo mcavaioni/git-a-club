@@ -55,12 +55,6 @@ ActiveRecord::Schema.define(version: 20151202210108) do
 
   add_index "listings", ["listable_id", "listable_type"], name: "index_listings_on_listable_id_and_listable_type", using: :btree
 
-  create_table "providers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "renters", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -86,6 +80,12 @@ ActiveRecord::Schema.define(version: 20151202210108) do
   end
 
   add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
+
+  create_table "suppliers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

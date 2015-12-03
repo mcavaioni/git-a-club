@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :providers do
+  resources :suppliers do
     resources :clubs
     resources :club_sets
   end
