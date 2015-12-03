@@ -5,11 +5,11 @@ class ClubsController < ApplicationController
   end
 
   def create
-    @club = Club.new(club_params)
+    @club = @supplier.clubs.build(club_params)
+    binding.pry
     if @club.save #=> change to if when validation is added
-      @club.build_supplier.save
       flash.now[:notice] = "Club sucessfully created"
-      redirect_to @supplier.user
+      redirect_to @supplier
     else
       render :new
       flash.now[:notice] = "Error, club not created"

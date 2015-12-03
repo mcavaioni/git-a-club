@@ -1,7 +1,7 @@
 class SuppliersController < ApplicationController
   before_action :find_supplier
   def show
-
+    @clubs = @supplier.clubs
   end
 
   private
