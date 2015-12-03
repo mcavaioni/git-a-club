@@ -1,7 +1,7 @@
 <%= form_for @reservation, url: listing_reservations_path(id: @listing.id) do |f| %>
   <%= f.label :start_date %>
-  <%= f.date_field :start_date %>
+  <%= f.date_field :start_date, value: @listing.start_date %>
   <%= f.label :finish_date %>
-  <%= f.date_field :finish_date %>
+  <%= f.date_field :finish_date, value: @listing.finish_date %>
   <%= f.submit %>
 <% end %>

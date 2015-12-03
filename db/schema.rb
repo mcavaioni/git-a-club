@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20151202210108) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer  "renter_id"
-    t.datetime "start_date"
-    t.datetime "finish_date"
+    t.date     "start_date"
+    t.date     "finish_date"
     t.integer  "listing_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
