@@ -6,7 +6,8 @@ class CreateListings < ActiveRecord::Migration
       t.date :start_date
       t.date :finish_date
       t.integer :price
-       
+      t.boolean :active, default: true
+
       t.timestamps null: false
     end
     add_index :listings, [:listable_id, :listable_type]

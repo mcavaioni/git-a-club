@@ -4,7 +4,7 @@ class CreateClubSets < ActiveRecord::Migration
       t.string :summary
       t.string :name
       t.string :picture
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end

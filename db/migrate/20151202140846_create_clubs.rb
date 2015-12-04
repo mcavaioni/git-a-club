@@ -5,8 +5,8 @@ class CreateClubs < ActiveRecord::Migration
       t.integer :generic_club_id
       t.string :condition
       t.string :picture
-      t.boolean :active
-      
+      t.boolean :active, default: true
+
       t.timestamps null: false
     end
   end
