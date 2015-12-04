@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(version: 20151203202248) do
     t.string   "summary"
     t.string   "name"
     t.string   "picture"
+
     t.boolean  "active",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -37,9 +39,11 @@ ActiveRecord::Schema.define(version: 20151203202248) do
     t.integer  "generic_club_id"
     t.string   "condition"
     t.string   "picture"
+
     t.boolean  "active",          default: true
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+
   end
 
   create_table "generic_clubs", force: :cascade do |t|
@@ -59,9 +63,11 @@ ActiveRecord::Schema.define(version: 20151203202248) do
     t.date     "start_date"
     t.date     "finish_date"
     t.integer  "price"
+
     t.boolean  "active",        default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+
   end
 
   add_index "listings", ["listable_id", "listable_type"], name: "index_listings_on_listable_id_and_listable_type", using: :btree
