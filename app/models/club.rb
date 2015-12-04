@@ -32,4 +32,8 @@ class Club < ActiveRecord::Base
   #   generic_club_id = generic_club.id
   # end
 
+  def club_attributes
+    "#{self.generic_club.brand} - #{self.generic_club.club_type}"
+  end
+
 end
