@@ -29,8 +29,8 @@ RSpec.describe Club do
     let(:generic_club_new) {FactoryGirl.build :generic_club, righty: false}
     let(:club) {FactoryGirl.build :club}
     it "should create a new generic club" do
-      generic_club.save
-      last_id = generic_club.id
+      generic_club_existing.save
+      last_id = generic_club_existing.id
       club.generic_club_attributes = generic_club_new.attributes
       club.save
       expect(club.generic_club_id).to eq(last_id + 1)
