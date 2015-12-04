@@ -1,7 +1,10 @@
 <li>
-  <h3><%= club_set.name %></h3>
+  <h3>Set Name: <%= club_set.name %></h3>
+  <p>Summary: <%= club_set.summary %></p>
+  <ul>Clubs:
   <% club_set.clubs.each do |club| %>
-    <h4><%= "#{club.generic_club.club_type} : #{club.generic_club.brand}" %></h4>
-    <%= link_to 'delete', supplier_club_set_path(supplier, club_set), method: :delete %>
+    <li><%= "#{club.generic_club.club_type} : #{club.generic_club.brand}" %></li>
   <% end %>
+  </ul>
+  <%= button_to 'Delete', supplier_club_set_path(supplier, club_set), method: :delete %>
 </li>
