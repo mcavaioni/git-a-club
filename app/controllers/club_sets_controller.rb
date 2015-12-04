@@ -6,8 +6,9 @@ class ClubSetsController < ApplicationController
   end
 
   def create
-    binding.pry
-    
+    @club_set = ClubSet.new(club_set_params)
+    @club_set.save
+    render @club_set
   end
 
   def show
@@ -15,6 +16,10 @@ class ClubSetsController < ApplicationController
   end
 
   private
+
+  def club_set_params
+    params.require(:club_set).permit(:name, :summary, :picture, :club_ids => [])
+  end
 
   def find_supplier
     @supplier = Supplier.find(params[:supplier_id])
