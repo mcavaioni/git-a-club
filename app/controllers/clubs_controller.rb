@@ -1,13 +1,9 @@
 class ClubsController < ApplicationController
   before_action :find_supplier
-  # before_action :find_club, only:[show]
+  before_action :find_club, only:[:destroy]
 
   def new
     @club = Club.new
-  end
-
-  def show
-    @club=Club.find(params[:club_id])
   end
 
   def create
@@ -21,6 +17,14 @@ class ClubsController < ApplicationController
     end
   end
 
+  def destroy
+    @club.active = false
+    @club.save
+    # REPLACE WITH .club_attributes METHOD
+    flash.now[:notice] = "Your club has been removed."
+    redirect_to @supplier
+  end
+
 private
 
   def club_params
@@ -28,9 +32,9 @@ private
     # department_params.permitted? => true
   end
 
-  # def find_club
-  #   @club=Club.find(params[:id])
-  # end
+  def find_club
+    @club=Club.find(params[:id])
+  end
 
   def find_supplier
     @supplier = Supplier.find(params[:supplier_id])

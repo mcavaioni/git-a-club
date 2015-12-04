@@ -6,8 +6,7 @@
     Head Feature: <%= generic_club.head_feature %><br>
     Shaft Stiffness: <%= generic_club.shaft_stiffness %><br>
     Condition: <%= club.condition %><br>
-    <%= form_for(club, url: supplier_clubs_path(supplier)) do |f| %>
-  
-    <% end %>
+    Active? : <%= club.active %>
+    <%= button_to 'Delete', supplier_club_path(supplier,club), method: :delete %>
   </p>
 </li>
