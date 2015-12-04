@@ -54,6 +54,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'bootswatch-rails'
 
 gem 'annotate'
 gem 'pry'
