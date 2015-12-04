@@ -7,4 +7,6 @@
   <% end %>
   </ul>
   <%= button_to 'Delete', supplier_club_set_path(supplier, club_set), method: :delete %>
+  <%= render partial: 'listings/new_form', locals: {obj: club_set} %>
 </li>
+
