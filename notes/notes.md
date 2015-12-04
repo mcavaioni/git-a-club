@@ -1,3 +1,37 @@
+*** Navbar
+-Supplier buttons
+-Renter buttons
+Not Signed in:
+[ | Git-a-Club |                            | Supply Clubs | | Listings | | Sign in | ]
+Signed in:
+[ | Git-a-Club | | My Rentals | | Supply Clubs | | Listings | | Profile | | Log Out | ]
+
+*** Renter
+-Show page
+--Up coming listings
+--Button to listings index
+
+*** Validations
+-Supplier
+--must have address
+
+-Clubs
+
+-Clubs Sets
+--Club is rented that is apart of a club set, club set must disable
+
+-Listings
+--reservation times
+
+
+*** BONUS ***
+
+ActionMailer!! 
+
+Google Maps
+
+##########################################################################################
+
 / #=> pages#welcome - √
 
 /login #=> sessions#new - HM √
