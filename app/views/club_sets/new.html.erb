@@ -3,6 +3,6 @@
   <%= f.text_field :name %><br>
   <%= f.label :summary %>
   <%= f.text_area :summary %><br>
-  <%= f.collection_check_boxes :club_ids, @supplier.clubs, :id, :generic_club %>
+  <%= f.collection_check_boxes :club_ids, @supplier.clubs, :id, :condition %>
   <%= f.submit %>
 <% end %>

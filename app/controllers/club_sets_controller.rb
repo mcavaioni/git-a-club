@@ -7,6 +7,7 @@ class ClubSetsController < ApplicationController
 
   def create
     binding.pry
+    
   end
 
   def show
