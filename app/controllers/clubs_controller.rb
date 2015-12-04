@@ -1,7 +1,13 @@
 class ClubsController < ApplicationController
   before_action :find_supplier
+  # before_action :find_club, only:[show]
+
   def new
     @club = Club.new
+  end
+
+  def show
+    @club=Club.find(params[:club_id])
   end
 
   def create
@@ -22,6 +28,9 @@ private
     # department_params.permitted? => true
   end
 
+  # def find_club
+  #   @club=Club.find(params[:id])
+  # end
 
   def find_supplier
     @supplier = Supplier.find(params[:supplier_id])
