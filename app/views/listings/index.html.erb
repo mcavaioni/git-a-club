@@ -1,3 +1,17 @@
-<% @listings.each do |listing| %>
-  <%= listing.price %>
-<% end %> 
+<table>
+  <thead>
+    <tr>
+      <th>Listing ID</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listings.each do |listing| %>
+      <%= render partial: 'listing', locals:{listing:listing}%>
+    <% end %>
+  </tbody>
+</table>
