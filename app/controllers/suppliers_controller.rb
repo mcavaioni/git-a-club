@@ -1,8 +1,9 @@
 class SuppliersController < ApplicationController
   before_action :find_supplier
   def show
+    # binding.pry
     @clubs = @supplier.clubs
-    @club_sets = @supplier.club_sets
+    @club_sets = @supplier.club_sets.uniq
   end
 
   private
