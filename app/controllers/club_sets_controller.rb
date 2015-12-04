@@ -1,5 +1,5 @@
 class ClubSetsController < ApplicationController
-  before_action :find_supplier, only: [:new, :create]
+  before_action :find_supplier, only: [:new, :create, :show]
 
   def new
     @club_set = ClubSet.new
@@ -8,11 +8,15 @@ class ClubSetsController < ApplicationController
   def create
     @club_set = ClubSet.new(club_set_params)
     @club_set.save
-    render @club_set
+    redirect_to supplier_club_set_path(@supplier, @club_set)
   end
 
   def show
+    @club_set = ClubSet.find(params[:id])
+  end
 
+  def destroy
+    @club_set.active = false
   end
 
   private
