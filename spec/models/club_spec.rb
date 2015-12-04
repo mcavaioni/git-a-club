@@ -20,19 +20,19 @@ RSpec.describe Club do
       generic_club.save
       club.generic_club_attributes=generic_club.attributes
       expect(club.generic_club_id).to eq(generic_club.id)
+    end
   end
 
-  # describe "create a generic club if one does not already exist with new club's parameters"
-  #   context 'generic club attributes of a new club does not exist on creation'
-  #   let(:generic_club_existing) {FactoryGirl.build :generic_club})
-  #   let(:generic_club_new) {FactoryGirl.build :generic_club, righty: false})
-  #   let(:club) {FactoryGirl.build :club}
-  #   it "should create a new generic club" do
-  #     generic_club.save
-  #     last_id = generic_club.id
-  #     club.generic_club_attributes = generic_club_new.attributes
-  #     club.save
-  #     expect(club.generic_club_id).to eq(last_id + 1)
-  #   end
+  describe "create a generic club if one does not already exist with new club's parameters"
+    context 'generic club attributes of a new club does not exist on creation'
+    let(:generic_club_existing) {FactoryGirl.build :generic_club}
+    let(:generic_club_new) {FactoryGirl.build :generic_club, righty: false}
+    let(:club) {FactoryGirl.build :club}
+    it "should create a new generic club" do
+      generic_club.save
+      last_id = generic_club.id
+      club.generic_club_attributes = generic_club_new.attributes
+      club.save
+      expect(club.generic_club_id).to eq(last_id + 1)
+    end
   end
-end
