@@ -18,4 +18,11 @@ class ClubSet < ActiveRecord::Base
   has_many :clubs, through: :club_set_clubs
   has_many :suppliers, through: :clubs
   has_many :listings, as: :listable
+
+  def description
+    first_club = self.clubs.first
+    number_of_clubs = self.clubs.length
+    "#{number_of_clubs} club set #{first_club.gender_handed}"
+  end
+
 end

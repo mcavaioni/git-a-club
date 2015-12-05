@@ -3,10 +3,9 @@
   <p>Summary: <%= club_set.summary %></p>
   <ul>Clubs:
   <% club_set.clubs.each do |club| %>
-    <li><%= "#{club.generic_club.club_type} : #{club.generic_club.brand}" %></li>
+    <li><%= "#{club.description}" %></li>
   <% end %>
   </ul>
   <%= button_to 'Delete', supplier_club_set_path(supplier, club_set), method: :delete %>
   <%= render partial: 'listings/new_form', locals: {obj: club_set} %>
 </li>
-

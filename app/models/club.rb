@@ -36,4 +36,14 @@ class Club < ActiveRecord::Base
     "#{self.generic_club.brand} - #{self.generic_club.club_type}"
   end
 
+  def gender_handed
+    handed = generic_club.righty ? "R" : "L"
+    gender = generic_club.righty ? "M" : "W"
+    "(#{gender}:#{handed})"
+  end
+
+  def description
+    "#{generic_club.brand} #{generic_club.club_type} #{gender_handed}"
+  end
+
 end
