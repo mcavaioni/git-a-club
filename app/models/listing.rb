@@ -16,6 +16,8 @@ class Listing < ActiveRecord::Base
   belongs_to :listable, polymorphic: true
   has_many :reservations
   has_many :reviews, as: :reviewable
+  validates :start_date, :finish_date, :price, presence: true
+  validate :valid_start_date
 
 
   def availability
@@ -30,5 +32,13 @@ class Listing < ActiveRecord::Base
   def reservation_available?(start_date, finish_date)
     reservation_dates = (start_date..finish_date).to_a
     availability&reservation_dates == reservation_dates
+  end
+
+  private
+
+  def valid_start_date
+    if self.start_date && self.finish_date && self.start_date > self.finish_date
+      errors.add(:status, "start date cannot be after finish date")
+    end
   end
 end

@@ -19,5 +19,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
     config.order = "default"
     config.include Capybara::DSL
 
-    DatabaseCleaner.strategy = :truncation
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
