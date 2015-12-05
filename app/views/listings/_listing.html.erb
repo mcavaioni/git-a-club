@@ -1,9 +1,8 @@
-
-<tr>
-  <th><%=link_to listing.id, listing %></th>
-  <th><%= listing.listable_type %></th>
-  <th><%= listing.listable.description%></th>
-  <th><%= listing.start_date %></th>
-  <th><%= listing.finish_date %></th>
-  <th><%= listing.price %></th>
-</tr>
+<div class="col-md-3 car btn btn-default listing">
+  <h5><%= listing.listable.description%></h5>
+  <p><strong>Type:</strong> <%= listing.listable_type %></p>
+  <p><strong>From:</strong> <%= listing.start_date %></p>
+  <p><strong>To:</strong> <%= listing.finish_date %></p>
+  <p><strong>Price:</strong> <%= listing.price %></p>
+  <%=link_to listing.id, listing %>
+</div>

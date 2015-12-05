@@ -1,17 +1,23 @@
-<table>
-  <thead>
-    <tr>
-      <th>Listing ID</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @listings.each do |listing| %>
-      <%= render partial: 'listing', locals:{listing:listing}%>
-    <% end %>
-  </tbody>
-</table>
+<!-- Search Bar Start -->
+<div class="row">
+  Search Bar Goes Here
+</div>
+<!-- Search Bar End -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      This is for search term checkboxes
+    </div>
+
+    <!-- Search results go in here -->
+    <div class="col-md-9">
+      <% @listings.each do |listing| %>
+        <%= render partial: 'listing', locals:{listing:listing}%>
+      <% end %>
+    </div>
+    <!-- end search results -->
+
+  </div>
+
+</div>
