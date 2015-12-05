@@ -30,11 +30,12 @@ RSpec.describe Listing do
 
   describe 'listing validations' do
     before (:each) do
-      @valid_listing = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 10))
-      @no_start_date = Listing.create(finish_date: Date.new(2015, 12, 10))
-      @no_finish_date = Listing.create(start_date: Date.new(2015, 12, 10))
-      @start_after_finish = Listing.create(start_date: Date.new(2015, 12, 11), finish_date: Date.new(2015, 12, 10))
-      @start_on_finish = Listing.create(start_date: Date.new(2015, 12, 10), finish_date: Date.new(2015, 12, 10))
+      @valid_listing = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 10), price: 5)
+      @no_start_date = Listing.create(finish_date: Date.new(2015, 12, 10), price: 5)
+      @no_finish_date = Listing.create(start_date: Date.new(2015, 12, 10), price: 5)
+      @start_after_finish = Listing.create(start_date: Date.new(2015, 12, 11), finish_date: Date.new(2015, 12, 10), price: 5)
+      @start_on_finish = Listing.create(start_date: Date.new(2015, 12, 10), finish_date: Date.new(2015, 12, 10), price: 5)
+      @no_price = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 10))
     end
       
       it 'validates a listing with start date and end date' do
@@ -55,6 +56,10 @@ RSpec.describe Listing do
 
       it 'validates a listing with the a start date after finish date' do
         expect(@start_after_finish).to_not be_valid
+      end
+
+      it 'validates a listing with no price' do
+        expect(@no_price).to_not be_valid
       end
   end
 end

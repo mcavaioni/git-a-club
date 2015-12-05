@@ -16,7 +16,6 @@ class Reservation < ActiveRecord::Base
   belongs_to :renter
   belongs_to :listing
   validate :reservation_available_validation
-  # add validations for creating a resevation
 
   private
 
