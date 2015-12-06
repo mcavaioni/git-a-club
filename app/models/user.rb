@@ -22,8 +22,11 @@ class User < ActiveRecord::Base
   has_one :renter
   # has_many :listings, through: :providers
   # has_many :reservations, through: :renters
-
+  validates :first_name, :last_name, :email, presence: true
+  validates :email, uniqueness: true
   has_secure_password
 
-
+  def qualified_supplier?
+    !self.address.empty? && !self.phone_number.empty?
+  end
 end

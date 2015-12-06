@@ -16,6 +16,8 @@ class Listing < ActiveRecord::Base
   belongs_to :listable, polymorphic: true
   has_many :reservations
   has_many :reviews, as: :reviewable
+  validates :start_date, :finish_date, :price, presence: true
+  validate :valid_start_date
 
 
   def availability
@@ -31,4 +33,9 @@ class Listing < ActiveRecord::Base
     reservation_dates = (start_date..finish_date).to_a
     availability&reservation_dates == reservation_dates
   end
+
+  private
+
+  include Validable::StartDate
+
 end

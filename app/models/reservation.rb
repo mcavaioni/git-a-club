@@ -15,10 +15,12 @@ class Reservation < ActiveRecord::Base
   has_many :reviews, as: :reviewable
   belongs_to :renter
   belongs_to :listing
-  validate :reservation_available_validation
-  # add validations for creating a resevation
+  validates :start_date, :finish_date, presence: true
+  validate :reservation_available_validation, :valid_start_date
 
   private
+
+  include Validable::StartDate
 
   def reservation_available_validation
     if (self.start_date && self.finish_date)

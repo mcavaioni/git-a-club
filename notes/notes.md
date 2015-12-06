@@ -12,16 +12,16 @@ Signed in:
 --Button to listings index
 
 *** Validations
--Supplier
---must have address
+-Supplier √
+--must have address √
 
 -Clubs
 
 -Clubs Sets
 --Club is rented that is apart of a club set, club set must disable
 
--Listings
---reservation times
+-Listings √
+--reservation times √
 
 
 *** BONUS ***

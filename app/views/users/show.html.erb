@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= button_to "Supply Clubs", supplier_path(@user.supplier), method: :get %>
+<%= button_to "Supply Clubs", @user.supplier ? supplier_path(@user.supplier) : new_supplier_path, method: :get %>
 <br>
 <%= button_to "Rent Clubs", listings_path, method: :get %>
