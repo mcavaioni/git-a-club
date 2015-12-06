@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_params)
-    @user.supplier = Supplier.new
+    @user.supplier = Supplier.new if @user.qualified_supplier?
     @user.renter = Renter.new
     if @user.save #=> change to if when validation is added
       @user.build_supplier.save

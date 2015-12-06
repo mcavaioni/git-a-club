@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe User do 
-  describe 'user validations' do
+  describe 'validations' do
     let(:user) {FactoryGirl.create :user}
 
     it 'validates user first name' do
@@ -21,10 +21,14 @@ RSpec.describe User do
       user.email = nil
       expect(user).to_not be_valid
     end
+
+    it 'validates user email uniqueness' do
+      expect(User.create(first_name: 'HoWon', last_name: 'Cheng', email: 'test@test.com', password_digest: 'password123')).to_not be_valid
+    end
   end
 
   describe 'being a supplier' do
-    context 'user cannot be a supplier without address and phone number' do
+    context 'cannot be a supplier without address and phone number' do
       before(:each) do
         @valid_user = User.create(first_name: 'HoWon', last_name: 'Cheng', address: '11 Broadway', email: 'test1@test.com', phone_number:'123-456-7890', password_digest: 'password123')
         @no_address_user = User.create(first_name: 'Michael', last_name: 'Cavaioni', email: 'test2@test.com', phone_number:'123-456-7890', password_digest: 'password123')

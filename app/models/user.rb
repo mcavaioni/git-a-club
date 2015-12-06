@@ -25,5 +25,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
   has_secure_password
 
-
+  def qualified_supplier?
+    self.address && self.phone_number
+  end
 end
