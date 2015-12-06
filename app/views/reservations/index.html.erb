@@ -1,0 +1,5 @@
+<h2>My Reservations</h2>
+<% @reservations.each do |reservation| %>
+  <h5><%= reservation.listing.listable.description %></h5>
+  <%= link_to reservation.listing.id, reservation.listing %>
+<% end %>

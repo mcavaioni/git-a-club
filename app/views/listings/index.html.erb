@@ -13,7 +13,9 @@
     <!-- Search results go in here -->
     <div class="col-md-9">
       <% @listings.each do |listing| %>
-        <%= render partial: 'listing', locals:{listing:listing}%>
+        <div class="col-md-3 car btn btn-default listing">
+          <%= render partial: 'listing', locals:{listing:listing}%>
+        </div>
       <% end %>
     </div>
     <!-- end search results -->
