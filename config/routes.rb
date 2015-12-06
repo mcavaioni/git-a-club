@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   resources :users do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
     # resources :listings, except: [:index]
-    resources :reservations
+    # resources :reservations
     resources :reviews
+  end
+
+  resources :renter do
+    resources :reservations
   end
 
   resources :suppliers do
@@ -15,7 +19,7 @@ Rails.application.routes.draw do
     end
     resources :club_sets do
       resources :listings, except: [:index]
-    end   
+    end
   end
 
   resources :listings do
