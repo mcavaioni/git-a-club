@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 RSpec.describe Reservation do  
   describe 'reservations valdiations' do 
     describe"#reservation_available_validation" do 
