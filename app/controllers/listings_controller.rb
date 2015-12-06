@@ -24,17 +24,17 @@ class ListingsController < ApplicationController
 
   def create
     
-    binding.pry
-    if request.xhr?
+    # binding.pry
+    # if request.xhr?
     @listing = Listing.create(listing_params) 
     # @listing.save
-
-    html_string = render_to_string 'listings/_listing', locals: {listing: listing}, layout: false
-
+    binding.pry
+    html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
+    binding.pry
     render json: {template: html_string}
 
     # redirect_to @listing
-    end
+    # end
 
   end
 

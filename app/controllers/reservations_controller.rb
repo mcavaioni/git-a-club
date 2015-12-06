@@ -15,6 +15,10 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def index
+    
+  end
+
   def show
 
   end
