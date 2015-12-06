@@ -20,8 +20,8 @@ Signed in:
 -Clubs Sets
 --Club is rented that is apart of a club set, club set must disable
 
--Listings
---reservation times
+-Listings √
+--reservation times √
 
 
 *** BONUS ***
