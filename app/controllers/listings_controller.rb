@@ -23,21 +23,19 @@ class ListingsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @listing = Listing.new(listing_params) 
-    @listing.save
-    redirect_to @listing
-    # if @club
-    #   @listing_club = @club.listings.build(listing_params)
-    #   # set listable and listable_id
-    #   @listing_club.save
-    #   redirect_to supplier_club_listing_path(@supplier, @club, @listing_club)
-    # else
-    #   @listing_club_set = @club_set.listings.build(listing_params)
-    #   # set listable and listable_id
-    #   @listing_club_set.save
-    #   redirect_to supplier_club_set_listing_path(@supplier, @club_set, @listing_club_set)
-    # end
+    
+    binding.pry
+    if request.xhr?
+    @listing = Listing.create(listing_params) 
+    # @listing.save
+
+    html_string = render_to_string 'listings/_listing', locals: {listing: listing}, layout: false
+
+    render json: {template: html_string}
+
+    # redirect_to @listing
+    end
+
   end
 
   private
