@@ -78,13 +78,13 @@ RSpec.describe Reservation do
 
     describe ".self.upcoming_reservations" do 
       it 'returns only upcoming reservations for a specific renter' do
-        expect(Reservation.upcoming_reservations(@renter)).to match_array(@upcoming)
+        expect(Reservation.upcoming_reservations_by(@renter)).to match_array(@upcoming)
       end
     end
 
     describe ".self.past_reservations" do 
       it 'returns only past reservations for a specifc renter' do
-        expect(Reservation.past_reservations(@renter)).to match_array(@past)
+        expect(Reservation.past_reservations_by(@renter)).to match_array(@past)
       end
     end
   end

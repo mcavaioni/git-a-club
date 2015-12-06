@@ -19,7 +19,8 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = Reservation.find_reservations_by(@renter)
+    @upcoming_reservations = Reservation.upcoming_reservations_by(@renter)
+    @past_reservations = Reservation.past_reservations_by(@renter)
   end
 
   def show

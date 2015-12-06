@@ -28,9 +28,7 @@ class ListingsController < ApplicationController
     # if request.xhr?
     @listing = Listing.create(listing_params) 
     # @listing.save
-    binding.pry
     html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
-    binding.pry
     render json: {template: html_string}
 
     # redirect_to @listing

@@ -22,12 +22,12 @@ class Reservation < ActiveRecord::Base
     self.where(obj.class.to_s.downcase.to_sym => obj)
   end
 
-  def self.upcoming_reservations(obj)
-    self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date >= ?", Date.now)
+  def self.upcoming_reservations_by(obj)
+    self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date >= ?", Date.current)
   end
 
-  def self.past_reservations(obj)
-    self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date < ?", Date.now)
+  def self.past_reservations_by(obj)
+    self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date < ?", Date.current)
   end
 
   private
