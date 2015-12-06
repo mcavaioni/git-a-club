@@ -1,4 +1,4 @@
-<h2>Up Reservations</h2>
+<h2>Upcoming Reservations</h2>
 <% @upcoming_reservations.each do |reservation| %>
   <h5><%= reservation.listing.listable.description %></h5>
   <%= link_to reservation.listing.id, reservation.listing %>
