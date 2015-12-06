@@ -1,9 +1,9 @@
-*** Navbar
--Supplier buttons
--Renter buttons
-Not Signed in:
+*** Navbar √
+-Supplier buttons √
+-Renter buttons √
+Not Signed in: √
 [ | Git-a-Club |                            | Supply Clubs | | Listings | | Sign in | ]
-Signed in:
+Signed in: √
 [ | Git-a-Club | | My Rentals | | Supply Clubs | | Listings | | Profile | | Log Out | ]
 
 *** Renter
@@ -26,7 +26,7 @@ Signed in:
 
 *** BONUS ***
 
-ActionMailer!! 
+ActionMailer!!
 
 Google Maps
 
@@ -47,4 +47,4 @@ Google Maps
 
 /listings #=> listings#index - HM √
 /listings/:id #=> listings#show - HM √
-/listings/:id/reservations/new #=> reservations#new - HM 
+/listings/:id/reservations/new #=> reservations#new - HM

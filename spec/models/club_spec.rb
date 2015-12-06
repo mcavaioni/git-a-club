@@ -23,7 +23,7 @@ RSpec.describe Club do
     end
   end
 
-  describe "create a generic club if one does not already exist with new club's parameters"
+  describe "create a generic club if one does not already exist with new club's parameters" do
     context 'generic club attributes of a new club does not exist on creation'
     let(:generic_club_existing) {FactoryGirl.build :generic_club}
     let(:generic_club_new) {FactoryGirl.build :generic_club, righty: false}
@@ -36,3 +36,16 @@ RSpec.describe Club do
       expect(club.generic_club_id).to eq(last_id + 1)
     end
   end
+
+  describe '#description' do
+    let(:generic_club) {FactoryGirl.build :generic_club}
+    let(:club) {FactoryGirl.build :club}
+    it "club should know it's description" do
+      generic_club.save
+      club.generic_club_id = generic_club.id
+      club.save
+      expect(club.description).to eq("nike driver (M:R)")
+    end
+  end
+
+end
