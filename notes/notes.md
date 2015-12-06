@@ -12,8 +12,8 @@ Signed in:
 --Button to listings index
 
 *** Validations
--Supplier
---must have address
+-Supplier √
+--must have address √
 
 -Clubs
 
