@@ -73,7 +73,7 @@ RSpec.describe Reservation do
       @upcoming = [@reservation3, @reservation4, @reservation5]
       @past = [@reservation1, @reservation2]
 
-      Date.stub(:now).and_return(@date_now)
+      Date.stub(:current).and_return(@date_now)
     end
 
     describe ".self.upcoming_reservations" do 

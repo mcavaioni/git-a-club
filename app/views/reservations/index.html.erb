@@ -1,11 +1,13 @@
 <h2>Upcoming Reservations</h2>
 <% @upcoming_reservations.each do |reservation| %>
   <h5><%= reservation.listing.listable.description %></h5>
+  <p>Reservation date: <strong><%= reservation.start_date %></strong> to <strong><%= reservation.finish_date %></strong></p>
   <%= link_to reservation.listing.id, reservation.listing %>
 <% end %>
 
 <h2>Past Reservations</h2>
 <% @past_reservations.each do |reservation| %>
-  <h5><%= reservation.listing.listable.description %></h5>
+  <h5><%= reservation.listing.listable.description %></h5>  
+  <p>Reservation date: <strong><%= reservation.start_date %></strong> to <strong><%= reservation.finish_date %></strong></p>
   <%= link_to reservation.listing.id, reservation.listing %>
 <% end %>
