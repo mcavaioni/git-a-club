@@ -86,6 +86,24 @@ RSpec.describe User do
         @no_address_no_phone_user = User.last
         expect(@no_address_no_phone_user.supplier).to be_nil
       end
+
+      it '#supplier returns not nil for user who entered address and phone_number after account creation' do
+        within('#new_user') do
+          fill_in 'Email', :with => 'test5@test.com'
+        end
+        click_button 'Create User'
+
+        click_button 'Supply Clubs'
+        
+        within('.edit_user') do
+          fill_in 'Address', :with => '11 Broadway'
+          fill_in 'Phone number', :with => '123-456-7890'
+        end
+        click_button 'Update User'
+
+        @valid_supplier_after_creation = User.last
+        expect(@valid_supplier_after_creation.supplier).to_not be_nil
+      end
     end
   end
 end

@@ -1,0 +1,8 @@
+<h4>You must have an address and phone number on record to supply clubs.</h4>
+<%= form_for @user do |f| %>
+  <%= f.label :address %>
+  <%= f.text_field :address, value: @user.phone_number %><br>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number, value: @user.phone_number %><br>
+  <%= f.submit %>
+<% end %>

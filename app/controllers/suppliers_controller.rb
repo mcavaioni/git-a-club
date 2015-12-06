@@ -1,9 +1,12 @@
 class SuppliersController < ApplicationController
-  before_action :find_supplier
+  before_action :find_supplier, only: [:show]
   def show
-    # binding.pry
     @clubs = @supplier.clubs
     @club_sets = @supplier.club_sets.uniq
+  end
+
+  def new
+    @user = User.find(current_user.id)
   end
 
   private
