@@ -26,6 +26,10 @@ class Club < ActiveRecord::Base
   # These conditions were taken from Kelley Blue Book
   Conditions = ['excellent','very_good','good','fair']
 
+  def self.find_by_generic_clubs(generic_club_array)
+    where(generic_club:generic_club_array)
+  end
+
   def generic_club_attributes=(generic_club_attributes_hash)
     # generic_club_attributes_hash[:brand].downcase!
     generic_club = GenericClub.find_or_create_by(generic_club_attributes_hash)
@@ -45,5 +49,6 @@ class Club < ActiveRecord::Base
   def description
     "#{generic_club.brand} #{generic_club.club_type} #{gender_handed}"
   end
+
 
 end
