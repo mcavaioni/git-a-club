@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'listings/four_listings/:start_row' => 'listings#four_listings', as: 'four_listings'
+
   resources :listings do
     resources :reservations
     resources :reviews

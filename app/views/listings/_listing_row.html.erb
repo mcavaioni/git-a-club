@@ -1,0 +1,5 @@
+<div class="row">
+  <% listings[start_load,4].each do |listing| %>
+    <%= render partial: 'listing', locals:{listing:listing}%>
+  <% end %>
+</div>

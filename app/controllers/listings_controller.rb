@@ -14,6 +14,13 @@ class ListingsController < ApplicationController
     render 'listings/index.html.erb'
   end
 
+  def four_listings
+    start_load = (params[:start_row]).to_i
+    listings = Listing.all
+    html_string = render_to_string 'listings/_listing_row', locals: {listings: listings, start_load:start_load}, layout: false
+    render json: {new_row: html_string}
+  end
+
   def show
     @listing = Listing.find(params[:id])
   end
@@ -24,7 +31,7 @@ class ListingsController < ApplicationController
 
   def create
     # binding.pry
-    @listing = Listing.new(listing_params) 
+    @listing = Listing.new(listing_params)
     @listing.save
     redirect_to @listing
     # if @club
