@@ -17,7 +17,10 @@ module Validable
     end
 
     def all_same_gender
-
+      default_gender = self.clubs.first.generic_club.male
+      if self.clubs.any? {|club| club.generic_club.male != default_gender}
+        errors.add(:clubs, "all clubs must be for the same gender, you cannot mix and match")
+      end
     end
   end
 
