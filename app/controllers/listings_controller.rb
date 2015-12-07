@@ -30,7 +30,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-
+    # binding.pry
     # @listing.save
     # redirect_to @listing
     # if @club
