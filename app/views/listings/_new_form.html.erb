@@ -1,8 +1,8 @@
 
 <div class="container" >
-<button class="button-class" >Create Listing</button>
+<button class="create_listing_btn" >Create Listing</button>
 
-<%= form_for obj.listings.build, html: {class: "hide-form"} do |f| %>
+<%= form_for obj.listings.build, remote: true do |f| %>
 <%=f.hidden_field :listable_id, value: obj.id %>
 <%=f.hidden_field :listable_type, value: obj.class.to_s %>
   <%= f.label :start_date %>
@@ -11,7 +11,7 @@
   <%= f.date_field :finish_date %>
   <%= f.label :price %>
   <%= f.text_field :price %>
-  <%= f.submit %>
+  <%= f.submit %> 
   <%=f.submit "Cancel", type: "button", class: "btn-cancel" %>
 <% end %>
 </div>

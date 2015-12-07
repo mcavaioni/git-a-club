@@ -30,10 +30,8 @@ class ListingsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @listing = Listing.new(listing_params)
-    @listing.save
-    redirect_to @listing
+    # @listing.save
+    # redirect_to @listing
     # if @club
     #   @listing_club = @club.listings.build(listing_params)
     #   # set listable and listable_id
@@ -44,7 +42,13 @@ class ListingsController < ApplicationController
     #   # set listable and listable_id
     #   @listing_club_set.save
     #   redirect_to supplier_club_set_listing_path(@supplier, @club_set, @listing_club_set)
-    # end
+
+    @listing = Listing.create(listing_params)
+
+    html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
+
+    render json: {template: html_string}
+
   end
 
   private
@@ -52,10 +56,6 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:start_date, :finish_date, :price, :listable_type, :listable_id)
   end
-
-    # def find_user
-    #   @listing = Listing.find_by(id: params[:id])
-    # end
 
   def find_user
     @user = User.find(params[:user_id])
