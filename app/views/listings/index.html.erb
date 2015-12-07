@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= form_for GenericClub.new, url:'#' do |f| %>
+      <%= form_for GenericClub.new, url:'/search/listings', method:'get', html:{id:'listings-search'}, remote:true do |f| %>
       <p>
         Search Type: <br>
         <%= radio_button_tag 'search_type', 'club_set', true%> Club Set <br>

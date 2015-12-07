@@ -11,7 +11,6 @@ class ListingsController < ApplicationController
   end
 
   def supplier_listings
-    # binding.pry
     @listings = @supplier.listings
     render 'listings/index.html.erb'
   end

@@ -1,6 +1,7 @@
 $(function(){
 
-  $("#listings-search").on('ajax:success', function(event, data, status, xhr){
+  $("form#listings-search").on('ajax:success', function(event, data, status, xhr){
+    debugger;
     // load results
     // apply checkbox criteria
   })
