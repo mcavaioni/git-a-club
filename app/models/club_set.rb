@@ -19,6 +19,7 @@ class ClubSet < ActiveRecord::Base
   has_many :suppliers, through: :clubs
   has_many :listings, as: :listable
   validate :all_same_hand, :all_same_gender
+  validate :required_wedges, :required_clubs
 
   def description
     first_club = self.clubs.first
