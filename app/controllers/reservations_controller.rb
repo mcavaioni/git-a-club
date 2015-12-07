@@ -7,22 +7,18 @@ class ReservationsController < ApplicationController
   end
 
   def create
-
-
-    
-        @reservation = @renter.reservations.build(reservation_params)
-    if @reservation.listing.listable.supplier.user_id != current_user.id
-        if @reservation.save
-          redirect_to renter_reservations_path(@renter)
-        else
-          flash.now[:notice] = 'Dates are not available.'
-          # need to add to add what happens when an error occurs
-          # render '_new_form.html.erb'
-        end
-
+    @reservation = @renter.reservations.build(reservation_params)
+    @listing = Listing.find(@reservation.listing_id)
+    if @reservation.save
+      flash[:notice] = 'Reservation Confirmed!'
+      redirect_to renter_reservations_path(@renter)
+      # new_listing_dates = @listing.availability.to_s
+      # render json: {:notice => 'Confirmed', dateData: new_listing_dates}
     else
-      flash[:notice] = "You can not rent your own listing!!"
-      redirect_to listings_path
+      flash[:notice] = 'Selected dates are not available.'
+      redirect_to @listing
+      # render json: {:notice => @reservation.errors.full_messages}      
+      # render 'listings/show'
     end
   end
 
