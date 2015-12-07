@@ -1,8 +1,8 @@
 Things we broke on merge:
-  lazy-loader
+  lazy-loader √
   auto-hide listings on show
   Should remove sets if dependant clubs are deleted.
-  Create listings buttons
+  Create listings buttons 
 
 
 *** Navbar √
