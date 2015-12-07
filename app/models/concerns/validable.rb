@@ -25,6 +25,7 @@ module Validable
 
     def required_wedges
       default_wedge = self.clubs.generic_club.club_type
+      binding.pry
       wedges_array = ["lob_wedge", "gap_wedge", "sand_wedge", "pitching_wedge"]
       wedge_intersection = default_wedge & wedges_array
       if !wedge_intersection.empty?

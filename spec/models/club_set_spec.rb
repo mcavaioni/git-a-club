@@ -46,29 +46,29 @@ RSpec.describe ClubSet do
 
 
 
-#     describe '#required_wedges' do 
+    describe '#required_wedges' do 
 
-#    context "club_set must have at least 1 wedge" do
+   context "club_set must have at least 1 wedge" do
 
-#     clubs_without_wedges = %w(driver putter 2_iron_or_hybrid 3_iron_or_hybrid 4_iron_or_hybrid 5_iron_or_hybrid 6_iron 7_iron 8_iron 9_iron 3_wood 5_wood)
-#       let (:club_set) {FactoryGirl.build :club_set}
-#     checker = clubs_without_wedges.collect do |club_type|
+    clubs_without_wedges = %w(driver putter 2_iron_or_hybrid 3_iron_or_hybrid 4_iron_or_hybrid 5_iron_or_hybrid 6_iron 7_iron 8_iron 9_iron 3_wood 5_wood)
+      let (:club_set) {FactoryGirl.build :club_set}
+    checker = clubs_without_wedges.collect do |club_type|
       
-#       gen_club = FactoryGirl.create :generic_club, club_type: club_type
+      gen_club = FactoryGirl.create :generic_club, club_type: club_type
     
-#       FactoryGirl.create :club, generic_club_id: gen_club.id
-#     end
+      FactoryGirl.create :club, generic_club_id: gen_club.id
+    end
 
 
 
-#     it "is not valid without at least 1 wedge" do 
-#       full_set = club_set.clubs << checker
+    it "is not valid without at least 1 wedge" do 
+      full_set = club_set.clubs << checker
       
-#         expect(full_set).to_not be_valid
-#       end
-#     end
-#   end
-# end
+        expect(full_set).to_not be_valid
+      end
+    end
+  end
+end
 
   
 
