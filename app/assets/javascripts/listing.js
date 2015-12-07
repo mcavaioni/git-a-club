@@ -1,5 +1,5 @@
 $(function(){
-  $('.button-class').on ('click', function(){
+  $('.create_listing_btn').on ('click', function(){
     var $form = $(this).first().siblings()
     $form.toggleClass("hide-form")
     $(this).toggleClass("hide-button")
