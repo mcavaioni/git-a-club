@@ -8,6 +8,7 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = @renter.reservations.build(reservation_params)
+    binding.pry
 
     if @reservation.save
       redirect_to renter_reservations_path(@renter)
