@@ -57,4 +57,35 @@ RSpec.describe Reservation do
       end
     end
   end
+
+  describe 'sql functions' do
+    before(:each) do
+      Reservation.destroy_all
+      @date_now = Date.new(2015,12,5)
+      @listing = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 30), price: 5)
+      @renter = Renter.create()
+      @reservation1 = @renter.reservations.build(start_date: Date.new(2015,12,1), finish_date: Date.new(2015,12,1), listing_id: @listing.id)
+      @reservation2 = @renter.reservations.build(start_date: Date.new(2015,12,2), finish_date: Date.new(2015,12,4), listing_id: @listing.id)
+      @reservation3 = @renter.reservations.build(start_date: Date.new(2015,12,5), finish_date: Date.new(2015,12,5), listing_id: @listing.id)
+      @reservation4 = @renter.reservations.build(start_date: Date.new(2015,12,7), finish_date: Date.new(2015,12,10), listing_id: @listing.id)
+      @reservation5 = @renter.reservations.build(start_date: Date.new(2015,12,10), finish_date: Date.new(2015,12,30), listing_id: @listing.id)
+      @renter.save
+      @upcoming = [@reservation3, @reservation4, @reservation5]
+      @past = [@reservation1, @reservation2]
+
+      Date.stub(:current).and_return(@date_now)
+    end
+
+    describe ".self.upcoming_reservations" do 
+      it 'returns only upcoming reservations for a specific renter' do
+        expect(Reservation.upcoming_reservations_by(@renter)).to match_array(@upcoming)
+      end
+    end
+
+    describe ".self.past_reservations" do 
+      it 'returns only past reservations for a specifc renter' do
+        expect(Reservation.past_reservations_by(@renter)).to match_array(@past)
+      end
+    end
+  end
 end

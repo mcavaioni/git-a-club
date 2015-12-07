@@ -1,0 +1,13 @@
+<div class="container" >
+<button class="button-class" >Reserve</button>
+
+<%= form_for listing.reservations.build, url: renter_reservations_path(current_user.renter) do |f| %>
+  <%= f.hidden_field :listing_id, value: listing.id %>
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, value: listing.start_date %>
+  <%= f.label :finish_date %>
+  <%= f.date_field :finish_date, value: listing.finish_date %>
+  <%= f.submit %> 
+  <%= f.submit "Cancel", type: "button", class: "btn-cancel" %>
+<% end %>
+</div>

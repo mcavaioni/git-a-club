@@ -18,6 +18,18 @@ class Reservation < ActiveRecord::Base
   validates :start_date, :finish_date, presence: true
   validate :reservation_available_validation, :valid_start_date
 
+  def self.find_reservations_by(obj)
+    self.where(obj.class.to_s.downcase.to_sym => obj)
+  end
+
+  def self.upcoming_reservations_by(obj)
+    self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date >= ?", Date.current)
+  end
+
+  def self.past_reservations_by(obj)
+    self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date < ?", Date.current)
+  end
+
   private
 
   include Validable::StartDate

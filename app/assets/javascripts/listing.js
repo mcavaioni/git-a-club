@@ -5,7 +5,6 @@ $(function(){
 
   $('.load-listings').on('click', function(){
     row_number = $('.search-results .row').length;
-    debugger;
     $.get('/listings/four_listings/'+row_number*4, function(data){
       $('.search-results').append(data.new_row);
     })

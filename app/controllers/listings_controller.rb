@@ -48,7 +48,6 @@ class ListingsController < ApplicationController
     html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
 
     render json: {template: html_string}
-
   end
 
   private

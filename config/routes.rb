@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :renter do
+  resources :renters do
     resources :reservations
   end
 
