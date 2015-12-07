@@ -1,3 +1,8 @@
+branches to merge:
+  lazy-loader
+  method-testing
+
+
 *** Navbar √
 -Supplier buttons √
 -Renter buttons √
@@ -14,6 +19,8 @@ Signed in: √
 *** Validations
 -Supplier √
 --must have address √
+--club_sets must be built of clubs of all one gender √
+--club_sets must be built of clubs of all one hand √
 
 -Clubs
 
