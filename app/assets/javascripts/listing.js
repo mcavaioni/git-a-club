@@ -1,16 +1,18 @@
 $(function(){
   $.get('/listings/four_listings/0', function(data){
-    $('.search-results').append(data.new_row)
+    $('.search-results').append(data.new_row);
+    attachCalendar();
   })
 
   $('.load-listings').on('click', function(){
     row_number = $('.search-results .row').length;
     $.get('/listings/four_listings/'+row_number*4, function(data){
       $('.search-results').append(data.new_row);
+      attachCalendar();
     })
   })
 
-  $('.create_listing_btn').on ('click', function(){
+  $('.create_form_btn').on ('click', function(){
     var $form = $(this).first().siblings()
     $form.toggleClass("hide-form")
     $(this).toggleClass("hide-button")

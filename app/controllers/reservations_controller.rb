@@ -7,14 +7,18 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @reservation = @renter.reservations.build(reservation_params)
 
     if @reservation.save
-      redirect_to renter_reservations_path(@renter)
+      # binding.pry
+      # redirect_to renter_reservations_path(@renter)
+      reservation_dates = @reservation.start_date..@reservation.finish_date
+      render json: {:notice => 'Confirmed', dateData: reservation_dates}
     else
-      flash.now[:notice] = 'Dates are not available.'
-      # need to add to add what happens when an error occurs
-      # render '_new_form.html.erb'
+      # binding.pry
+      # flash.now[:notice] = 'Dates are not available.'
+      render json: {:notice => @reservation.errors.full_messages}
     end
   end
 

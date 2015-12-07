@@ -1,7 +1,7 @@
 <div class="container" >
-<button class="button-class" >Reserve</button>
+<button class="create_form_btn" >Reserve</button>
 
-<%= form_for listing.reservations.build, url: renter_reservations_path(current_user.renter) do |f| %>
+<%= form_for listing.reservations.build, url: renter_reservations_path(current_user.renter), html: {class: 'hide-form'}, remote: true do |f| %>
   <%= f.hidden_field :listing_id, value: listing.id %>
   <%= f.label :start_date %>
   <%= f.date_field :start_date, value: listing.start_date %>

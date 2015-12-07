@@ -1,3 +1,9 @@
 <%= render partial: 'listing', locals:{listing: @listing}%>
 
 <%= render partial: 'reservations/new_form', locals:{listing: @listing}%>
+
+<script type="text/javascript">
+  $(function(){
+    attachCalendar();
+  })
+</script>
