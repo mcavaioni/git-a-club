@@ -7,6 +7,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    binding.pry
     @reservation = @renter.reservations.build(reservation_params)
 
     if @reservation.save

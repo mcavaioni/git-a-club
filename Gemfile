@@ -29,6 +29,8 @@ gem 'better_errors'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'rails-erd'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
