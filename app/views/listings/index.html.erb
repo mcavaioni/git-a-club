@@ -1,13 +1,55 @@
 <!-- Search Bar Start -->
-<div class="row">
-  Search Bar Goes Here
+
+<div class="row search-box">
+  <div class="col-md-12 text-center">
+    <%= form_tag('/search/listings', method: 'get', remote: true) do %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag "Search", class:"btn btn-default", id:"listings-search" %>
+    <% end %>
+  </div>
 </div>
+
 <!-- Search Bar End -->
 
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      This is for search term checkboxes
+      <%= form_for GenericClub.new, url:'#' do |f| %>
+      <p>
+        Search Type: <br>
+        <%= radio_button_tag 'search_type', 'club_set', true%> Club Set <br>
+        <%= radio_button_tag 'search_type', 'club'%> Club
+      </p>
+      <hr>
+        <p>
+          Gender: <br>
+          <%= f.radio_button :male, true, checked: true%>Male <br>
+          <%= f.radio_button :male, false%>Female
+        </p>
+        <hr>
+        <p>
+          Hand: <br>
+          <%= f.radio_button :righty, true, checked: true%>Right Handed <br>
+          <%= f.radio_button :righty, false%>Left Handed
+        </p>
+        <hr>
+        <p>
+          Club Type: <br>
+          <%= collection_check_boxes(:generic_club, :club_type, GenericClub::ClubTypes, :to_s, :to_s) %>
+        </p>
+        <hr>
+        <p>
+          Head Feature: <br>
+          <%= collection_check_boxes(:generic_club, :head_feature, GenericClub::HeadFeatures, :to_s, :to_s) %>
+        </p>
+        <hr>
+        <p>
+          Head Feature: <br>
+          <%= collection_check_boxes(:generic_club, :shaft_stiffness, GenericClub::ShaftStiffnesses, :to_s, :to_s) %>
+        </p>
+        <hr>
+        <%= f.submit "Search Clubs and Sets"%>
+      <% end %>
     </div>
 
     <!-- Search results go in here -->
@@ -15,7 +57,7 @@
 
     </div>
     <!-- end search results -->
-    
+
     <div class="text-center">
       <a href="#" class="btn btn-primary load-listings">Load More Lisings</a>
     </div>

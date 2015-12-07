@@ -6,6 +6,8 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    @brands = GenericClub.brand_names
+    @generic_clubs = GenericClub.all
   end
 
   def supplier_listings

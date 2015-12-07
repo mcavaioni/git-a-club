@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#welcome'
 
+  get 'search/listings' => 'searches#listings'
+
   resources :users do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
     # resources :listings, except: [:index]
