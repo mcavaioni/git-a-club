@@ -42,7 +42,7 @@ class ListingsController < ApplicationController
     #   # set listable and listable_id
     #   @listing_club_set.save
     #   redirect_to supplier_club_set_listing_path(@supplier, @club_set, @listing_club_set)
-
+    # binding.pry
     @listing = Listing.create(listing_params)
 
     html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
