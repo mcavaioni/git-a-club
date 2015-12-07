@@ -7,18 +7,18 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @reservation = @renter.reservations.build(reservation_params)
-
+    @listing = Listing.find(@reservation.listing_id)
     if @reservation.save
-      # binding.pry
-      # redirect_to renter_reservations_path(@renter)
-      reservation_dates = @reservation.start_date..@reservation.finish_date
-      render json: {:notice => 'Confirmed', dateData: reservation_dates}
+      flash[:notice] = 'Reservation Confirmed!'
+      redirect_to renter_reservations_path(@renter)
+      # new_listing_dates = @listing.availability.to_s
+      # render json: {:notice => 'Confirmed', dateData: new_listing_dates}
     else
-      # binding.pry
-      # flash.now[:notice] = 'Dates are not available.'
-      render json: {:notice => @reservation.errors.full_messages}
+      flash[:notice] = 'Selected dates are not available.'
+      redirect_to @listing
+      # render json: {:notice => @reservation.errors.full_messages}      
+      # render 'listings/show'
     end
   end
 

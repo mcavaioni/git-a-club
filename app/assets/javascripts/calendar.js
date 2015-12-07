@@ -22,8 +22,7 @@ function attachCalendar() {
   for(var i = 0; i < htmlDateArrays.length; i++) {
     var parsedDateArray = parseDateArray($(htmlDateArrays[i]).val());
     var dateArray = changeToDate(parsedDateArray);
-    // debugger;
-    $($(".calander")[i]).datepicker({
+    $($(".calendar")[i]).datepicker({
       beforeShowDay: function(date) {
         return [dateArray.indexOf(date.toString()) != -1];
       }
@@ -32,13 +31,11 @@ function attachCalendar() {
   } 
 }
 
-function removeDate(date){
-  debugger;
-  var widgetHTML = $('div.widget_output').html();
-    widgetHTML = widgetHTML
-       .replace(/<div>/g, '<span>')
-       .replace(/<\/div>/g, '</span>');
-  $('div.widget_output').html(widgetHTML);
+function refreshCalendar(newCalendarData){
+  $('.listing-availability').val(newCalendarData);
+  $('div.ui-datepicker').remove();
+  $('div.calendar').toggleClass('hasDatepicker').removeAttr('id');
+  attachCalendar();
 }
 // $(function(){
 //   var htmlDateArrays = $('.listing-availability');
