@@ -1,6 +1,8 @@
-branches to merge:
+Things we broke on merge:
   lazy-loader
-  method-testing
+  auto-hide listings on show
+  Should remove sets if dependant clubs are deleted.
+  Create listings buttons
 
 
 *** Navbar √
