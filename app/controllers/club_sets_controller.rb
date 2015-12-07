@@ -8,8 +8,11 @@ class ClubSetsController < ApplicationController
 
   def create
     @club_set = ClubSet.new(club_set_params)
-    @club_set.save
-    redirect_to supplier_club_set_path(@supplier, @club_set)
+    if @club_set.save
+      redirect_to supplier_club_set_path(@supplier, @club_set)
+    else
+      render 'club_sets/new'
+    end
   end
 
   def show
@@ -37,5 +40,5 @@ class ClubSetsController < ApplicationController
     @supplier = Supplier.find(params[:supplier_id])
   end
 
-  
+
 end
