@@ -5,7 +5,7 @@ RSpec.describe Club do
   end
   describe "#condition" do
     context 'expect condition to be "good"' do
-      let(:club) {FactoryGirl.build :club}
+      let(:club) {FactoryGirl.create :club}
       it 'has a condition of good' do
         expect(club.condition).to eq('good')
       end
