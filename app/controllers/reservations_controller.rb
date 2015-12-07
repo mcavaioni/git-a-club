@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
           # render '_new_form.html.erb'
         end
     else
-      flash.now[:notice] = "You can not rent your own listing!!"
+      flash[:notice] = "You can not rent your own listing!!"
       redirect_to listings_path
     end
   end
