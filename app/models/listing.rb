@@ -14,6 +14,7 @@
 
 class Listing < ActiveRecord::Base
   belongs_to :listable, polymorphic: true
+  delegate :user, to: :listable
   has_many :reservations
   has_many :reviews, as: :reviewable
   validates :start_date, :finish_date, :price, presence: true
