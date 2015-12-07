@@ -4,4 +4,4 @@ FactoryGirl.define do
     active true
   end
 end
-# use collect and itterate through array. then shovel it in to the set.
+# use collect and iterate through array. then shovel it in to the set.
