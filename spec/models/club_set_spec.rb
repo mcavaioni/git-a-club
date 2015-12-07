@@ -6,11 +6,11 @@ RSpec.describe Club do
 
   describe 'validation' do
     let (:club_set) {FactoryGirl.create :club_set}
+    clubs = GenericClub::ClubTypes.collect do |club_type|
+      gen_club = FactoryGirl.create :generic_club, club_type: club_type
+      FactoryGirl.create :club, generic_club_id: gen_club.id
+    end
     context 'club set has all male and all righty clubs' do
-      clubs = GenericClub::ClubTypes.collect do |club_type|
-        gen_club = FactoryGirl.create :generic_club, club_type: club_type
-        FactoryGirl.create :club, generic_club_id: gen_club.id
-      end
       it 'has 16 clubs' do
         club_set.clubs << clubs
         expect(club_set.clubs.length).to eq 16
