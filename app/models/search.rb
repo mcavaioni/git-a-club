@@ -19,7 +19,9 @@ class Search # < ActiveRecord::Base
 
     def get_results
       sanitize_search_params
-      GenericClub.where(search_params)
+      generic_clubs = GenericClub.where(search_params)
+      ClubSet.find_by_generic_clubs(generic_clubs)
+      Club.find_by_generic_clubs(generic_clubs)
     end
 
     # @search_params={"male"=>"true", "righty"=>"true", "club_type"=>["driver", "putter", ""], "head_feature"=>[""], "shaft_stiffness"=>["senior", ""]}

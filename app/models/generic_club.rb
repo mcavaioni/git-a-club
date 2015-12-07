@@ -20,6 +20,8 @@ class GenericClub < ActiveRecord::Base
   HeadFeatures = %w(cavity pocket_cavity blade)
   ShaftStiffnesses = %w(senior ladies regular stiff extra-stiff)
 
+
+
   def self.brand_names
     uniq.pluck(:brand)
   end

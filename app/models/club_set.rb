@@ -20,11 +20,18 @@ class ClubSet < ActiveRecord::Base
   has_many :listings, as: :listable
   validate :all_same_hand, :all_same_gender
 
+  def self.find_by_generic_clubs(generic_club_array)
+    # where(generic_club:generic_club_array)
+    # joins(clubs: :generic_club).where(generic_club:generic_club_array)
+    binding.pry
+  end
+
   def description
     first_club = self.clubs.first
     number_of_clubs = self.clubs.length
     "#{number_of_clubs} club set #{first_club.gender_handed}"
   end
+
 
   private
 
