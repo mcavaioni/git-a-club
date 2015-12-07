@@ -14,7 +14,14 @@ $(function(){
     var $form = $(this).first().siblings()
     $form.toggleClass("hide-form")
     $(this).toggleClass("hide-button")
+  })
 
+  $('.btn-cancel').on ('click', function(){
+    // debugger;
+    var $form = $(this).parent()
+    $form.toggleClass("hide-form")
+    var $listing_btn = $(this).parent().siblings().first()
+    $listing_btn.toggleClass("hide-button")
   })
 
 })
