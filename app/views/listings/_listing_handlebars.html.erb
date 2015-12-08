@@ -1,10 +1,15 @@
-<div class="col-md-3 car btn btn-default listing-button">
-  <h5><%= {{listable.description}}%></h5>
-  <p><strong>Type:</strong> <%= {{listable_type}} %></p>
-  <p><strong>From:</strong> <%= {{start_date}} %></p>
-  <input class='listing-availability' type=hidden name='listing-availability' value='<%=listing.availability%>'>
-  <p><strong>To:</strong> <%= listing.finish_date %></p>
-  <div class='calendar'></div>
-  <p><strong>Price:</strong> <%= listing.price %></p>
-  <%=link_to listing.id, listing %>
-</div>
+<script id="entry-template" type="text/x-handlebars-template">
+
+  <div class="col-md-3 car btn btn-default listing-button">
+    <h5> {{listable.description}}</h5>
+    <p><strong>Type:</strong> {{listable_type}} </p>
+    <p><strong>From:</strong> {{start_date}} </p>
+
+    <input class='listing-availability' type=hidden name='listing-availability' value= {{availability}}>
+    <p><strong>To:</strong> {{finish_date}} </p>
+    <div class='calendar'></div>
+    <p><strong>Price:</strong> {{price}} </p>
+    <p><a href= {{url}}>View Listing</a></p>
+  </div>
+
+</script>

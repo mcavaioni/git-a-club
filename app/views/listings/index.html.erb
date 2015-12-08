@@ -4,7 +4,7 @@
   <div class="col-md-12 text-center">
     <%= form_tag('/search/listings', method: 'get', remote: true) do %>
       <%= text_field_tag(:q) %>
-      <%= submit_tag "Search", class:"btn btn-default", id:"listings-search" %>
+      <%= submit_tag "Search", class:"data-no-turbolink btn btn-default", id:"listings-search" %>
     <% end %>
   </div>
 </div>
@@ -63,4 +63,4 @@
   </div>
 
 </div>
-<%= render partial: 'clubs/club_handlebars' %>
+<%= render partial: 'listings/listing_handlebars' %>

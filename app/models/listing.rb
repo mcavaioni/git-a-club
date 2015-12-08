@@ -25,18 +25,6 @@ class Listing < ActiveRecord::Base
     where(listable:clubs)
   end
 
-  def as_json(options={})
-    super(:only => [:id,:listable_id,:city,:listable_type,:start_date,:finish_date,:price],
-          :include => {
-            :listable => {:only => [:condition, :id],
-              :include => {
-                :generic_club => {only:[:club_type,:brand,:male,:righty,:head_feature,:shaft_stiffness]}
-              }
-            }
-        }
-    )
-  end
-
   def availability
     availability_range = (self.start_date..self.finish_date).to_a
     reservations = self.reservations.select(&:persisted?)
