@@ -5,13 +5,13 @@ $(document).on('page:load ready',function(){
   // })
   // Remove once search is implemented ^^
 
-  $('.load-listings').on('click', function(){
-    row_number = $('.search-results .row').length;
-    $.get('/listings/four_listings/'+row_number*4, function(data){
-      $('.search-results').append(data.new_row);
-      attachCalendar();
-    })
-  })
+  // $('.load-listings').on('click', function(){
+  //   row_number = $('.search-results .row').length;
+  //   $.get('/listings/four_listings/'+row_number*4, function(data){
+  //     $('.search-results').append(data.new_row);
+  //     attachCalendar();
+  //   })
+  // })
 
   $('.create_form_btn').on ('click', function(){
     var $form = $(this).first().siblings()
@@ -31,7 +31,6 @@ $(document).on('page:load ready',function(){
       var template = $(data.template);
       $(this).parent().append(template);
     } else {
-      debugger;
       $('#flash-notice').text(data.errors);
     }
     

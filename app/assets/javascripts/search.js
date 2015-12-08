@@ -11,6 +11,7 @@ $(function(){
       listing_results = listing_results + listing_html
     })
     $(listing_results).wrap("<ul></ul>").appendTo('.search-results')
+    attachCalendar();
     // load results
     // apply checkbox criteria
   })

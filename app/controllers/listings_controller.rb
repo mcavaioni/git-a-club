@@ -24,6 +24,10 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: ListingsJsonViewObject.new([@listing]).collect_listings_json}
+    end
   end
 
   def new
