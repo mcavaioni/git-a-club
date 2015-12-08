@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "active_model_serializers", github: "rails-api/active_model_serializers"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
@@ -41,7 +43,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
-  gem "better_errors"
   gem "binding_of_caller"
   gem "factory_girl_rails"
   gem "simplecov"

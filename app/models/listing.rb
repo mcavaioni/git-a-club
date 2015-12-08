@@ -21,6 +21,9 @@ class Listing < ActiveRecord::Base
   validate :valid_start_date
   validate :valid_finish_date
 
+  def self.get_by(clubs)
+    where(listable:clubs)
+  end
 
   def availability
     availability_range = (self.start_date..self.finish_date).to_a
@@ -36,7 +39,6 @@ class Listing < ActiveRecord::Base
     availability&reservation_dates == reservation_dates
   end
 
-  
 
   private
 
