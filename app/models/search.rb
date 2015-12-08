@@ -21,7 +21,7 @@ class Search # < ActiveRecord::Base
     end
 
     def get_results_by_type
-      if search_type == 'clubs'
+      if search_type == 'club'
         Club.find_by_generic_clubs(generic_clubs)
       else
         Club.find_by_generic_clubs(generic_clubs)
