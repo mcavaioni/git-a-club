@@ -1,8 +1,9 @@
 require 'spec_helper'
 RSpec.describe Club do
-  after (:each) do
-    GenericClub.destroy_all
-  end
+  # after (:each) do
+  #   GenericClub.destroy_all
+  #   Club.destroy_all
+  # end
   describe "#condition" do
     context 'expect condition to be "good"' do
       let(:club) {FactoryGirl.create :club}
@@ -48,4 +49,34 @@ RSpec.describe Club do
     end
   end
 
+  describe '#find_by_generic_clubs' do
+    context 'there are two clubs with the same generic driver and one with a generic putter' do
+      let(:generic_driver) {FactoryGirl.create :generic_club}
+      let(:generic_putter) {FactoryGirl.create :generic_club, club_type: 'putter'}
+      let(:my_first_driver) {FactoryGirl.create :club}
+      let(:my_second_driver) {FactoryGirl.create :club}
+      let(:my_first_putter) {FactoryGirl.create :club}
+
+      it 'finds the two drivers' do
+        my_first_driver.generic_club_id = generic_driver.id
+        my_first_driver.save
+        my_second_driver.generic_club_id = generic_driver.id
+        my_second_driver.save
+        my_first_putter.generic_club_id = generic_putter.id
+        my_first_putter.save
+        expect(Club.find_by_generic_clubs(generic_driver)).to include(my_first_driver, my_second_driver)
+      end
+
+      it 'does not find the putter' do
+        my_first_driver.generic_club_id = generic_driver.id
+        my_first_driver.save
+        my_second_driver.generic_club_id = generic_driver.id
+        my_second_driver.save
+        my_first_putter.generic_club_id = generic_putter.id
+        my_first_putter.save
+        expect(Club.find_by_generic_clubs(generic_driver)).to_not include(my_first_putter)
+      end
+
+    end
+  end
 end
