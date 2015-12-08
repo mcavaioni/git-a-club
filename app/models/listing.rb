@@ -39,6 +39,9 @@ class Listing < ActiveRecord::Base
     availability&reservation_dates == reservation_dates
   end
 
+  def remove_past_dates(date_range)
+    
+  end
 
   private
 

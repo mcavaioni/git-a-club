@@ -50,7 +50,7 @@ RSpec.describe Listing do
           @listing = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 10), price: 15)
           @date_now = Date.new(2015, 12, 5)
           Date.stub(:current).and_return(@date_now)
-          @return_array = (Date.current+1..@listing.finish_date).to_a
+          @return_array = (Date.current..@listing.finish_date).to_a
         end
         it 'returns an array with less dates due to current date being in the middle of the listing dates' do
           expect(@listing.availability).to match_array(@return_array)
