@@ -27,7 +27,7 @@ $(document).on('page:load ready',function(){
 })
 
 $(function (){
-  $(".new_listing").on ('ajax:success', function(event, data, status, xhr){
+  $("#new_listing").on ('ajax:success', function(event, data, status, xhr){
     var template = $(data.template);
     $(this).parent().append(template);
   })

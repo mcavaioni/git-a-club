@@ -6,6 +6,12 @@ module Validable
         errors.add(:status, "start date cannot be after finish date")
       end
     end
+
+    # def valid_finish_date
+    # if self.finish_date < self.start_date
+    #     errors.add(:status, "finish date cannot be before start date")
+    #   end
+    # end
   end
 
   module ClubSetValidations

@@ -19,6 +19,7 @@ class Listing < ActiveRecord::Base
   has_many :reviews, as: :reviewable
   validates :start_date, :finish_date, :price, presence: true
   validate :valid_start_date
+  # validate :valid_finish_date
 
 
   def availability
@@ -34,6 +35,8 @@ class Listing < ActiveRecord::Base
     reservation_dates = (start_date..finish_date).to_a
     availability&reservation_dates == reservation_dates
   end
+
+  
 
   private
 
