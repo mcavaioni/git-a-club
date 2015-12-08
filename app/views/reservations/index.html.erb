@@ -1,13 +1,3 @@
-<h2>Upcoming Reservations</h2>
-<% @upcoming_reservations.each do |reservation| %>
-  <h5><%= reservation.listing.listable.class %>: <%= reservation.listing.listable.description %></h5>
-  <p>Reservation date: <strong><%= reservation.start_date %></strong> to <strong><%= reservation.finish_date %></strong></p>
-  <%= link_to reservation.listing.id, reservation.listing %>
-<% end %>
+<%= render partial: 'index_table', locals: {reservations: @upcoming_reservations, div_class: 'row upcoming-reservations', header: 'Upcoming Reservations'} %>
 
-<h2>Past Reservations</h2>
-<% @past_reservations.each do |reservation| %>
-  <h5><%= reservation.listing.listable.class %>: <%= reservation.listing.listable.description %></h5>  
-  <p>Reservation date: <strong><%= reservation.start_date %></strong> to <strong><%= reservation.finish_date %></strong></p>
-  <%= link_to reservation.listing.id, reservation.listing %>
-<% end %>
+<%= render partial: 'index_table', locals: {reservations: @past_reservations, div_class: 'row past-reservations', header: 'Past Reservations'} %>

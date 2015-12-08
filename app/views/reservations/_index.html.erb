@@ -1,0 +1,6 @@
+<tr>
+  <td width='50%'><%= reservation.listing.listable.class %>: <%= reservation.listing.listable.description %></td>
+  <td width='20%'><%= reservation.format_date(reservation.start_date) %></td>
+  <td width='20%'><%= reservation.format_date(reservation.finish_date) %></td>
+  <td width='10%'><%= button_to 'Cancel', {:controller => :reservations, :action => 'destroy', :renter_id => reservation.renter.id, id: reservation.id }, :method => :delete, data: {confirm: "Are you sure?"} %></td>
+</tr>

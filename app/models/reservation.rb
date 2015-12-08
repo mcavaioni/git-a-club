@@ -19,6 +19,7 @@ class Reservation < ActiveRecord::Base
   validates :start_date, :finish_date, presence: true
   validate :reservation_available_validation, :valid_start_date
 
+  before_destroy :valid_deletion
 
   def self.upcoming_reservations_by(obj)
     self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date >= ?", Date.current)
@@ -28,9 +29,17 @@ class Reservation < ActiveRecord::Base
     self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date < ?", Date.current)
   end
 
+  def format_date(date)
+    "#{date.month}-#{date.day}-#{date.year}"
+  end
+
   private
 
   include Validable::StartDate
+
+  def valid_deletion
+    binding.pry
+  end
 
   def reservation_available_validation
     if (self.start_date && self.finish_date)
