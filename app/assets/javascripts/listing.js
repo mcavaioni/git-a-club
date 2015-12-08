@@ -27,7 +27,13 @@ $(document).on('page:load ready',function(){
   })
   
   $(".appending_listing").on ('ajax:success', function(event, data, status, xhr){
-    var template = $(data.template);
-    $(this).parent().append(template);
+    if(data.errors == null) {
+      var template = $(data.template);
+      $(this).parent().append(template);
+    } else {
+      debugger;
+      $('#flash-notice').text(data.errors);
+    }
+    
   })
 })

@@ -44,8 +44,7 @@ class ListingsController < ApplicationController
     #   # set listable and listable_id
     #   @listing_club_set.save
     #   redirect_to supplier_club_set_listing_path(@supplier, @club_set, @listing_club_set)
-
-    @listing = Listing.create(listing_params)
+    @listing = Listing.new(listing_params)
 
     if @listing.save
 
@@ -53,8 +52,9 @@ class ListingsController < ApplicationController
 # binding.pry
       render json: {template: html_string}
     else
-      flash[:notice] = 'Dates selected are not correct.'
+      # flash[:notice] = 'Dates selected are not correct.'
       # redirect_to supplier_path(@supplier)
+      render json: {errors: 'Dates selected are not correct.'}
     end
   end
 

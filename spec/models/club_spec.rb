@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: clubs
+#
+#  id              :integer          not null, primary key
+#  supplier_id     :integer
+#  generic_club_id :integer
+#  condition       :string
+#  picture         :string
+#  active          :boolean          default(TRUE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'spec_helper'
 RSpec.describe Club do
   after (:each) do

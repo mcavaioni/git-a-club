@@ -5,10 +5,12 @@
 #  id              :integer          not null, primary key
 #  supplier_id     :integer
 #  generic_club_id :integer
-#  active          :boolean
-#  club_set_id     :integer
 #  condition       :string
 #  picture         :string
+#  active          :boolean          default(TRUE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
