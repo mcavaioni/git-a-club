@@ -60,10 +60,10 @@ RSpec.describe Reservation do
     describe 'cannot destroy a reservation 7 days prior to start date' do
       let(:listing) {FactoryGirl.build :listing}
       before (:each) do
-        @date_now = Date.new(2015,12,9)
-        @reservation1 = listing.reservations.build(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 1))
-        @reservation2 = listing.reservations.build(start_date: Date.new(2015, 12, 2), finish_date: Date.new(2015, 12, 2))
-        @reservation3 = listing.reservations.build(start_date: Date.new(2015, 12, 3), finish_date: Date.new(2015, 12, 3))
+        @date_now = Date.new(2015,12,1)
+        @reservation1 = listing.reservations.build(start_date: Date.new(2015, 12, 9), finish_date: Date.new(2015, 12, 9))
+        @reservation2 = listing.reservations.build(start_date: Date.new(2015, 12, 8), finish_date: Date.new(2015, 12, 8))
+        @reservation3 = listing.reservations.build(start_date: Date.new(2015, 12, 7), finish_date: Date.new(2015, 12, 7))
         @reservation1.save
         @reservation2.save
         @reservation3.save
@@ -71,15 +71,14 @@ RSpec.describe Reservation do
       end
 
       it 'validates on deletion' do
-        binding.pry
         @reservation1.destroy
         @reservation2.destroy
         @reservation3.destroy
         @listing = Listing.find(@reservation1.listing_id)
-        binding.pry
-        expect(@listing.reservations).to include(@reservation1)
-        expect(@listing.reservations).to_not include(@reservation2)
-        expect(@listing.reservations).to_not include(@reservation3)
+
+        expect(@listing.reservations).to_not include(@reservation1)
+        expect(@listing.reservations).to include(@reservation2)
+        expect(@listing.reservations).to include(@reservation3)
       end
     end
   end

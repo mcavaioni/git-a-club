@@ -33,8 +33,8 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    binding.pry
-
+    @reservation.destroy
+    render json: {errors: @reservation.errors.messages[:status]}
   end
 
   private

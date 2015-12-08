@@ -24,10 +24,9 @@ $(document).on('page:load ready',function(){
     var $listing_btn = $(this).parent().siblings().first()
     $listing_btn.toggleClass("hide-button")
   })
-})
 
-$(function (){
-  $(".new_listing").on ('ajax:success', function(event, data, status, xhr){
+  $("#new_listing").on ('ajax:success', function(event, data, status, xhr){
+    debugger;
     var template = $(data.template);
     $(this).parent().append(template);
   })

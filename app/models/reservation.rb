@@ -38,12 +38,10 @@ class Reservation < ActiveRecord::Base
   include Validable::StartDate
 
   def valid_deletion
-    if self.start_date + 7 >= Date.current
+    if Date.current + 7 >= self.start_date
       errors.add(:status, "cannot cancel a reservation 7 days prior to start date")
-    else
       return false
-    end 
-    return true
+    end
   end
 
   def reservation_available_validation
