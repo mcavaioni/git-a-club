@@ -47,9 +47,15 @@ class ListingsController < ApplicationController
     # binding.pry
     @listing = Listing.create(listing_params)
 
-    html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
+    if @listing.save
 
-    render json: {template: html_string}
+      html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
+
+      render json: {template: html_string}
+    else
+      flash[:notice] = 'Dates selected are not correct.'
+      # redirect_to supplier_path(@supplier)
+    end
   end
 
   private
