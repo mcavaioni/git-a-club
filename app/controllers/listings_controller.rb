@@ -3,7 +3,6 @@ class ListingsController < ApplicationController
   # before_action :find_supplier, only: [:new, :create, :supplier_listings]
   # before_action :find_club, only: [:new, :create]
   # before_action :find_club_set, only: [:new, :create]
-
   before_action :find_supplier, only: [:supplier_listings]
 
   def new
@@ -49,7 +48,10 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    @listing = Listing.find(params[:id])
+    @listing.active = false
+    @listing.save
+    render json: {errors: @listing.errors.messages[:status]}
   end
 
   private
