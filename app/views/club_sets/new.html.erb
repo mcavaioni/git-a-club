@@ -16,6 +16,13 @@
   <%= f.text_field :name %><br>
   <%= f.label :summary %>
   <%= f.text_area :summary %><br>
-  <%= f.collection_check_boxes :club_ids, @supplier.clubs, :id, :club_attributes %>
+  
+
+  <%= f.collection_check_boxes :club_ids, @supplier.clubs.where(active: true), :id, :club_attributes %>
+
   <%= f.submit %>
-<% end %>
+
+
+
+<%end%>
+  
