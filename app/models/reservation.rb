@@ -17,7 +17,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :listing
   delegate :supplier, to: :listing
   validates :start_date, :finish_date, presence: true
-  validate :reservation_available_validation, :valid_start_date, :valid_finish_date
+  validate :reservation_available_validation, :valid_start_date
 
   before_destroy :valid_deletion
 
