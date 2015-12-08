@@ -31,7 +31,7 @@ class Listing < ActiveRecord::Base
     reservations.each do |reservation|
       availability_range -= (reservation.start_date..reservation.finish_date).to_a
     end
-    availability_range
+    remove_past_dates(availability_range)
   end
 
   def reservation_available?(start_date, finish_date)
@@ -40,7 +40,7 @@ class Listing < ActiveRecord::Base
   end
 
   def remove_past_dates(date_range)
-    
+    date_range.select{|date| date >= Date.current}
   end
 
   private

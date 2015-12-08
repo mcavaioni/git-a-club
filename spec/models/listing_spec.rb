@@ -18,6 +18,8 @@ require 'spec_helper'
 RSpec.describe Listing do 
   describe 'instance methods' do 
     describe"#availability" do
+      before(:each){ Date.stub(:current).and_return(Date.new(1000,1,1)) }
+      
       context 'available dates' do
         let(:listing) {FactoryGirl.build :listing}
         let (:result) {(listing.start_date..listing.finish_date).to_a}
@@ -28,6 +30,8 @@ RSpec.describe Listing do
     end
 
     describe "#reservation_available?" do
+      before(:each){ Date.stub(:current).and_return(Date.new(1000,1,1)) }
+      
       context 'availability of reservation' do
         let(:listing) {FactoryGirl.build :listing}
         let(:start_date) {listing.start_date}

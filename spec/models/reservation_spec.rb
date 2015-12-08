@@ -16,6 +16,7 @@ require 'spec_helper'
 RSpec.describe Reservation do  
   describe 'reservations valdiations' do 
     describe"#reservation_available_validation" do 
+      before(:each){ Date.stub(:current).and_return(Date.new(1000,1,1)) }
       context 'validate dates for reservation' do
         let(:listing) {FactoryGirl.build :listing}
         let(:start_date) {listing.start_date}
@@ -42,6 +43,7 @@ RSpec.describe Reservation do
     describe 'start and finish date validations' do
       let(:listing) {FactoryGirl.build :listing}
       before (:each) do
+        Date.stub(:current).and_return(Date.new(1000,1,1))
         @valid_reservation = listing.reservations.build(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 10))
         @no_start_date = listing.reservations.build(finish_date: Date.new(2015, 12, 10))
         @no_finish_date = listing.reservations.build(start_date: Date.new(2015, 12, 10))
@@ -73,6 +75,7 @@ RSpec.describe Reservation do
     describe 'cannot destroy a reservation 7 days prior to start date' do
       let(:listing) {FactoryGirl.build :listing}
       before (:each) do
+        Date.stub(:current).and_return(Date.new(1000,1,1))
         @date_now = Date.new(2015,12,1)
         @reservation1 = listing.reservations.build(start_date: Date.new(2015, 12, 9), finish_date: Date.new(2015, 12, 9))
         @reservation2 = listing.reservations.build(start_date: Date.new(2015, 12, 8), finish_date: Date.new(2015, 12, 8))
@@ -100,6 +103,7 @@ RSpec.describe Reservation do
     before(:each) do
       Reservation.stub(:valid_deletion).and_return(true)
       Reservation.destroy_all
+      Date.stub(:current).and_return(Date.new(1000,1,1))
       @date_now = Date.new(2015,12,5)
       @listing = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 30), price: 5)
       @renter = Renter.create()
