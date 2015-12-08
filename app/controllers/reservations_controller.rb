@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :find_renter, only: [:index, :create]
+  before_action :find_reservation, only: [:destroy]
 
   def new
     @listing = Listing.find(params[:listing_id])
@@ -31,6 +32,11 @@ class ReservationsController < ApplicationController
 
   end
 
+  def destroy
+    @reservation.destroy
+    render json: {errors: @reservation.errors.messages[:status]}
+  end
+
   private
 
   def reservation_params
@@ -39,6 +45,10 @@ class ReservationsController < ApplicationController
 
   def find_renter
     @renter = Renter.find(params[:renter_id])
+  end
+
+  def find_reservation
+    @reservation = Reservation.find(params[:id])
   end
 
 end
