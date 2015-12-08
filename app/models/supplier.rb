@@ -13,6 +13,11 @@ class Supplier < ActiveRecord::Base
   has_many :clubs
   has_many :club_set_clubs, through: :clubs
   has_many :club_sets, through: :club_set_clubs
-  has_many :listings, through: :clubs
-  has_many :listings, through: :club_sets
+  # has_many :listings, as: :listable, through: :clubs
+  # has_many :listings, as: :listable, through: :club_sets
+
+  def listable_listings(listable)
+    all_club_listings = self.send(listable).map(&:listings).flatten
+    all_club_listings.select{|listing| listing.active && listing.finish_date >= Date.current}
+  end
 end

@@ -6,6 +6,10 @@
 #  summary    :string
 #  name       :string
 #  picture    :string
+#  active     :boolean          default(TRUE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 
 #  active     :boolean
 

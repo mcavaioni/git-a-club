@@ -8,6 +8,7 @@
 #  start_date    :date
 #  finish_date   :date
 #  price         :integer
+#  active        :boolean          default(TRUE)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

@@ -3,6 +3,11 @@ class ListingsController < ApplicationController
   # before_action :find_supplier, only: [:new, :create, :supplier_listings]
   # before_action :find_club, only: [:new, :create]
   # before_action :find_club_set, only: [:new, :create]
+  before_action :find_supplier, only: [:supplier_listings]
+
+  def new
+    @listing = Listing.new
+  end
 
   def index
     @listings = Listing.all
@@ -11,8 +16,9 @@ class ListingsController < ApplicationController
   end
 
   def supplier_listings
-    @listings = @supplier.listings
-    render 'listings/index.html.erb'
+    @club_listings = @supplier.listable_listings('clubs')
+    @club_set_listings = @supplier.listable_listings('club_sets')
+    render 'listings/supplier_index.html.erb'
   end
 
   def four_listings
@@ -24,38 +30,28 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-  end
-
-  def new
-    @listing = Listing.new
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: ListingsJsonViewObject.new([@listing]).collect_listings_json}
+    end
   end
 
   def create
-    # binding.pry
-    # @listing.save
-    # redirect_to @listing
-    # if @club
-    #   @listing_club = @club.listings.build(listing_params)
-    #   # set listable and listable_id
-    #   @listing_club.save
-    #   redirect_to supplier_club_listing_path(@supplier, @club, @listing_club)
-    # else
-    #   @listing_club_set = @club_set.listings.build(listing_params)
-    #   # set listable and listable_id
-    #   @listing_club_set.save
-    #   redirect_to supplier_club_set_listing_path(@supplier, @club_set, @listing_club_set)
-
-    @listing = Listing.create(listing_params)
+    @listing = Listing.new(listing_params)
 
     if @listing.save
-
       html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
-# binding.pry
       render json: {template: html_string}
     else
-      flash[:notice] = 'Dates selected are not correct.'
-      # redirect_to supplier_path(@supplier)
+      render json: {errors: 'Dates selected are not correct.'}
     end
+  end
+
+  def destroy
+    @listing = Listing.find(params[:id])
+    @listing.active = false
+    @listing.save
+    render json: {errors: @listing.errors.messages[:status]}
   end
 
   private
