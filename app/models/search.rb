@@ -16,7 +16,6 @@ class Search # < ActiveRecord::Base
     def get_results
       sanitize_search_params
       @generic_clubs = GenericClub.where(search_params)
-      binding.pry
       clubs = get_results_by_type
       Listing.get_by_clubs(clubs)
     end
@@ -25,7 +24,7 @@ class Search # < ActiveRecord::Base
       if search_type == 'club'
         Club.find_by_generic_clubs(generic_clubs)
       else
-        Club.find_by_generic_clubs(generic_clubs)
+        # ClubSet.joins(club_set_clubs:{club: :generic_club})
       end
     end
 

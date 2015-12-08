@@ -31,7 +31,7 @@ class Club < ActiveRecord::Base
   Conditions = ['excellent','very_good','good','fair']
 
   def self.find_by_generic_clubs(generic_club_array)
-    where(generic_club:generic_club_array)
+    where(generic_club:generic_club_array).where(active:true)
   end
 
   def generic_club_attributes=(generic_club_attributes_hash)

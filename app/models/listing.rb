@@ -22,8 +22,10 @@ class Listing < ActiveRecord::Base
   validate :valid_start_date
 
   def self.get_by_clubs(clubs)
-    where(listable:clubs)
+    where(listable:clubs).where(active:true).where("finish_date >= ?", Date.current)
   end
+
+
 
   def availability
     availability_range = (self.start_date..self.finish_date).to_a
