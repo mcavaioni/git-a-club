@@ -2,7 +2,6 @@ class SearchesController < ApplicationController
 
   def listings
     search = Search.new(search_type_params,generic_club_params)
-<<<<<<< HEAD
     listings_array = search.get_results
     listings_json = ListingsJsonViewObject.new(listings_array).collect_listings_json
     render json: listings_json
