@@ -39,6 +39,7 @@ class Listing < ActiveRecord::Base
     availability&reservation_dates == reservation_dates
   end
 
+
   private
 
   include Validable::StartDate
