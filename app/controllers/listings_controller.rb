@@ -17,8 +17,8 @@ class ListingsController < ApplicationController
   end
 
   def supplier_listings
-    @club_listings = @supplier.club_listings
-    @club_set_listings = @supplier.club_set_listings
+    @club_listings = @supplier.listable_listings('clubs')
+    @club_set_listings = @supplier.listable_listings('club_sets')
     render 'listings/supplier_index.html.erb'
   end
 
