@@ -35,7 +35,7 @@ RSpec.describe Search do
       listing_for_first_driver.save
       listing_for_second_driver.listable_id = my_second_driver.id
       listing_for_second_driver.save
-      listing_for_first_putter.listable_id = my_first_putter
+      listing_for_first_putter.listable_id = my_first_putter.id
       listing_for_first_putter.save
       search_params = {"male"=>"true",
          "righty"=>"true",
@@ -43,6 +43,8 @@ RSpec.describe Search do
          "head_feature"=>[""],
          "shaft_stiffness"=>[""]}
       search_type = 'club'
+      search = Search.new(search_params,search_params)
+      search.get_results
       expect(true).to be true
     end
   end

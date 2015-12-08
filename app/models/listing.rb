@@ -20,7 +20,7 @@ class Listing < ActiveRecord::Base
   validates :start_date, :finish_date, :price, presence: true
   validate :valid_start_date
 
-  def self.get_by(clubs)
+  def self.get_by_clubs(clubs)
     where(listable:clubs)
   end
 
