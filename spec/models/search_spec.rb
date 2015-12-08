@@ -20,7 +20,7 @@ RSpec.describe Search do
   let(:my_first_driver) {FactoryGirl.create :club}
   let(:my_second_driver) {FactoryGirl.create :club}
   let(:my_first_putter) {FactoryGirl.create :club}
-  let(:listing_for_first_driver) {FactoryGirl.create :listing, listable_type: 'club', start_date: Date.tomorrow, finish_date: Date.new(2015, 12, 10)
+  let(:listing_for_first_driver) {FactoryGirl.create :listing, listable_type: 'club'}
   let(:listing_for_second_driver) {FactoryGirl.create :listing, listable_type: 'club'}
   let(:listing_for_first_putter) {FactoryGirl.create :listing, listable_type: 'club'}
   describe '#get_results' do
@@ -45,7 +45,6 @@ RSpec.describe Search do
       search_type = 'club'
       search = Search.new(search_params,search_params)
       search.get_results
-      expect(true).to be true
     end
   end
 end
