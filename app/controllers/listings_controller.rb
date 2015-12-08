@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
     if @listing.save
 
       html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
-
+# binding.pry
       render json: {template: html_string}
     else
       flash[:notice] = 'Dates selected are not correct.'
