@@ -35,7 +35,7 @@ module Validable
       end
       wedges_array = ["lob_wedge", "gap_wedge", "sand_wedge", "pitching_wedge"]
       wedge_intersection = default_wedge & wedges_array
-      if !wedge_intersection.empty?
+      if wedge_intersection.empty?
         errors.add(:clubSet, "a set must have a wedge")
       end
     end
@@ -44,13 +44,14 @@ module Validable
       default_club = self.clubs.map do |club|
         club.generic_club.club_type
       end
-      binding.pry
       clubs_array = ["driver", "putter", "5_iron_or_hybrid", "6_iron", "7_iron", "8_iron", "9_iron"]
       club_intersection = default_club & clubs_array
       if club_intersection != clubs_array
         errors.add(:clubSet, "A set must have a driver, putter and 5 - 9 irons")
       end
     end
+
+
 
     # def all_required_clubs
     #   !required_wedges && !required_clubs

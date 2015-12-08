@@ -15,7 +15,7 @@
 
 class ClubSet < ActiveRecord::Base
   has_many :club_set_clubs
-  has_many :clubs, through: :club_set_clubs
+  has_many :clubs, through: :club_set_clubs, dependent: :destroy
   has_many :suppliers, through: :clubs
   has_many :listings, as: :listable
   validate :all_same_hand, :all_same_gender
