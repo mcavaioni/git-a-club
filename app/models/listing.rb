@@ -20,6 +20,21 @@ class Listing < ActiveRecord::Base
   validates :start_date, :finish_date, :price, presence: true
   validate :valid_start_date
 
+  def self.get_by(clubs)
+    where(listable:clubs)
+  end
+
+  def as_json(options={})
+    super(:only => [:id,:listable_id,:city,:listable_type,:start_date,:finish_date,:price],
+          :include => {
+            :listable => {:only => [:condition, :id],
+              :include => {
+                :generic_club => {only:[:club_type,:brand,:male,:righty,:head_feature,:shaft_stiffness]}
+              }
+            }
+        }
+    )
+  end
 
   def availability
     availability_range = (self.start_date..self.finish_date).to_a
@@ -34,6 +49,7 @@ class Listing < ActiveRecord::Base
     reservation_dates = (start_date..finish_date).to_a
     availability&reservation_dates == reservation_dates
   end
+
 
   private
 
