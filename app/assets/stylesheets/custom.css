@@ -1,3 +1,8 @@
 .listing-button {
   white-space: normal;
 }
+
+.search-box {
+  padding: 10px;
+  margin: 10px;
+}

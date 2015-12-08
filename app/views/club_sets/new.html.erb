@@ -1,4 +1,5 @@
 <%= form_for(@club_set, url: supplier_club_sets_path(@supplier)) do |f| %>
+
 <% if @club_set.errors.any? %>
   <div id="error_explanation">
     <h4><%= pluralize(@club_set.errors.count, "error") %> prohibited this club_set from being saved:</h4>

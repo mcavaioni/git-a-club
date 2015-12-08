@@ -6,10 +6,11 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    @brands = GenericClub.brand_names
+    @generic_clubs = GenericClub.all
   end
 
   def supplier_listings
-    # binding.pry
     @listings = @supplier.listings
     render 'listings/index.html.erb'
   end
@@ -30,7 +31,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-
+    # binding.pry
     # @listing.save
     # redirect_to @listing
     # if @club
