@@ -34,7 +34,8 @@ class ClubSet < ActiveRecord::Base
     "#{number_of_clubs} club set #{first_club.gender_handed}"
   end
 
-
+  # ClubSet.joins(club_set_clubs:{club: :generic_club})
+  
   private
 
   include Validable::ClubSetValidations

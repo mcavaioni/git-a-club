@@ -24,7 +24,7 @@ class Search # < ActiveRecord::Base
       if search_type == 'club'
         Club.find_by_generic_clubs(generic_clubs)
       else
-        Club.find_by_generic_clubs(generic_clubs)
+        # ClubSet.joins(club_set_clubs:{club: :generic_club})
       end
     end
 
