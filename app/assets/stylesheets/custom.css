@@ -14,3 +14,15 @@
 .hidden-handlebars  {
   display: none;
 }
+
+header  {
+  background-image: url(/assets/git-a-club-background.jpg);
+  background-repeat: none;
+  background-attachment: scroll;
+  background-position:center center;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;background-size:cover;
+  -o-background-size:cover;text-align:center;
+  color:#fff;
+  height: 1000px;
+  }
