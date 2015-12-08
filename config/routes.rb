@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :suppliers do
-    get 'listings/index' => 'listings#supplier_listings'
+    get 'listings' => 'listings#supplier_listings'
     resources :clubs do
       resources :listings, except: [:index]
     end

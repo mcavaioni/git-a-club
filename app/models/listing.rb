@@ -43,6 +43,10 @@ class Listing < ActiveRecord::Base
     date_range.select{|date| date >= Date.current}
   end
 
+  def format_date(date)
+    "#{date.month}-#{date.day}-#{date.year}"
+  end
+
   private
 
   include Validable::StartDate
