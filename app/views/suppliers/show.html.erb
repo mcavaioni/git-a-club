@@ -1,15 +1,32 @@
-<%=flash[:notice]%>
-<h1> Suppliers page </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <h2>My Clubs</h2>
+    </div>
+    <div class="col-md-1">
+      <h2><%= button_to "+", new_supplier_club_path(@supplier), method: :get %><h2>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+  <div class='row'>
+    <%= render partial:'clubs', locals: {clubs: @clubs, supplier: @supplier} %>
+  </div>
+</div>
 
-<p id="notice"><%= notice %></p>
-<%= button_to "Create Club", new_supplier_club_path(@supplier), method: :get %>
-<%= button_to "Create Club Set", new_supplier_club_set_path(@supplier), method: :get %>
-<h2>Your Clubs</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <h2>My Sets</h2>
+    </div>
+    <div class="col-md-1">
+      <h2><%= button_to "+", new_supplier_club_set_path(@supplier), method: :get %><h2>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+  <div class='row'>
+    <%= render partial:'club_sets', locals: {club_sets: @club_sets, supplier: @supplier} %>
+  </div>
+</div>
 
-<%= render partial:'clubs', locals: {clubs: @clubs, supplier: @supplier} %>
-
-<br>
-
-<h2>Your Sets</h2>
-
-<%= render partial:'club_sets', locals: {club_sets: @club_sets, supplier: @supplier} %>

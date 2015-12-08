@@ -1,18 +1,9 @@
-<li>
-  <p>
-
-    <h3><%= "#{generic_club.brand} : #{generic_club.club_type}" %></h3>
-    <h4><%= GenericClubViewObject.new(generic_club).gender_handed %></h4>
-    Head Feature: <%= generic_club.head_feature %><br>
-    Shaft Stiffness: <%= generic_club.shaft_stiffness %><br>
-    Condition: <%= club.condition %><br>
-    <%= button_to 'Delete', supplier_club_path(supplier, club), method: :delete %>
-    
-
-
-    <%= render partial: 'listings/new_form', locals: {obj: club} %>
-
-
-
-  </p>
-</li>
+<div class="col-md-3 car btn btn-default listing-button">
+  <h3><%= "#{generic_club.brand} : #{generic_club.club_type}" %></h3>
+  <h4><%= GenericClubViewObject.new(generic_club).gender_handed %></h4>
+  Head Feature: <%= generic_club.head_feature %><br>
+  Shaft Stiffness: <%= generic_club.shaft_stiffness %><br>
+  Condition: <%= club.condition %><br>
+  <%= button_to 'Delete', supplier_club_path(supplier, club), method: :delete %>
+  <%= render partial: 'listings/new_form', locals: {obj: club} %>
+</div>

@@ -14,7 +14,7 @@ $(document).on('page:load ready',function(){
   // })
 
   $('.create_form_btn').on ('click', function(){
-    var $form = $(this).first().siblings()
+    var $form = $(this).parent().find('#new-listing-form')
     $form.toggleClass("hide-form")
     $(this).toggleClass("hide-button")
   })
@@ -22,7 +22,7 @@ $(document).on('page:load ready',function(){
   $('.btn-cancel').on ('click', function(){
     var $form = $(this).parent()
     $form.toggleClass("hide-form")
-    var $listing_btn = $(this).parent().siblings().first()
+    var $listing_btn = $(this).parent().parent().find('.create_form_btn')
     $listing_btn.toggleClass("hide-button")
   })
   
