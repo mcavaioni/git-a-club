@@ -45,6 +45,7 @@ RSpec.describe Search do
       search_type = 'club'
       search = Search.new(search_params,search_params)
       search.get_results
+
     end
   end
 end
