@@ -11,3 +11,6 @@
 <h2>Your Sets</h2>
 
 <%= render partial:'club_sets', locals: {club_sets: @club_sets, supplier: @supplier} %>
+
+<%= button_to "Create Club", new_supplier_club_path(@supplier), method: :get %>
+<%= button_to "Create Club Set", new_supplier_club_set_path(@supplier), method: :get %>
