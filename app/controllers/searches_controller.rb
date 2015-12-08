@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   def listings
     search = Search.new(search_type_params,generic_club_params)
     results = search.get_results
-    render json: {results: results}
+    render json: {clubs: results, generic_clubs: search.generic_clubs}
   end
 
   private

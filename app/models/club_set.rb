@@ -24,7 +24,6 @@ class ClubSet < ActiveRecord::Base
   def self.find_by_generic_clubs(generic_club_array)
     # where(generic_club:generic_club_array)
     # joins(clubs: :generic_club).where(generic_club:generic_club_array)
-    binding.pry
   end
 
   def description

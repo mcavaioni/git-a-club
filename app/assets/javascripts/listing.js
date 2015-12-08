@@ -1,8 +1,9 @@
 $(document).on('page:load ready',function(){
-  $.get('/listings/four_listings/0', function(data){
-    $('.search-results').append(data.new_row);
-    attachCalendar();
-  })
+  // $.get('/listings/four_listings/0', function(data){
+  //   $('.search-results').append(data.new_row);
+  //   attachCalendar();
+  // })
+  // Remove once search is implemented ^^
 
   $('.load-listings').on('click', function(){
     row_number = $('.search-results .row').length;
