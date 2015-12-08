@@ -18,12 +18,14 @@ class ClubsController < ApplicationController
   end
 
   def destroy
+    # binding.pry
     @club.active = false
     @club.save
     # REPLACE WITH .club_attributes METHOD
     flash.now[:notice] = "Your club has been removed."
     redirect_to @supplier
   end
+
 
 private
 

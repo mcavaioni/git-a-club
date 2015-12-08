@@ -21,6 +21,8 @@ class Club < ActiveRecord::Base
   belongs_to :supplier
   has_many :listings, as: :listable
 
+  after_save :club_set_member
+
   # accepts_nested_attributes_for :generic_club
 
   # These conditions were taken from Kelley Blue Book
@@ -49,6 +51,15 @@ class Club < ActiveRecord::Base
   def description
     "#{generic_club.brand} #{generic_club.club_type} #{gender_handed}"
   end
+
+  def club_set_member
+     if !self.active
+       self.club_sets.each do |club_set|
+        club_set.active = false
+        club_set.save
+       end
+     end
+   end
 
 
 end

@@ -26,7 +26,8 @@ class ClubSet < ActiveRecord::Base
     # joins(clubs: :generic_club).where(generic_club:generic_club_array)
   end
 
-  
+
+
   def description
     first_club = self.clubs.first
     number_of_clubs = self.clubs.length
