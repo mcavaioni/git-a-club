@@ -16,7 +16,8 @@ class Search # < ActiveRecord::Base
     def get_results
       sanitize_search_params
       @generic_clubs = GenericClub.where(search_params)
-      get_results_by_type
+      clubs = get_results_by_type
+      Listing.get_by(clubs)
     end
 
     def get_results_by_type
