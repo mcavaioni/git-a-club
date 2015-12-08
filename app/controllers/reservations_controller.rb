@@ -34,7 +34,7 @@ class ReservationsController < ApplicationController
 
   def destroy
     binding.pry
-    
+
   end
 
   private

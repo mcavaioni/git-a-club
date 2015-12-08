@@ -56,10 +56,37 @@ RSpec.describe Reservation do
         expect(@start_after_finish).to_not be_valid
       end
     end
+
+    describe 'cannot destroy a reservation 7 days prior to start date' do
+      let(:listing) {FactoryGirl.build :listing}
+      before (:each) do
+        @date_now = Date.new(2015,12,9)
+        @reservation1 = listing.reservations.build(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 1))
+        @reservation2 = listing.reservations.build(start_date: Date.new(2015, 12, 2), finish_date: Date.new(2015, 12, 2))
+        @reservation3 = listing.reservations.build(start_date: Date.new(2015, 12, 3), finish_date: Date.new(2015, 12, 3))
+        @reservation1.save
+        @reservation2.save
+        @reservation3.save
+        Date.stub(:current).and_return(@date_now)
+      end
+
+      it 'validates on deletion' do
+        binding.pry
+        @reservation1.destroy
+        @reservation2.destroy
+        @reservation3.destroy
+        @listing = Listing.find(@reservation1.listing_id)
+        binding.pry
+        expect(@listing.reservations).to include(@reservation1)
+        expect(@listing.reservations).to_not include(@reservation2)
+        expect(@listing.reservations).to_not include(@reservation3)
+      end
+    end
   end
 
   describe 'sql functions' do
     before(:each) do
+      Reservation.stub(:valid_deletion).and_return(true)
       Reservation.destroy_all
       @date_now = Date.new(2015,12,5)
       @listing = Listing.create(start_date: Date.new(2015, 12, 1), finish_date: Date.new(2015, 12, 30), price: 5)
