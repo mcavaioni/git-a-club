@@ -2,6 +2,8 @@
 <h1> Suppliers page </h1>
 
 <p id="notice"><%= notice %></p>
+<%= button_to "Create Club", new_supplier_club_path(@supplier), method: :get %>
+<%= button_to "Create Club Set", new_supplier_club_set_path(@supplier), method: :get %>
 <h2>Your Clubs</h2>
 
 <%= render partial:'clubs', locals: {clubs: @clubs, supplier: @supplier} %>
@@ -11,6 +13,3 @@
 <h2>Your Sets</h2>
 
 <%= render partial:'club_sets', locals: {club_sets: @club_sets, supplier: @supplier} %>
-
-<%= button_to "Create Club", new_supplier_club_path(@supplier), method: :get %>
-<%= button_to "Create Club Set", new_supplier_club_set_path(@supplier), method: :get %>
