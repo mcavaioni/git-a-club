@@ -1,0 +1,7 @@
+<tr>
+  <td width='50%'><%= listing.listable.class %>: <%= listing.listable.description %></td>
+  <td width='15%'><%= listing.format_date(listing.start_date) %></td>
+  <td width='15%'><%= listing.format_date(listing.finish_date) %></td>
+  <td width='10%'><%= listing.price %></td>
+  <td width='10%'><%= button_to 'Cancel', {:controller => :listings, :action => 'destroy', id: listing.id }, :method => :delete, class: 'cancel-listing', remote: true, data: {confirm: "Are you sure?"} %></td>
+</tr>
