@@ -30,6 +30,9 @@ class ClubSet < ActiveRecord::Base
   def self.find_by_generic_clubs(generic_club_array)
     # where(generic_club:generic_club_array)
     # joins(clubs: :generic_club).where(generic_club:generic_club_array)
+    # joins(club_set_clubs:{club: :generic_club}).where("generic_clubs.club_type IN (?)",['3_wood','putter']).select("COUNT(club_sets.id) AS total_clubs")
+    # ClubSet.select("club_sets.*, count(club_sets.id) as clubs_in_set").joins(club_set_clubs:{club: :generic_club})
+    # ClubSet.select("club_sets.*, count(club_sets.id) as clubs_in_set").joins(club_set_clubs:{club: :generic_club}).group("club_sets.id").having("generic_clubs.club_type IN (?)",['3_wood','putter'])
   end
 
   def description

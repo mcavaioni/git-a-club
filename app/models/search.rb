@@ -7,6 +7,7 @@ class Search # < ActiveRecord::Base
     # New Listings
     # Time.current.begining_of_month
     # Reservations in the past 30days?
+    # Cheap stuff
 
     def initialize(search_type,search_params)
       @search_type = search_type
