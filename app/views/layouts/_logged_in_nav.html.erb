@@ -3,7 +3,7 @@
     <%= link_to 'My Rentals', renter_reservations_path(user.renter) %>
   </li>
   <li>
-    <%= link_to 'My Listings', supplier_listings_path(user.supplier) %>
+    <%= link_to 'My Listings', supplier_listings_path(user.supplier), :"data-no-turbolink" => true %>
   </li>
   <li>
     <%= link_to 'Supply Clubs', user.supplier ? supplier_path(user.supplier) : new_supplier_path %>

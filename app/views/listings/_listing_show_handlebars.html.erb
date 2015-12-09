@@ -1,0 +1,28 @@
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class='container'>
+  <div class='row text-center uppercase-text'>
+    <h3><strong>{{listable.description}}</strong></h3>
+  </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 car btn btn-default listing-button">
+      <div class='listing-show-description'>
+        <strong>Type:</strong> {{listable_type}}<br>
+        <strong>Available Dates:</strong>
+        <input class='listing-availability' type=hidden name='listing-availability' value= {{availability}}> <br>
+        <div class='calendar-container'>
+          <div class='calendar'></div>
+        </div>
+        <strong>Price:</strong> {{price}} <br>
+        <%= form_for listing.reservations.build, url: renter_reservations_path(current_user.renter) do |f| %>
+          <%= f.hidden_field :listing_id, value: listing.id %>
+          <%= f.label :start_date %>
+          <%= f.date_field :start_date, value: listing.start_date %><br>
+          <%= f.label :finish_date %>
+          <%= f.date_field :finish_date, value: listing.finish_date %><br>
+          <%= f.submit %> 
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</script>

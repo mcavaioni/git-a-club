@@ -16,7 +16,8 @@ function attachCalendar() {
         return [dateArray.indexOf(date.toDateString()) != -1];
       }
     });
-    $('div.ui-datepicker').css('font-size', '85%')
+    $('div.ui-datepicker').css('font-size', '85%');
+    $('div.ui-datepicker').addClass('align-center');
   } 
 }
 

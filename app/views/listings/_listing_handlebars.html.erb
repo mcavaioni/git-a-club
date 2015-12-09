@@ -1,13 +1,15 @@
 <script id="entry-template" type="text/x-handlebars-template">
   <div class="col-md-3 car btn btn-default listing-button">
-    <p> {{listable.description}}</p>
+    <p><strong>{{listable.description}}</strong></p>
     <strong>Type:</strong> {{listable_type}} <br>
-    <strong>From:</strong> {{start_date}} <br>
-
-    <input class='listing-availability' type=hidden name='listing-availability' value= {{availability}}> <br>
-    <strong>To:</strong> {{finish_date}} <br>
-    <div class='calendar'></div>
     <strong>Price:</strong> {{price}} <br>
+    <strong>From:</strong> {{start_date}} <br>
+    <strong>To:</strong> {{finish_date}} <br>
+    <input class='listing-availability' type=hidden name='listing-availability' value= {{availability}}> <br>
+    <strong>Available Dates:</strong>
+    <div class='calendar-container'>
+        <div class='calendar'></div>
+    </div>
     <a href= {{url}}>View Listing</a><br>
   </div>
 </script>

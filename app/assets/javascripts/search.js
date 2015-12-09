@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('page:load ready',function(){
 
   $("form#listings-search").on('ajax:success', function(event, data, status, xhr){
     var source = $('#entry-template').html();

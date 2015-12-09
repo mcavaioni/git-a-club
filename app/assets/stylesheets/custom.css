@@ -14,3 +14,29 @@
 .hidden-handlebars  {
   display: none;
 }
+
+.calendar-container {
+  text-align: center;
+}
+
+.calendar {
+  display:inline-block;
+  margin:0 auto;
+}
+
+.collection-check-box {
+  display: block;
+}
+
+.collection-check-box:after {
+    content:"\a";
+    white-space: pre;
+}
+
+.uppercase-text {
+  text-transform: uppercase;
+}
+
+.listing-show-description {
+  font-size: 135%;
+}
