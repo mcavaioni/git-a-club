@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#welcome'
 
+  resources :charges
+
   get 'search/listings' => 'searches#listings'
 
   resources :users do
