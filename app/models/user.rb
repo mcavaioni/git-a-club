@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
   def qualified_supplier?
     !self.address.empty? && !self.phone_number.empty?
   end
+
+  def full_name
+    "#{self.first_name.capitalize} #{self.last_name.capitalize} "
+  end
 end

@@ -25,8 +25,6 @@ class Listing < ActiveRecord::Base
     where(listable:clubs).where(active:true).where("finish_date >= ?", Date.current)
   end
 
-
-
   def availability
     availability_range = (self.start_date..self.finish_date).to_a
     reservations = self.reservations.select(&:persisted?)
