@@ -39,7 +39,8 @@ class ClubSet < ActiveRecord::Base
   end
 
   # ClubSet.joins(club_set_clubs:{club: :generic_club})
-  
+  # ClubSet.joins(club_set_clubs:{club: :generic_club}).where("generic_clubs.club_type = ?",['3_wood'])
+
   private
 
   include Validable::ClubSetValidations
