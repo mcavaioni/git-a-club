@@ -25,15 +25,6 @@ $(document).on('page:load ready',function(){
     var $listing_btn = $(this).parent().parent().find('.create_form_btn')
     $listing_btn.toggleClass("hide-button")
   });
-  
-  // $(".appending_listing").on ('ajax:success', function(event, data, status, xhr){
-  //   if(data.errors == null) {
-  //     var template = $(data.template);
-  //     $(this).parent().append(template);
-  //   } else {
-  //     $('#flash-notice').text(data.errors);
-  //   }
-  // });
 
   $('form > .cancel-listing').parent().on('ajax:success', function(event, data, status, xhr){
     if (data.errors == null) {
@@ -45,4 +36,7 @@ $(document).on('page:load ready',function(){
       // Add error message after validation
     }
   });
+
+
+
 })

@@ -15,6 +15,10 @@
   display: none;
 }
 
+.hide-form {
+  display: none;
+}
+
 header {
   background-image: url(/assets/git-a-club-background.jpg);
   background-repeat: none;
@@ -50,5 +54,5 @@ header {
 }
 
 .listing-show-description {
-  font-size: 135%;
+  font-size: 125%;
 }

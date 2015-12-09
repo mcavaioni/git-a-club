@@ -1,20 +1,8 @@
 <%= render partial: 'listings/listing_show_handlebars', locals:{listing: @listing} %>
 
+<%= render partial: 'listings/charge_form_handlebars', locals:{listing: @listing} %>
+
 <script type="text/javascript">
-  // $(function(){
-  //   var url_array = this.URL.split('/');
-  //   var listing_id = url_array[url_array.length-1];
-  //   $.ajax({
-  //     dataType: 'json',
-  //     url: 'listings/'+listing_id+".json",
-  //     data: data,
-  //     success: function(data){
-  //       debugger;
-  //       $('.search-results').append(data.new_row);
-  //       attachCalendar();
-  //     }
-  //   })
-  // })
   $(function(){
     var url_array = this.URL.split('/');
     var listing_id = url_array[url_array.length-1];
@@ -30,6 +18,25 @@
       })
       $(listing_results).appendTo('body')
       attachCalendar();
+
+      $('form.new_reservation').on('ajax:complete', function(event, data, status, xhr){
+        $('#flash-notice').empty()
+        var jsonData = data.responseJSON
+        if(jsonData.notice.length == 0) {
+          var source = $('#charges_path-template').html();
+          var template = Handlebars.compile(source);
+          $(template(jsonData.form_data)).appendTo('div.listing-button');
+          $(this).toggleClass('hide-form');
+
+          $('.cancel-stripe').on('click', function(){
+            $('#new_reservation').toggleClass('hide-form');
+            $(this).parent().remove()
+          });
+
+        } else {
+          $('#flash-notice').text('Invalid reservation dates');
+        }
+      });
     });
   })
 </script>

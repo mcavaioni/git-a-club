@@ -1,0 +1,19 @@
+<script id="charges_path-template" type="text/x-handlebars-template">
+  <%= form_tag reservation_charge_path(listing) do %>
+    <input type='hidden' name='reservation[start_date]' value={{reservation_data.start_date}}>
+    <input type='hidden' name='reservation[finish_date]' value={{reservation_data.finish_date}}>
+    <input type='hidden' name='reservation[listing_id]' value={{reservation_data.listing_id}}>
+    <article class='listing-show-description'>
+      <strong>Start: </strong>{{start}}<br>
+      <strong>End: </strong>{{end}}<br>
+      <strong>Total: </strong>{{cost}}<br>
+      </label>
+    </article>
+    <input type='button' class='btn btn-danger cancel-stripe' value='Cancel'><br><br>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount={{cost}}
+            data-locale="auto"></script>
+  <% end %>
+</script>

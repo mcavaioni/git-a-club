@@ -10,17 +10,38 @@ class ReservationsController < ApplicationController
   def create
     @reservation = @renter.reservations.build(reservation_params)
     @listing = Listing.find(@reservation.listing_id)
-    if @reservation.save
-      flash[:notice] = 'Reservation Confirmed!'
-      redirect_to renter_reservations_path(@renter)
-      # new_listing_dates = @listing.availability.to_s
-      # render json: {:notice => 'Confirmed', dateData: new_listing_dates}
-    else
-      flash[:notice] = 'Selected dates are not available.'
-      redirect_to @listing
-      # render json: {:notice => @reservation.errors.full_messages}      
-      # render 'listings/show'
-    end
+    @reservation.valid?
+    render json: {:notice => @reservation.errors.full_messages,
+                  :form_data => {:cost => 5,
+                                :start => @reservation.format_date(@reservation.start_date),
+                                :end => @reservation.format_date(@reservation.finish_date),
+                                :reservation_data => {:start_date => @reservation.start_date,
+                                                      :finish_date => @reservation.finish_date,
+                                                      :listing_id => @reservation.listing_id,
+                                                      }
+                                }
+                  }
+
+
+    # if @reservation.save
+    #   flash[:notice] = 'Reservation Confirmed!'
+    #   redirect_to renter_reservations_path(@renter)
+    #   # new_listing_dates = @listing.availability.to_s
+    #   # render json: {:notice => 'Confirmed', dateData: new_listing_dates}
+    # else
+    #   flash[:notice] = 'Selected dates are not available.'
+    #   redirect_to @listing
+    #   # render json: {:notice => @reservation.errors.full_messages}      
+    #   # render 'listings/show'
+    # end
+  end
+
+  def charge
+    @renter = Renter.find(current_user.renter.id)
+    @reservation = @renter.reservations.build(reservation_params)
+    @reservation.save
+    flash[:notice] = 'Reservation Confirmed!'
+    redirect_to renter_reservations_path(@renter)
   end
 
   def index

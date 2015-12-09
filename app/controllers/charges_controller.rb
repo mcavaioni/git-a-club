@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    binding.pry
     # Amount in cents
     @amount = 500
 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :charges
 
   get 'search/listings' => 'searches#listings'
+  post 'listings/:listing_id/charge' => 'reservations#charge', as: 'reservation_charge'
 
   resources :users do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
