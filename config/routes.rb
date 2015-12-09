@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#welcome'
 
+  get 'pages/analytics' => 'pages#analytics'
+
   resources :charges
 
   get 'search/listings' => 'searches#listings'
