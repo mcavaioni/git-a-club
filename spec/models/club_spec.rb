@@ -78,5 +78,44 @@ RSpec.describe Club do
       end
 
     end
+
+    # describe '#club_set_member' do 
+    #   context  'when a club is deleted (set to inactive in our db), any sets associated with that club are also deleted (set to inactive in the DB)' do
+    #    # let (:club_set) {FactoryGirl.build :club_set}
+    #    #  GenericClub::ClubTypes.collect do |club_type|
+    #    #   gen_club = FactoryGirl.create :generic_club, club_type: club_type
+    #    #   FactoryGirl.create :club, generic_club_id: gen_club.id
+    #    #   binding.pry
+    #    #  end
+    #    let(:club_set) {FactoryGirl.build :club_set, active: true}
+
+    #    let(:my_driver) {FactoryGirl.create :club}
+    #    let(:my_putter) {FactoryGirl.create :club}
+    #    let(:my_wedge) {FactoryGirl.create :club}
+    #    let(:my_5_iron_or_hybrid) {FactoryGirl.create :club}
+    #    let(:my_6_iron) {FactoryGirl.create :club}
+    #    let(:my_7_iron) {FactoryGirl.create :club}
+    #    let(:my_8_iron) {FactoryGirl.create :club}
+    #    let(:my_9_iron) {FactoryGirl.create :club}
+
+
+
+    #    it 'verifies that the club_set is true' do
+    #     club_set.clubs << my_driver
+    #     club_set.clubs << my_putter
+    #     club_set.clubs << my_wedge
+    #     club_set.clubs << my_5_iron_or_hybrid
+    #     club_set.clubs << my_6_iron
+    #     club_set.clubs << my_7_iron
+    #     club_set.clubs << my_8_iron
+    #     club_set.clubs << my_9_iron
+
+    #    binding.pry
+    #   expect(club_set.clubs.club_set_member).to eq(true)
+
+
+    #  end
+    #   end
+    # end
   end
 end
