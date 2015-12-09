@@ -1,7 +1,5 @@
+<div id="user-show-button-supply" ><%= button_to "Supply Clubs", @user.supplier ? supplier_path(@user.supplier) : new_supplier_path, class: "btn btn-success", method: :get %></div>
+
+<div id="user-show-button-rent"><%= button_to "Rent Clubs", listings_path, class: "btn btn-success", method: :get %></div>
 
 <p id="notice"><%= notice %></p>
-
-
-<%= button_to "Supply Clubs", @user.supplier ? supplier_path(@user.supplier) : new_supplier_path, method: :get %>
-<br>
-<%= button_to "Rent Clubs", listings_path, method: :get %>
