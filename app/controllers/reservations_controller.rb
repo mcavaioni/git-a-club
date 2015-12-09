@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-  before_action :find_renter, only: [:index, :create]
-  before_action :find_reservation, only: [:destroy]
+  before_action :find_renter, only: [:index, :create, :show]
+  before_action :find_reservation, only: [:destroy, :show]
 
   def new
     @listing = Listing.find(params[:listing_id])
@@ -21,8 +21,6 @@ class ReservationsController < ApplicationController
                                                       }
                                 }
                   }
-
-
     # if @reservation.save
     #   flash[:notice] = 'Reservation Confirmed!'
     #   redirect_to renter_reservations_path(@renter)
@@ -50,7 +48,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-
+    @supplier = @reservation.listing.listable.supplier.user
   end
 
   def destroy

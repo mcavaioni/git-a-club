@@ -1,1 +1,9 @@
-show.html.erb
+<div class="reservation-show">
+  <h3>Reservation Details:</h3>
+  <p><strong>Host: </strong><%= @supplier.full_name %></p>
+  <p><strong>Pick-up Location: </strong><%= @supplier.address %></p>
+  <br>
+  <p><strong>Start Date: </strong><%= @reservation.format_date(@reservation.start_date) %></p>
+  <p><strong>End Date: </strong><%= @reservation.format_date(@reservation.finish_date) %></p>
+  <p><strong>Total: </strong>$<%= @reservation.display_total_cost %></p>
+</div>
