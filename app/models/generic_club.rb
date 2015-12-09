@@ -22,9 +22,9 @@ class GenericClub < ActiveRecord::Base
   HeadFeatures = %w(cavity pocket_cavity blade)
   ShaftStiffnesses = %w(senior ladies regular stiff extra-stiff)
 
-  def self.number_of_clubs_by_type(type_of_club)
-    joins(:clubs).where(active:true).where("club_type=?",type_of_club)
-  end
+  # def self.number_of_clubs_by_type(type_of_club)
+  #   joins(:clubs).where(active:true).where("club_type=?",type_of_club)
+  # end
 
   def self.number_by_type
     num_of_active_clubs = Club.active_clubs.count.to_f
