@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <% reservations.each do |reservation| %>
-          <%= render partial: 'index', locals: {reservation: reservation} %>
+          <%= render partial: 'index_table_row', locals: {renter: current_user.renter, reservation: reservation} %>
         <% end %>
       </tbody>
     </table> 
