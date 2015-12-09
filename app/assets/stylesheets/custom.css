@@ -56,3 +56,8 @@ header {
 .listing-show-description {
   font-size: 125%;
 }
+
+.landing-page-text {
+  font-size: 750%;
+  color: white;
+}

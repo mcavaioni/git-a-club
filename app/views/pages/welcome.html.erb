@@ -2,9 +2,11 @@
   <header>
       <div class="container">
           <div class="intro-text">
-              <h2>Want to play a round...</h2>
-              <h1>Git-A-Club</h1>
-              <a href="/login" class="btn btn-success">Login</a>
+              <h2 class='landing-page-text'>Want to play a round...</h2>
+              <h1 class='landing-page-text'>Git-A-Club</h1>
+              <% if !logged_in? %>
+                <a href="/login" class="btn btn-success">Login</a>
+              <% end %>
           </div>
       </div>
   </header>
