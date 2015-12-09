@@ -1,18 +1,19 @@
 Things to do Tuesday 12/8
   Listings show - search functionality
-  Calendar - on click of a date do no disappear all dates
   Reservations - show page - make it look better
-  Reservations - validation, cannot create a reservation past date
-  Club set - gets destroyed when club is destroyed
-  Remove clubs after their clubset has been reserved, vice versa
+  Reservations - validation, cannot create a reservation past date √
+  Club set - gets destroyed when club is destroyed √
+  Listing - Remove clubs after their clubset has been reserved, vice versa 
   Profile page - flesh it out
-  Supply Clubs show page - make it look pretty
+  Supply Clubs show page - make it look pretty √ Kind of
   Welcome page - Put some here
   Paperclip implemention
   Stripe implementation
   OAuth2.0 - Facebook/Google (at least one)
   Club/Club Set - Tests
   Faker data
+  Listing Show page - Make look better
+  Analytics page
 
   *** Bonus ***
   Messages between users
