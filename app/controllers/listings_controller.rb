@@ -37,8 +37,9 @@ class ListingsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @listing = Listing.new(listing_params)
+    priced_params = listing_params
+    priced_params[:price] = listing_params[:price].to_i * 100
+    @listing = Listing.new(priced_params)
 
     if @listing.save
       html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false

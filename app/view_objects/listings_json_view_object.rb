@@ -13,7 +13,7 @@ class ListingsJsonViewObject
     finish_date: listing.finish_date,
     url: "/listings/#{listing.id}",
     availability: listing.availability,
-    price: listing.price,
+    price: listing.display_price,
     listable: {
       id: listing.listable.id,
       description: listing.listable.description

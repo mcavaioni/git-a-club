@@ -49,6 +49,10 @@ class Listing < ActiveRecord::Base
     "#{date.month}-#{date.day}-#{date.year}"
   end
 
+  def display_price
+    "%.2f" % (self.price/100.0)
+  end
+
   private
 
   include Validable::StartDate

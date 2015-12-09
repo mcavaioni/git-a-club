@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
     @listing = Listing.find(@reservation.listing_id)
     @reservation.valid?
     render json: {:notice => @reservation.errors.full_messages,
-                  :form_data => {:cost => 5,
+                  :form_data => {:cost => @reservation.display_total_cost,
                                 :start => @reservation.format_date(@reservation.start_date),
                                 :end => @reservation.format_date(@reservation.finish_date),
                                 :reservation_data => {:start_date => @reservation.start_date,

@@ -12,7 +12,7 @@
         <div class='calendar-container'>
           <div class='calendar'></div>
         </div>
-        <strong>Price per day:</strong> {{price}} <br>
+        <strong>Price per day:</strong> ${{price}} <br>
         <%= form_for listing.reservations.build, url: renter_reservations_path(current_user.renter), remote: true do |f| %>
           <%= f.hidden_field :listing_id, value: listing.id %>
           <%= f.label :start_date %>

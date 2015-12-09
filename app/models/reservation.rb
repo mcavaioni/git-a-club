@@ -33,6 +33,15 @@ class Reservation < ActiveRecord::Base
     "#{date.month}-#{date.day}-#{date.year}"
   end
 
+  def total_cost
+    number_of_days = (self.start_date..self.finish_date).to_a.count
+    number_of_days * self.listing.price
+  end
+
+  def display_total_cost
+    "%.2f" % (self.total_cost/100.0)
+  end
+
   private
 
   include Validable::StartDate
