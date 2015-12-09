@@ -21,11 +21,35 @@ class Listing < ActiveRecord::Base
   validates :start_date, :finish_date, :price, presence: true
   validate :valid_start_date
 
+  def self.percent_under_five
+    listings_under_5 = where("price <= 500").count
+    total_num_of_listings = all.count
+    (listings_under_5/total_num_of_listings.to_f * 100).round(2)
+  end
+
+  def self.active_and_current
+    where(active:true).where("finish_date >= ?", Date.current)
+  end
+
+  def self.number_of_uniq_club
+    active_and_current.where(listable_type:'Club').pluck(:listable_id).uniq.count.to_f
+  end
+
+  def self.number_of_uniq_club_set
+    active_and_current.where(listable_type:'ClubSet').pluck(:listable_id).uniq.count.to_f
+  end
+
+  def self.uniq_club_ratio
+    (number_of_uniq_club/active_and_current.count * 100).round(2)
+  end
+
+  def self.uniq_club_set_ratio
+    (number_of_uniq_club_set/active_and_current.count * 100).round(2)
+  end
+
   def self.get_by_clubs(clubs)
     where(listable:clubs).where(active:true).where("finish_date >= ?", Date.current)
   end
-
-
 
   def availability
     availability_range = (self.start_date..self.finish_date).to_a

@@ -34,6 +34,10 @@ class Club < ActiveRecord::Base
     where(generic_club:generic_club_array).where(active:true)
   end
 
+  def self.active_clubs
+    Club.where(active:true)
+  end
+
   def generic_club_attributes=(generic_club_attributes_hash)
     # generic_club_attributes_hash[:brand].downcase!
     generic_club = GenericClub.find_or_create_by(generic_club_attributes_hash)

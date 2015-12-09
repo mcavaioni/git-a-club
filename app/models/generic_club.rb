@@ -22,7 +22,17 @@ class GenericClub < ActiveRecord::Base
   HeadFeatures = %w(cavity pocket_cavity blade)
   ShaftStiffnesses = %w(senior ladies regular stiff extra-stiff)
 
+  # def self.number_of_clubs_by_type(type_of_club)
+  #   joins(:clubs).where(active:true).where("club_type=?",type_of_club)
+  # end
 
+  def self.number_by_type
+    num_of_active_clubs = Club.active_clubs.count.to_f
+    ClubTypes.each_with_object({}) do |club_type, type_hash|
+      num_of_club_type = number_of_clubs_by_type(club_type).count
+      type_hash[club_type.to_sym] = (number_of_club_type / num_of_active_clubs).round(2)
+    end
+  end
 
   def self.brand_names
     uniq.pluck(:brand)
