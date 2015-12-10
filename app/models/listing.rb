@@ -47,8 +47,8 @@ class Listing < ActiveRecord::Base
     (number_of_uniq_club_set/active_and_current.count * 100).round(2)
   end
 
-  def self.get_by_clubs(clubs)
-    where(listable:clubs).where(active:true).where("finish_date >= ?", Date.current)
+  def self.get_by_listable(listable)
+    where(listable:listable).where(active:true).where("finish_date >= ?", Date.current)
   end
 
   def availability

@@ -27,19 +27,30 @@ class ClubSet < ActiveRecord::Base
   validate :all_same_hand, :all_same_gender
   validate :required_wedges, :required_clubs
 
-  def self.find_by_generic_clubs(generic_club_array)
-    # where(generic_club:generic_club_array)
-    # joins(clubs: :generic_club).where(generic_club:generic_club_array)
-    # joins(club_set_clubs:{club: :generic_club}).where("generic_clubs.club_type IN (?)",['3_wood','putter']).select("COUNT(club_sets.id) AS total_clubs")
-    # ClubSet.select("club_sets.*, count(club_sets.id) as clubs_in_set").joins(club_set_clubs:{club: :generic_club})
-    # ClubSet.select("club_sets.*, count(club_sets.id) as clubs_in_set").joins(club_set_clubs:{club: :generic_club}).group("club_sets.id").having("generic_clubs.club_type IN (?)",['3_wood','putter'])
+  def self.find_sets_where(search_params)
+    # add step to remove the required clubs from the search
+    # find by gender and hand - hold off on this
+
+    sets_array = find_by_each_type(search_params[:club_type])
+    get_intersection_of_sets(sets_array)
+
   end
 
-  def seld.find_sets_where(search_params)
-    # ClubSet.joins(:generic_clubs).where("generic_clubs.club_type = ?", "driver").where("generic_clubs.male = ?",true).where("generic_clubs.righty = ?", true)
-    
-    # find by gender and hand
-    # find by each club type and get union
+  def self.find_by_each_type(types)
+    types.collect do |club_type|
+      find_sets_by_single_type(club_type)
+    end
+  end
+
+  def self.find_sets_by_single_type(club_type)
+    joins(:generic_clubs).where("generic_clubs.club_type = ?", club_type)
+  end
+
+  def self.get_intersection_of_sets(sets_array)
+    first_set = sets_array[0]
+    sets_array.inject(first_set) do |set_array, intersection|
+      intersection = intersection & set_array
+    end
   end
 
   def self.find_by_gender_hand(gender, hand)

@@ -22,11 +22,11 @@ class Search # < ActiveRecord::Base
     def get_results_by_type
       if search_type == 'club'
         generic_clubs = GenericClub.where(search_params)
-        clubs = Club.find_by_generic_clubs(generic_clubs)
-        Listing.get_by_clubs(clubs)
+        listable = Club.find_by_generic_clubs(generic_clubs)
       else
-        # ClubSet.joins(club_set_clubs:{club: :generic_club})
+        listable = ClubSet.find_sets_where(search_params)
       end
+      Listing.get_by_listable(listable)
     end
 
     def sanitize_search_params
