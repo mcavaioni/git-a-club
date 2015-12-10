@@ -60,11 +60,10 @@ class Club < ActiveRecord::Base
 
   def club_set_member
    if !self.active
-     self.club_sets.each do |club_set|
-     club_set.active = false
-     club_set.save
+      self.club_sets.each do |club_set|
+        club_set.active = false
+        club_set.save
       end
-   end
- end
-
- end
+    end
+  end
+end

@@ -21,6 +21,11 @@ class Reservation < ActiveRecord::Base
 
   before_destroy :valid_deletion
 
+  ### Advanced Active Record SQL
+  def self.club_reservations
+
+  end
+
   def self.upcoming_reservations_by(obj)
     self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date >= ?", Date.current)
   end

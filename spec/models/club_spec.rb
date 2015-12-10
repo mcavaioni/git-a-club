@@ -93,4 +93,6 @@ RSpec.describe Club do
 
     end
   end
+
+  
 end
