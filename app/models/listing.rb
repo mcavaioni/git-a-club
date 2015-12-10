@@ -22,12 +22,27 @@ class Listing < ActiveRecord::Base
   validate :valid_start_date
 
   ### Advanced Active Record SQL
-  def self.average_active_club_price
-    average_club_price = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
-    where("clubs.active=true").
-    average("listings.price")
-    (average_club_price.to_f/100.0).round(2)
+  def self.convert_to_dollars(cents)
+    (cents.to_f/100.0).round(2)
   end
+
+  def self.average_price_active_club
+    average_club_price = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
+      where("clubs.active=true").
+      average("listings.price")
+    convert_to_dollars(average_club_price)
+  end
+
+  def self.average_price_active_club_type
+    average_price_club_type_hash = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
+      joins("INNER JOIN generic_clubs ON generic_club_id = generic_clubs.id").
+      where("clubs.active=true").
+      group("generic_clubs.club_type").
+      average("listings.price")
+    average_price_club_type_hash.each_with_object({}){|(k,v), hash| hash[k] = convert_to_dollars(v)}
+  end
+
+    
 
   def self.average_active_club_set_price
 

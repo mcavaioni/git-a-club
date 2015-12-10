@@ -150,14 +150,15 @@ RSpec.describe Listing do
       @club8.listings.build(start_date: @date8, finish_date: @date10, price: 5500) #7 days
       @club9.listings.build(start_date: @date9, finish_date: @date11, price: 6000) #8 days
       @club10.listings.build(start_date: @date10, finish_date: @date11, price: 8800) #6 days
-
+      @club1.listings.build(start_date: @date3, finish_date: @date4, price: 6000, active: false) #4 days
+      @club2.listings.build(start_date: @date6, finish_date: @date7, price: 8800, active: false) #4 days
       [@club1, @club2, @club3, @club4, @club5, @club6, @club7, @club8, @club9, @club10].each(&:save)
     end
 
-    describe '.average_active_price' do
+    describe '.average_active_club_price' do
       context 'average price of all active clubs' do
         it 'returns average price of ' do
-          expect(Listing.average_active_club_price).to eq(33.75)
+          expect(Listing.average_price_active_club).to eq(41.8)
         end
       end
     end
