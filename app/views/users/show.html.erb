@@ -6,10 +6,10 @@
 <br>
 <%= button_to "Rent Clubs", listings_path, method: :get %>
  -->
-<button class="btn-to-update">Update Info</button>
+<!-- <button class="btn-to-update">Update Info</button> -->
  <div class="parent-js" >
 <%= form_for @user, html: {class: "user_form"} , remote: true do |f| %>
-   <%= f.hidden_field :user_id, value: @user.id %>
+   <%= f.hidden_field :user_id, value: @user.id, class: "my_id" %>
    <%= f.label "First Name" %>
    <%= f.text_field :first_name, class: "thisone" %>
    <%= f.label "Last Name" %>
@@ -22,6 +22,13 @@
    
 </div>
  <% end %>
+
+
+<div class="high-div">
 <div class="my_name">
  <%=@user.first_name %>
+ <%=@user.last_name %>
+ <%=@user.address %>
+ <%=@user.phone_number %>
+</div>
 </div>
