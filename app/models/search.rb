@@ -16,14 +16,14 @@ class Search # < ActiveRecord::Base
 
     def get_results
       sanitize_search_params
-      @generic_clubs = GenericClub.where(search_params)
-      clubs = get_results_by_type
-      Listing.get_by_clubs(clubs)
+      get_results_by_type
     end
 
     def get_results_by_type
       if search_type == 'club'
-        Club.find_by_generic_clubs(generic_clubs)
+        generic_clubs = GenericClub.where(search_params)
+        clubs = Club.find_by_generic_clubs(generic_clubs)
+        Listing.get_by_clubs(clubs)
       else
         # ClubSet.joins(club_set_clubs:{club: :generic_club})
       end

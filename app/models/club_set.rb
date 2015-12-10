@@ -35,6 +35,17 @@ class ClubSet < ActiveRecord::Base
     # ClubSet.select("club_sets.*, count(club_sets.id) as clubs_in_set").joins(club_set_clubs:{club: :generic_club}).group("club_sets.id").having("generic_clubs.club_type IN (?)",['3_wood','putter'])
   end
 
+  def seld.find_sets_where(search_params)
+    # ClubSet.joins(:generic_clubs).where("generic_clubs.club_type = ?", "driver").where("generic_clubs.male = ?",true).where("generic_clubs.righty = ?", true)
+    
+    # find by gender and hand
+    # find by each club type and get union
+  end
+
+  def self.find_by_gender_hand(gender, hand)
+
+  end
+
   def description
     first_club = self.clubs.first
     number_of_clubs = self.clubs.length
