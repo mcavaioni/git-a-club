@@ -24,8 +24,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     @user.update(user_params)
-    @user.build_supplier.save if !@user.supplier & @user.qualified_supplier?
+    binding.pry
+    @user.save
+    # @user.build_supplier.save if !@user.supplier & @user.qualified_supplier?
     # redirect_to @user
     html_string = render_to_string 'users/show', locals: {user: @user}, layout: false
     render json: {template: html_string}
