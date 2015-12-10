@@ -2,10 +2,9 @@
 $(function(){
 
   $('.btn-to-update').on ('click', function(){
-debugger;
-      $(this).addClass('displaying')
+    $('.user_form').show()
   })
-  
+
 $("form.edit_user").on ('ajax:success', function(event, data, status, xhr){
   
 

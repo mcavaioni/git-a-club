@@ -8,7 +8,7 @@
  -->
 <button class="btn-to-update">Update Info</button>
  <div class="parent-js" >
-<%= form_for @user, html: {class: "user_form displaying"} , remote: true do |f| %>
+<%= form_for @user, html: {class: "user_form "} , remote: true do |f| %>
    <%= f.hidden_field :user_id, value: @user.id %>
    <%= f.label "First Name" %>
    <%= f.text_field :first_name, class: "thisone" %>
