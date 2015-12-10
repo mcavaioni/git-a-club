@@ -157,7 +157,7 @@ RSpec.describe Listing do
     describe '.average_active_price' do
       context 'average price of all active clubs' do
         it 'returns average price of ' do
-          #33.75
+          expect(Listing.average_active_club_price).to eq(33.75)
         end
       end
     end
