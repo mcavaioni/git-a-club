@@ -21,6 +21,15 @@ class Listing < ActiveRecord::Base
   validates :start_date, :finish_date, :price, presence: true
   validate :valid_start_date
 
+  ### Advanced Active Record SQL
+  def self.average_active_club_price
+
+  end
+
+  def self.average_active_club_price
+
+  end
+
   def self.percent_under_five
     listings_under_5 = where("price <= 500").count
     total_num_of_listings = all.count
