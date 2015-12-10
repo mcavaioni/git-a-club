@@ -42,10 +42,11 @@ class Listing < ActiveRecord::Base
     average_price_club_type_hash.each_with_object({}){|(k,v), hash| hash[k] = convert_to_dollars(v)}
   end
 
-    
-
-  def self.average_active_club_set_price
-
+  def self.average_price_active_club_set
+    average_club_set_price = joins("INNER JOIN club_sets ON listings.listable_id = club_sets.id").
+      where("club_sets.active=true").
+      average("listings.price")
+    convert_to_dollars(average_club_set_price)
   end
 
   def self.percent_under_five
