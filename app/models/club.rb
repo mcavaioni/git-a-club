@@ -25,8 +25,6 @@ class Club < ActiveRecord::Base
 
   after_save :club_set_member
 
-  attr_accessor :active
-
   # accepts_nested_attributes_for :generic_club
 
   # These conditions were taken from Kelley Blue Book

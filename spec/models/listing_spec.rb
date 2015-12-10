@@ -140,16 +140,16 @@ RSpec.describe Listing do
       @date10 = Date.new(2015,12,25)
       @date11 = Date.new(2015,12,30)
 
-      @club1.listings.build(start_date: @date1, finish_date: @date2, price: 10) #5 days
-      @club2.listings.build(start_date: @date2, finish_date: @date5, price: 17) #10 days
-      @club3.listings.build(start_date: @date4, finish_date: @date7, price: 25) #11 days
-      @club4.listings.build(start_date: @date3, finish_date: @date10, price: 31) #21 days
-      @club5.listings.build(start_date: @date5, finish_date: @date8, price: 40) #8 days
-      @club6.listings.build(start_date: @date6, finish_date: @date9, price: 44) #9 days
-      @club7.listings.build(start_date: @date7, finish_date: @date9, price: 48) #6 days
-      @club8.listings.build(start_date: @date8, finish_date: @date10, price: 55) #7 days
-      @club9.listings.build(start_date: @date9, finish_date: @date11, price: 60) #8 days
-      @club10.listings.build(start_date: @date10, finish_date: @date11, price: 88) #6 days
+      @club1.listings.build(start_date: @date1, finish_date: @date2, price: 1000) #5 days
+      @club2.listings.build(start_date: @date2, finish_date: @date5, price: 1700) #10 days
+      @club3.listings.build(start_date: @date4, finish_date: @date7, price: 2500) #11 days
+      @club4.listings.build(start_date: @date3, finish_date: @date10, price: 3100) #21 days
+      @club5.listings.build(start_date: @date5, finish_date: @date8, price: 4000) #8 days
+      @club6.listings.build(start_date: @date6, finish_date: @date9, price: 4400) #9 days
+      @club7.listings.build(start_date: @date7, finish_date: @date9, price: 4800) #6 days
+      @club8.listings.build(start_date: @date8, finish_date: @date10, price: 5500) #7 days
+      @club9.listings.build(start_date: @date9, finish_date: @date11, price: 6000) #8 days
+      @club10.listings.build(start_date: @date10, finish_date: @date11, price: 8800) #6 days
 
       [@club1, @club2, @club3, @club4, @club5, @club6, @club7, @club8, @club9, @club10].each(&:save)
     end

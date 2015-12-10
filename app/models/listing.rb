@@ -23,10 +23,13 @@ class Listing < ActiveRecord::Base
 
   ### Advanced Active Record SQL
   def self.average_active_club_price
-
+    average_club_price = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
+    where("clubs.active=true").
+    average("listings.price")
+    (average_club_price.to_f/100.0).round(2)
   end
 
-  def self.average_active_club_price
+  def self.average_active_club_set_price
 
   end
 
