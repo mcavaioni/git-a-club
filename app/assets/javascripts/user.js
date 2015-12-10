@@ -1,5 +1,5 @@
-
 $(function(){
+
 
 
 $('.my_name').on('click', function(){
@@ -21,4 +21,5 @@ $("body").on('ajax:success', ".my_form", function(json, data){
 
 
   
+
 
