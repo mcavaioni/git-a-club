@@ -5,9 +5,21 @@ $(function(){
     $('.user_form').show()
   })
 
-$("form.edit_user").on ('ajax:success', function(event, data, status, xhr){
+
+$('.my_name').on('click', function(){
+debugger;
+
+})
+
+
+
+
+
+
+$(".user_form").on ('ajax:success', function(event, data, status, xhr){
   
 
+debugger;
   var template = $(data.template)
   // debugger;
   $(this).parents('.parent-js').find('.thisone').html($(template))
