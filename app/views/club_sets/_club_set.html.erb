@@ -1,11 +1,10 @@
-<li>
-  <h3>Set Name: <%= club_set.name %></h3>
+<div class="col-md-3 car btn btn-default listing-button">
+  <h3><%= club_set.name %></h3>
   <p>Summary: <%= club_set.summary %></p>
-  <ul>Clubs:
+  <strong>Clubs</strong>
   <% club_set.clubs.each do |club| %>
-    <li><%= "#{club.description}" %></li>
+    <%= "#{club.description}" %><br>
   <% end %>
-  </ul>
   <%= button_to 'Delete', supplier_club_set_path(supplier, club_set), method: :delete %>
   <%= render partial: 'listings/new_form', locals: {obj: club_set} %>
-</li>
+</div>

@@ -8,6 +8,4 @@ $(document).on('page:load ready', function(){
       $('#flash-notice').text('Sorry! You cannot cancel a reservation less than 7 days prior.');
     }
   });
-
-
 });
