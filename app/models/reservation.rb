@@ -51,7 +51,7 @@ class Reservation < ActiveRecord::Base
 
   #   end
 
-  end
+  # end
 
   def valid_deletion
     if Date.current + 7 >= self.start_date
