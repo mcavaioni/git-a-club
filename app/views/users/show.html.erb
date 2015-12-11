@@ -1,5 +1,38 @@
 <div id="user-show-button-supply" ><%= button_to "Supply Clubs", @user.supplier ? supplier_path(@user.supplier) : new_supplier_path, class: "btn btn-success", method: :get %></div>
 
-<div id="user-show-button-rent"><%= button_to "Rent Clubs", listings_path, class: "btn btn-success", method: :get %></div>
 
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
+
+
+<%= button_to "Supply Clubs", @user.supplier ? supplier_path(@user.supplier) : new_supplier_path, method: :get %>
+<br>
+<%= button_to "Rent Clubs", listings_path, method: :get %>
+ -->
+<!-- <button class="btn-to-update">Update Info</button> -->
+<div class="parent-js" >
+<%= form_for @user, html: {class: "user_form"} , remote: true do |f| %>
+   <%= f.hidden_field :user_id, value: @user.id, class: "my_id" %>
+   <%= f.label "First Name" %>
+   <%= f.text_field :first_name%>
+   <%= f.label "Last Name" %>
+   <%= f.text_field :last_name %>
+   <%= f.label "Address" %>
+   <%= f.text_field :address %>
+   <%= f.label "Phone Number" %>
+   <%= f.text_field :phone_number %>
+   <%= f.submit  %>
+
+</div>
+ <% end %> 
+
+<!-- <button class="btn-to-update">Update Info</button> -->
+<div class="high-div">
+<div class="my_name">
+
+ <center><h4>First name:</h4><%=@user.first_name %></center>
+ <center><h4>Last name:</h4><%=@user.last_name %></center>
+ <center><h4>Address:</h4><%=@user.address %></center>
+ <center><h4>Phone number:</h4><%=@user.phone_number %></center>
+</div>
+</div>
+

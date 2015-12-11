@@ -20,6 +20,7 @@ class Reservation < ActiveRecord::Base
   validate :reservation_available_validation, :valid_start_date
 
   before_destroy :valid_deletion
+  # after_create :verify_listing
 
   def self.upcoming_reservations_by(obj)
     self.where(obj.class.to_s.downcase.to_sym => obj).where("finish_date >= ?", Date.current)
@@ -45,6 +46,21 @@ class Reservation < ActiveRecord::Base
   private
 
   include Validable::StartDate
+
+  # def verify_listing
+  #   binding.pry
+  #   if self.listing.listable_type == "Club"
+  #     reservation_start_date = self.start_date
+  #     reservation_finish_date = self.finish_date
+  #     reservation_dates = (self.start_date..self.finish_date).to_a
+
+  #     listing_start_date = self.listing.start_date
+  #     listing_finish_date = self.listing.finish_date
+  #     listing_dates = (self.listing.start_date..self.listing.finish_date).to_a
+
+  #   end
+
+  # end
 
   def valid_deletion
     if Date.current + 7 >= self.start_date

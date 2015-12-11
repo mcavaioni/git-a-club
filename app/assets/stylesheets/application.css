@@ -15,4 +15,5 @@
  *= require_tree ../images
  *= require_self
  *= require bootstrap.css
+ *= require user1
  */
