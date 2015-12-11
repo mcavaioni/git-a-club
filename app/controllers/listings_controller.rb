@@ -21,12 +21,12 @@ class ListingsController < ApplicationController
     render 'listings/supplier_index.html.erb'
   end
 
-  def four_listings
-    start_load = (params[:start_row]).to_i
-    listings = Listing.all
-    html_string = render_to_string 'listings/_listing_row', locals: {listings: listings, start_load:start_load}, layout: false
-    render json: {new_row: html_string}
-  end
+  # def four_listings
+  #   start_load = (params[:start_row]).to_i
+  #   listings = Listing.all
+  #   html_string = render_to_string 'listings/_listing_row', locals: {listings: listings, start_load:start_load}, layout: false
+  #   render json: {new_row: html_string}
+  # end
 
   def show
     @listing = Listing.find(params[:id])
