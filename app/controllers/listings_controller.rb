@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
 
   def supplier_listings
     @club_listings = @supplier.listable_listings('clubs')
-    @club_set_listings = @supplier.listable_listings('club_sets')
+    @club_set_listings = @supplier.listable_listings('club_sets').uniq
     render 'listings/supplier_index.html.erb'
   end
 

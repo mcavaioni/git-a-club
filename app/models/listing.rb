@@ -21,11 +21,63 @@ class Listing < ActiveRecord::Base
   validates :start_date, :finish_date, :price, presence: true
   validate :valid_start_date
 
-  def self.get_by_clubs(clubs)
-    where(listable:clubs).where(active:true).where("finish_date >= ?", Date.current)
+  ### Advanced Active Record SQL
+  def self.convert_to_dollars(cents)
+    (cents.to_f/100.0).round(2)
   end
 
+  def self.average_price_active_club
+    average_club_price = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
+      where("clubs.active=true").
+      average("listings.price")
+    convert_to_dollars(average_club_price)
+  end
 
+  def self.average_price_active_club_type
+    average_price_club_type_hash = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
+      joins("INNER JOIN generic_clubs ON generic_club_id = generic_clubs.id").
+      where("clubs.active=true").
+      group("generic_clubs.club_type").
+      average("listings.price")
+    average_price_club_type_hash.each_with_object({}){|(k,v), hash| hash[k] = convert_to_dollars(v)}
+  end
+
+  def self.average_price_active_club_set
+    average_club_set_price = joins("INNER JOIN club_sets ON listings.listable_id = club_sets.id").
+      where("club_sets.active=true").
+      average("listings.price")
+    convert_to_dollars(average_club_set_price)
+  end
+
+  def self.percent_under_five
+    listings_under_5 = where("price <= 500").count
+    total_num_of_listings = all.count
+    (listings_under_5/total_num_of_listings.to_f * 100).round(2)
+  end
+
+  def self.active_and_current
+    where(active:true).where("finish_date >= ?", Date.current)
+  end
+
+  def self.number_of_uniq_club
+    active_and_current.where(listable_type:'Club').pluck(:listable_id).uniq.count.to_f
+  end
+
+  def self.number_of_uniq_club_set
+    active_and_current.where(listable_type:'ClubSet').pluck(:listable_id).uniq.count.to_f
+  end
+
+  def self.uniq_club_ratio
+    (number_of_uniq_club/active_and_current.count * 100).round(2)
+  end
+
+  def self.uniq_club_set_ratio
+    (number_of_uniq_club_set/active_and_current.count * 100).round(2)
+  end
+
+  def self.get_by_listable(listable)
+    where(listable:listable).where(active:true).where("finish_date >= ?", Date.current)
+  end
 
   def availability
     availability_range = (self.start_date..self.finish_date).to_a

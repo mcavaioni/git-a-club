@@ -1,0 +1,7 @@
+<tr>
+  <td width='50%'><%= link_to "#{reservation.listing.listable.class} : #{reservation.listing.listable.description}", renter_reservation_path(renter, reservation) %></td>
+  <td width='15%'><%= reservation.format_date(reservation.start_date) %></td>
+  <td width='15%'><%= reservation.format_date(reservation.finish_date) %></td>
+  <td width='10%'>$<%= reservation.display_total_cost %></td>
+  <td width='10%'><%= button_to 'Cancel', {:controller => :reservations, :action => 'destroy', :renter_id => reservation.renter.id, id: reservation.id }, :method => :delete, class: 'cancel-reservation', remote: true, data: {confirm: "Are you sure?"} %></td>
+</tr>

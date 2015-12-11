@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-  before_action :find_renter, only: [:index, :create]
-  before_action :find_reservation, only: [:destroy]
+  before_action :find_renter, only: [:index, :create, :show, :destroy]
+  before_action :find_reservation, only: [:destroy, :show]
 
   def new
     @listing = Listing.find(params[:listing_id])
@@ -11,29 +11,7 @@ class ReservationsController < ApplicationController
     @reservation = @renter.reservations.build(reservation_params)
     @listing = Listing.find(@reservation.listing_id)
     @reservation.valid?
-    render json: {:notice => @reservation.errors.full_messages,
-                  :form_data => {:cost => @reservation.display_total_cost,
-                                :start => @reservation.format_date(@reservation.start_date),
-                                :end => @reservation.format_date(@reservation.finish_date),
-                                :reservation_data => {:start_date => @reservation.start_date,
-                                                      :finish_date => @reservation.finish_date,
-                                                      :listing_id => @reservation.listing_id,
-                                                      }
-                                }
-                  }
-
-
-    # if @reservation.save
-    #   flash[:notice] = 'Reservation Confirmed!'
-    #   redirect_to renter_reservations_path(@renter)
-    #   # new_listing_dates = @listing.availability.to_s
-    #   # render json: {:notice => 'Confirmed', dateData: new_listing_dates}
-    # else
-    #   flash[:notice] = 'Selected dates are not available.'
-    #   redirect_to @listing
-    #   # render json: {:notice => @reservation.errors.full_messages}      
-    #   # render 'listings/show'
-    # end
+    render json: ReservationJsonViewObject.new(@reservation).get_json_for_reservation
   end
 
   def charge
@@ -50,12 +28,15 @@ class ReservationsController < ApplicationController
   end
 
   def show
-
+    @supplier = @reservation.listing.listable.supplier.user
   end
 
   def destroy
     @reservation.destroy
-    render json: {errors: @reservation.errors.messages[:status]}
+    respond_to do |format|
+      format.html redirect_to renter_reservations_path(@renter)
+      format.json render json: {errors: @reservation.errors.messages[:status]}
+    end
   end
 
   private

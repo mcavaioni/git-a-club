@@ -27,9 +27,34 @@ class ClubSet < ActiveRecord::Base
   validate :all_same_hand, :all_same_gender
   validate :required_wedges, :required_clubs
 
-  def self.find_by_generic_clubs(generic_club_array)
-    # where(generic_club:generic_club_array)
-    # joins(clubs: :generic_club).where(generic_club:generic_club_array)
+  def self.find_sets_where(search_params)
+    # add step to remove the required clubs from the search
+    # find by gender and hand - hold off on this
+
+    sets_array = find_by_each_type(search_params[:club_type])
+    get_intersection_of_sets(sets_array)
+
+  end
+
+  def self.find_by_each_type(types)
+    types.collect do |club_type|
+      find_sets_by_single_type(club_type)
+    end
+  end
+
+  def self.find_sets_by_single_type(club_type)
+    joins(:generic_clubs).where("generic_clubs.club_type = ?", club_type)
+  end
+
+  def self.get_intersection_of_sets(sets_array)
+    first_set = sets_array[0]
+    sets_array.inject(first_set) do |set_array, intersection|
+      intersection = intersection & set_array
+    end
+  end
+
+  def self.find_by_gender_hand(gender, hand)
+
   end
 
   def description
@@ -39,7 +64,8 @@ class ClubSet < ActiveRecord::Base
   end
 
   # ClubSet.joins(club_set_clubs:{club: :generic_club})
-  
+  # ClubSet.joins(club_set_clubs:{club: :generic_club}).where("generic_clubs.club_type = ?",['3_wood'])
+
   private
 
   include Validable::ClubSetValidations

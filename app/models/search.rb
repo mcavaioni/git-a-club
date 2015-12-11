@@ -7,6 +7,7 @@ class Search # < ActiveRecord::Base
     # New Listings
     # Time.current.begining_of_month
     # Reservations in the past 30days?
+    # Cheap stuff
 
     def initialize(search_type,search_params)
       @search_type = search_type
@@ -15,17 +16,17 @@ class Search # < ActiveRecord::Base
 
     def get_results
       sanitize_search_params
-      @generic_clubs = GenericClub.where(search_params)
-      clubs = get_results_by_type
-      Listing.get_by_clubs(clubs)
+      get_results_by_type
     end
 
     def get_results_by_type
       if search_type == 'club'
-        Club.find_by_generic_clubs(generic_clubs)
+        generic_clubs = GenericClub.where(search_params)
+        listable = Club.find_by_generic_clubs(generic_clubs)
       else
-        # ClubSet.joins(club_set_clubs:{club: :generic_club})
+        listable = ClubSet.find_sets_where(search_params)
       end
+      Listing.get_by_listable(listable)
     end
 
     def sanitize_search_params

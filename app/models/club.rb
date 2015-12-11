@@ -34,6 +34,10 @@ class Club < ActiveRecord::Base
     where(generic_club:generic_club_array).where(active:true)
   end
 
+  def self.active_clubs
+    Club.where(active:true)
+  end
+
   def generic_club_attributes=(generic_club_attributes_hash)
     # generic_club_attributes_hash[:brand].downcase!
     generic_club = GenericClub.find_or_create_by(generic_club_attributes_hash)
@@ -56,11 +60,10 @@ class Club < ActiveRecord::Base
 
   def club_set_member
    if !self.active
-     self.club_sets.each do |club_set|
-     club_set.active = false
-     club_set.save
+      self.club_sets.each do |club_set|
+        club_set.active = false
+        club_set.save
       end
-   end
- end
-
- end
+    end
+  end
+end
