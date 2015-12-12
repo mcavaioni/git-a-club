@@ -1,6 +1,6 @@
 $(document).on('page:load ready',function(){
   var url = this.URL.split('/')
-  var length = this.URL.length
+  var length = url.length
   var analytics = url[length-1]
   if (analytics == "analytics"){
     $.getJSON('/pages/analytics', function(data){

@@ -28,7 +28,7 @@ class Listing < ActiveRecord::Base
 
   def self.average_price_active_club
     average_club_price = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
-      where("clubs.active=true").
+      where("clubs.active=true").where("listable_type='Club'").
       average("listings.price")
     convert_to_dollars(average_club_price)
   end
@@ -36,7 +36,7 @@ class Listing < ActiveRecord::Base
   def self.average_price_active_club_type
     average_price_club_type_hash = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
       joins("INNER JOIN generic_clubs ON generic_club_id = generic_clubs.id").
-      where("clubs.active=true").
+      where("clubs.active=true").where("listable_type='Club'").
       group("generic_clubs.club_type").
       average("listings.price")
     average_price_club_type_hash.each_with_object({}){|(k,v), hash| hash[k] = convert_to_dollars(v)}
@@ -44,7 +44,7 @@ class Listing < ActiveRecord::Base
 
   def self.average_price_active_club_set
     average_club_set_price = joins("INNER JOIN club_sets ON listings.listable_id = club_sets.id").
-      where("club_sets.active=true").
+      where("club_sets.active=true").where("listable_type='Club'").
       average("listings.price")
     convert_to_dollars(average_club_set_price)
   end

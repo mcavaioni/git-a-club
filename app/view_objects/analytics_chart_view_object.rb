@@ -1,31 +1,22 @@
 class AnalyticsChartViewObject
 
-  attr_accessor :average_price_active_club_type
+  attr_accessor :labels, :data
 
-  def initialize(average_price_active_club_type)
-    @average_price_active_club_type = average_price_active_club_type
-  end
-
-  def get_club_types
-    average_price_active_club_type.keys
-  end
-
-  def data_set_array
-    average_price_active_club_type.values
+  def initialize(labels, data)
+    @labels = labels
+    @data = data
   end
 
   def make_data_hash
-    # club_types = get_club_types
-    # data_set = data_set_array
     {
-    labels: get_club_types,
+    labels: labels,
     datasets: [
       {
         fillColor: "rgba(220,220,220,0.5)",
         strokeColor: "rgba(220,220,220,1)",
         pointColor: "rgba(220,220,220,1)",
         pointStrokeColor: "#fff",
-        data: data_set_array
+        data: data
       }
     ]
     }
