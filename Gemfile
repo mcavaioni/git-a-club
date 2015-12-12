@@ -6,7 +6,7 @@ gem 'chart-js-rails'
 
 gem 'active_model_serializers'
 gem 'rack-cors', :require => 'rack/cors'
-gem 'rails-api'
+# gem 'rails-api'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

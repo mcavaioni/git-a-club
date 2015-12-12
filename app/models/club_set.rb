@@ -27,10 +27,18 @@ class ClubSet < ActiveRecord::Base
   validate :all_same_hand, :all_same_gender
   validate :required_wedges, :required_clubs
 
+  def self.club_sets_by_size
+    club_set_sizes = select("club_sets.id").joins(:clubs).where("club_sets.active=true")
+    .group('club_sets.id').count('clubs')
+    club_set_sizes.values.uniq.each_with_object({}) do |size, hash|
+      hash[size] = club_set_sizes.values.count(size)
+    end
+  end
+
   def self.find_sets_where(search_params)
     # add step to remove the required clubs from the search
     # find by gender and hand - hold off on this
-
+    search_params[:club_type] ||= ["putter"]
     sets_array = find_by_each_type(search_params[:club_type])
     get_intersection_of_sets(sets_array)
 

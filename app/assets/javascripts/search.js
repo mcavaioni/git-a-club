@@ -3,7 +3,7 @@ $(document).on('page:load ready',function(){
   $("form#listings-search").on('ajax:success', function(event, data, status, xhr){
     var source = $('#entry-template').html();
     var template = Handlebars.compile(source);
-    var listings = data;
+    var listings = data.searches;
     $('.search-results').html('');
     var listing_results = "";
     listings.forEach(function(listing){
