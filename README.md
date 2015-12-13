@@ -1,2 +1,2 @@
-# git-a-club
+# Git-A-Club
 golf clubs rental
