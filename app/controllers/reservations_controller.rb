@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :find_renter, only: [:index, :create, :show, :destroy]
   before_action :find_reservation, only: [:destroy, :show]
-  before_action :find_supplier, only: [:show, :create, :new, :charge, :show]
+  before_action :find_supplier, only: [:show, :create, :new, :charge, :show,]
 
   def new
     @listing = Listing.find(params[:listing_id])
@@ -58,11 +58,14 @@ class ReservationsController < ApplicationController
   end
 
   def find_renter
-    @renter = Renter.find(params[:renter_id])
+    @renter = current_user.renter
   end
 
   def find_reservation
     @reservation = Reservation.find(params[:id])
   end
 
+  def find_supplier
+    @supplier = current_user.supplier
+  end
 end
