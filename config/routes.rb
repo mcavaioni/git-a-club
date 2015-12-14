@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'search/listings' => 'searches#listings'
   post 'listings/:listing_id/charge' => 'reservations#charge', as: 'reservation_charge'
 
+  get 'reservations/show_upcoming' => 'reservations#show_upcoming'
+  get 'reservations/show_past' => 'reservations#show_past'
+
   resources :users do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
     # resources :listings, except: [:index]
