@@ -9,7 +9,7 @@
     $.getJSON(listing_id, function(data){
       var source = $('#entry-template').html();
       var template = Handlebars.compile(source);
-      var listings = data;
+      var listings = data.listings;
       $('.search-results').html('')
       var listing_results = ""
       listings.forEach(function(listing){
