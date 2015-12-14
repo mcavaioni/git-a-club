@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-  before_action :find_supplier
+  before_action :find_supplier, except: [:index]
   before_action :find_club, only:[:destroy]
 
   def new
@@ -23,6 +23,11 @@ class ClubsController < ApplicationController
     # REPLACE WITH .club_attributes METHOD
     flash.now[:notice] = "Your club has been removed."
     redirect_to @supplier
+  end
+
+  def index
+    @clubs = current_user.supplier.clubs.where(active: true)
+    render json: ClubsJsonViewObject.new(@clubs).get_json
   end
 
 private

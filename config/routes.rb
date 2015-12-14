@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'listings/show_clubs' => 'listings#show_clubs'
   get 'listings/show_club_sets' => 'listings#show_club_sets'
   get 'listings/:id/details' => 'listings#details'
+  resources :clubs, only: [:index]
 
   resources :users do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'

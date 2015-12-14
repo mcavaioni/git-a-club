@@ -65,3 +65,26 @@ function listingDetails(){
     $('#show-details').append(reservation_details_html);
   })
 }
+
+$(document).on('page:load ready', function(){
+  $('.clubs-index').on('ajax:success', function(event, data, status, xhr){
+    $('#show-details').children().remove();
+    $('#clubs-index').children().remove();
+    var source = $('#clubs-template').html();
+    var template = Handlebars.compile(source);
+    var clubs_html = template(data);
+    $('#clubs-index').append(clubs_html);
+    clubDetails();
+  });
+})
+
+function clubDetails(){
+  $('.club-details-link').on('ajax:success', function(event, data, status, xhr){
+    debugger;
+    // $('#show-details').children().remove();
+    // var source = $('#listing-details-template').html();
+    // var template = Handlebars.compile(source);
+    // var reservation_details_html = template(data);
+    // $('#show-details').append(reservation_details_html);
+  })
+}
