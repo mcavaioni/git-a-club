@@ -3,7 +3,7 @@ $(document).on('page:load ready',function(){
     var width = 960,
         height = 136,
         cellSize = 17; // cell size
-    var percent = d3.format("Listings"),
+    var percent = d3.format(),
         format = d3.time.format("%Y-%m-%d");
     var color = d3.scale.quantize()
         .domain([0, 35])
@@ -44,7 +44,7 @@ $(document).on('page:load ready',function(){
       rect.filter(function(d) { return d in data; })
           .attr("class", function(d) { return "day " + color(data[d]); })
         .select("title")
-          .text(function(d) { return d + ": " + percent(data[d]); });
+          .text(function(d) { return d + ": " + percent(data[d]) + " Listings"; });
     });
     function monthPath(t0) {
       var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
