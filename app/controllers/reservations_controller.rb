@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :find_renter, only: [:index, :create, :show, :destroy]
   before_action :find_reservation, only: [:destroy, :show]
+  before_action :find_supplier, only: [:show, :create, :new, :charge, :show]
 
   def new
     @listing = Listing.find(params[:listing_id])
