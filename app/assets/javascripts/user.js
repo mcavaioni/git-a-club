@@ -7,6 +7,8 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#upcoming-reservations').append(reservations_html);
     reservationDetails();
+    cancelHandler();
+    clearFlash();
   });
 })
 
@@ -31,7 +33,7 @@ function reservationDetails(){
     $('#show-details').append(reservation_details_html);
   })
 }
-  
+
 $(document).on('page:load ready', function(){
   $('.club-listings').on('ajax:success', function(event, data, status, xhr){
     $('#show-details').children().remove();
@@ -86,5 +88,23 @@ function clubDetails(){
     // var template = Handlebars.compile(source);
     // var reservation_details_html = template(data);
     // $('#show-details').append(reservation_details_html);
-  })
+  });
+}
+
+function clearFlash(){
+  $('a:not(.user-page-cancel)').on('click', function(event, data, status, xhr){
+    $('.text-warning').text('');
+  });
+}
+
+function cancelHandler(){
+  $('.user-page-cancel').on('ajax:success', function(event, data, status, xhr){
+    if (data.errors == null) {
+      // do nothing yet
+    }else{
+      var error = data.errors[0];
+      $('.text-warning').text(error);
+      debugger;
+    }
+  });
 }
