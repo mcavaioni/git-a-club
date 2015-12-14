@@ -26,6 +26,18 @@ class Listing < ActiveRecord::Base
     (cents.to_f/100.0).round(2)
   end
 
+  def self.find_club_listings_by_user(user)
+    joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
+    joins("INNER JOIN suppliers ON supplier_id = suppliers.id").
+    joins("INNER JOIN users ON user_id = users.id").
+    where("users.id = ?", user.id).where("listable_type='Club'")
+  end
+
+  def self.find_club_set_listings_by_user(user)
+    where(listable_type: 'ClubSet').
+    select{|listing| listing.listable.clubs.first.supplier.user = user}
+  end
+
   def self.average_price_active_club
     average_club_price = joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
       where("clubs.active=true").where("listable_type='Club'").
@@ -44,7 +56,7 @@ class Listing < ActiveRecord::Base
 
   def self.average_price_active_club_set
     average_club_set_price = joins("INNER JOIN club_sets ON listings.listable_id = club_sets.id").
-      where("club_sets.active=true").where("listable_type='Club'").
+      where("club_sets.active=true").where("listable_type='ClubSet'").
       average("listings.price")
     convert_to_dollars(average_club_set_price)
   end

@@ -36,6 +36,21 @@ class ListingsController < ApplicationController
     end
   end
 
+  def details
+    @listing = Listing.find(params[:id])
+    render json: ListingJsonViewObject.new(@listing).get_json
+  end
+
+  def show_clubs
+    @listings = Listing.find_club_listings_by_user(current_user)
+    render json: ListingsTypesJsonViewObject.new(@listings).get_json
+  end
+
+  def show_club_sets
+    @listings = Listing.find_club_set_listings_by_user(current_user)
+    render json: ListingsTypesJsonViewObject.new(@listings).get_json
+  end
+
   def create
     priced_params = listing_params
     priced_params[:price] = listing_params[:price].to_i * 100

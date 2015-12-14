@@ -1,4 +1,4 @@
-<script id="reservations-template" type="text/x-handlebars-template">
+<script id="listings-template" type="text/x-handlebars-template">
   <div class='col-md-12'>
     <table class="table table-striped table-hover ">
       <thead>
@@ -6,14 +6,14 @@
           <th width='41%'>Type</th>
           <th width='17%'>Start</th>
           <th width='17%'>End</th>
-          <th width='15%'>Total</th>
+          <th width='15%'>Price</th>
           <th width='10%'>Options</th>
         </tr>
       </thead>
       <tbody>
-        {{#each reservations as |reservation|}}
+        {{#each listings as |listing|}}
           <tr>
-            <td width='41%'><a href={{url}} class='reservation-details-link' data-method='get' data-remote='true'>{{description}}</a></td>
+            <td width='41%'><a href={{url}} class='listing-details-link' data-method='get' data-remote='true'>{{description}}</a></td>
             <td width='17%'>{{start_date}}</td>
             <td width='17%'>{{finish_date}}</td>
             <td width='15%'>${{price}}</td>
