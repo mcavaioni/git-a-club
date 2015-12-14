@@ -17,4 +17,8 @@ class ReservationDetailsViewObject
       address: reservation.listing.listable.supplier.user.address
     }
   end
+
+  # def get_supplier(listable)
+  #   listable.class == 'Club' ? listable.supplier.user.full_name : listable.clubs.first.supplier.user.full_name
+  # end
 end

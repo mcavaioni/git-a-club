@@ -27,6 +27,10 @@ class ClubSet < ActiveRecord::Base
   validate :all_same_hand, :all_same_gender
   validate :required_wedges, :required_clubs
 
+  def supplier
+    self.clubs.first.supplier
+  end
+
   def self.club_sets_by_size
     club_set_sizes = select("club_sets.id").joins(:clubs).where("club_sets.active=true")
     .group('club_sets.id').count('clubs')
