@@ -92,6 +92,17 @@
   opacity: 1;
 }
 
+.user-image{
+  color:#fff;
+  height: 200px;
+  width: 200px;
+  opacity: 1;
+}
+
 .center {
   text-align: center;
+}
+
+.hide {
+  display: none;
 }

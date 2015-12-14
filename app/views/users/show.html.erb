@@ -29,9 +29,45 @@
 <div class="high-div">
 <div class="my_name">
 
- <center><h4>First name:</h4><%=@user.first_name %></center>
- <center><h4>Last name:</h4><%=@user.last_name %></center>
- <center><h4>Address:</h4><%=@user.address %></center>
- <center><h4>Phone number:</h4><%=@user.phone_number %></center>
+ <center></center>
+ <center></center>
+ <center></center>
+ <center></center>
 </div>
 </div>
+
+<div class="row">
+   <div class="col-xs-1"></div>
+   <div class="col-xs-2 jumbotron">
+      <div class="row">
+         <center><img src="/assets/user.png" class='user-image' align='middle'></center>
+      </div>
+      <h5><strong>Name: </strong><%=@user.first_name %> <%=@user.last_name %></h5>
+      <h5><strong>Email: </strong><%=@user.email %></h5>
+      <h5><strong>Address: </strong><%=@user.address %></h5>
+      <h5><strong>Phone number: </strong><%=@user.phone_number %></h5>
+   </div>
+   <div class="col-xs-6">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="/reservations/show_upcoming" data-toggle="tab" aria-expanded="true" data-remote='true' class='upcoming-reservations' data-target="#upcoming-reservations" >Upcoming Reservations</a></li>
+        <li class=""><a href="/reservations/show_past" data-toggle="tab" aria-expanded="false" data-remote='true' class='past-reservations' data-target="#past-reservations">Past Reservations</a></li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="upcoming-reservations">
+          
+        </div>
+        <div class="tab-pane fade" id="past-reservations">
+
+        </div>
+      </div>
+   </div>
+   <div class="col-xs-2" id='show-reservation-details'>
+      
+   </div>
+   <div class="col-xs-1"></div>
+</div>
+
+<%= render 'users/reservations_handlebars.html.erb' %>
+
+<%= render 'users/reservation_details_handlebars.html.erb' %>
+

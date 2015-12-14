@@ -28,7 +28,18 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @supplier = @reservation.listing.listable.supplier.user
+    # @supplier = @reservation.listing.listable.supplier.user
+    render json: ReservationDetailsViewObject.new(@reservation).get_json
+  end
+
+  def show_upcoming
+    @upcoming_reservations = Reservation.upcoming_reservations_by(current_user.renter)
+    render json: {reservations: ReservationsJsonViewObject.new(@upcoming_reservations).get_json }
+  end
+
+  def show_past
+    @past_reservations = Reservation.past_reservations_by(current_user.renter)
+    render json: {reservations: ReservationsJsonViewObject.new(@past_reservations).get_json }
   end
 
   def destroy

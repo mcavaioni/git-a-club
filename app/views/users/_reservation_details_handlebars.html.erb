@@ -1,0 +1,15 @@
+<script id="reservation-details-template" type="text/x-handlebars-template">
+  <div class='row jumbotron'>
+    <div class='col-xs-12'>
+      <h5><strong><u>Reservation Details</u></strong></h5>
+      <h6><strong>Host:</strong><br>{{supplier}}</h6>
+      <h6><strong>Pick-up Location:</strong><br>{{address}}</h6>
+      <h6><strong>Type:</strong><br>{{type}}</h6>
+      <h6><strong>Description:</strong><br>{{description}}</h6>
+      <h6><strong>Total:</strong><br>${{price}}</h6>
+      <h6><strong>Pick-up Date:</strong><br>{{start_date}}</h6>
+      <h6><strong>Return Date:</strong><br>{{finish_date}}</h6>
+      <h6><a href={{url}} data-method='delete'>Cancel</a></h6>
+    </div>
+  </div>
+</script>
