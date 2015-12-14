@@ -79,6 +79,10 @@ class Listing < ActiveRecord::Base
     where(listable:listable).where(active:true).where("finish_date >= ?", Date.current)
   end
 
+  def listing_range
+    (start_date..finish_date).to_a
+  end
+
   def availability
     availability_range = (self.start_date..self.finish_date).to_a
     reservations = self.reservations.select(&:persisted?)

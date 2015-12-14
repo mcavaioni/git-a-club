@@ -2,13 +2,13 @@ $(function(){
   var width = 960,
       height = 136,
       cellSize = 17; // cell size
-  var percent = d3.format(".1%"),
+  var percent = d3.format("Listings"),
       format = d3.time.format("%Y-%m-%d");
   var color = d3.scale.quantize()
-      .domain([-.05, .05])
+      .domain([0, 35])
       .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
   var svg = d3.select("#calendarAnalytics").selectAll("svg")
-      .data(d3.range(1990, 2011))
+      .data(d3.range(2015, 2017))
     .enter().append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -36,17 +36,10 @@ $(function(){
       .attr("class", "month")
       .attr("d", monthPath);
 
-  // d3.csv("dji.csv", function(error, csv) {
-  //   if (error) throw error;
-  //   var data = d3.nest()
-  //     .key(function(d) { return d.Date; })
-  //     .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
-  //     .map(csv);
-  d3.json("dji", function(error, json) {
-    debugger;
+  d3.json("dji.json", function(error, json) {
     if (error) throw error;
+    var data = json
 
-    // Sample data: {2010-10-01: 0.0037035252073270622, 2010-09-30: -0.0044213895215559915, 2010-09-29: -0.002090628275240782, 2010-09-28: 0.004467222024357327, 2010-09-27: -0.004418956485387221…}
     rect.filter(function(d) { return d in data; })
         .attr("class", function(d) { return "day " + color(data[d]); })
       .select("title")

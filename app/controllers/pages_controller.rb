@@ -4,11 +4,8 @@ class PagesController < ApplicationController
   end
 
   def test_data
-    # render 'pages/dji'
-    # {'2015-12-15' => 10, '2015-12-16' => 25, '2015-12-17' => 3, '2015-12-18' => 40, '2015-12-19' => 65}
-    data = {'2010-10-01' => 0.0037035252073270622, '2010-09-30' => -0.0044213895215559915, '2010-09-29' => -0.002090628275240782, '2010-09-28' => 0.004467222024357327, '2010-09-27' => -0.00441895648538722}
-    binding.pry
-    redner json: data
+    data = ListingsHeatMapServiceObject.build_hash
+    render json: data
   end
 
   def analytics
