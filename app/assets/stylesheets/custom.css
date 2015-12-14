@@ -19,7 +19,7 @@
   display: none;
 }
 
-header {
+.homepage-background {
   background-image: url(/assets/git-a-club-background.jpg);
   background-repeat: none;
   background-attachment: scroll;
@@ -28,7 +28,7 @@ header {
   -moz-background-size:cover;background-size:cover;
   -o-background-size:cover;text-align:center;
   color:#fff;
-  height: 1000px;
+  height: 300px;
 }
 
 .calendar-container {
@@ -58,8 +58,8 @@ header {
 }
 
 .landing-page-text {
-  font-size: 750%;
-  color: white;
+  font-size: 550%;
+  color: #0c84e4;;
 }
 
 .reservation-show {
@@ -69,4 +69,29 @@ header {
 .buffer {
   padding: 5px;
   margin: 5px
+}
+
+.share-image{
+  color:#fff;
+  height: 100px;
+  width: 100px;
+  opacity: .9;
+}
+
+.cash-image{
+  color:#fff;
+  height: 100px;
+  width: 100px;
+  opacity: .45;
+}
+
+.golf-image{
+  color:#fff;
+  height: 100px;
+  width: 100px;
+  opacity: 1;
+}
+
+.center {
+  text-align: center;
 }
