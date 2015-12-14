@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('page:load ready',function(){
   if (isAnalyticsPage(this)){
     var width = 960,
         height = 136,
