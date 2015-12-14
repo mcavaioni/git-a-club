@@ -94,12 +94,15 @@ function clubDetails(){
 function clearFlash(){
   $('a:not(.user-page-cancel)').on('click', function(event, data, status, xhr){
     $('.text-warning').text('');
+    cancelHandler();
   });
 }
 
 function cancelHandler(){
-  $('.user-page-cancel').on('ajax:success', function(event, data, status, xhr){
+  $('a.user-page-cancel').on('ajax:success', function(event, data, status, xhr){
+      debugger;
     if (data.errors == null) {
+      // figure out how to remove 'this'
       // do nothing yet
     }else{
       var error = data.errors[0];

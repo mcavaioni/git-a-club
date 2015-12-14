@@ -17,10 +17,10 @@
             <td width='17%'>{{start_date}}</td>
             <td width='17%'>{{finish_date}}</td>
             <td width='15%'>${{price}}</td>
-            <th width='10%'><a href={{url}} data-method='delete'>Cancel</a></th>
+            <th width='10%'><a href={{url}} data-method='delete'  data-remote="true" class='user-page-cancel'>Cancel</a></th>
           </tr>
         {{/each}}
       </tbody>
-    </table> 
+    </table>
   </div>
 </script>
