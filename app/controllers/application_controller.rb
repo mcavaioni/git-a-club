@@ -16,9 +16,14 @@ class ApplicationController < ActionController::Base
 
   def require_user
     if !logged_in?
-      flash[:danger] = "You must be logged in"
+      flash[:notice] = "You must be logged in"
       redirect_to root_path
     end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 
   def json_request?

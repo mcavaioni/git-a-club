@@ -4,6 +4,8 @@ class ListingsController < ApplicationController
   # before_action :find_club, only: [:new, :create]
   # before_action :find_club_set, only: [:new, :create]
   before_action :find_supplier, only: [:supplier_listings]
+  before_action :require_user, only: [:create, :show, :new, :destroy]
+
 
   def new
     @listing = Listing.new
