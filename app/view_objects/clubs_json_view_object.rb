@@ -18,7 +18,8 @@ class ClubsJsonViewObject
       head_feature: club.generic_club.head_feature.capitalize,
       shaft_stiffness: club.generic_club.shaft_stiffness.capitalize,
       condition: club.condition.capitalize,
-      url: "/suppliers/#{club.supplier_id}/clubs/#{club.id}"
+      url: "/suppliers/#{club.supplier_id}/clubs/#{club.id}/listings/new",
+      obj_class: club.class
     }
   end
 end

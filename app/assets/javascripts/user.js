@@ -81,6 +81,10 @@ $(document).on('page:load ready', function(){
 function clubDetails(){
   $('.club-details-link').on('ajax:success', function(event, data, status, xhr){
     debugger;
+
+    var brand = $(this).parent().siblings('.club-brand').text();
+    var gender = $(this).parent().siblings('.club-gender').text();
+    var hand = $(this).parent().siblings('.club-hand').text();
     // $('#show-details').children().remove();
     // var source = $('#listing-details-template').html();
     // var template = Handlebars.compile(source);
@@ -88,3 +92,4 @@ function clubDetails(){
     // $('#show-details').append(reservation_details_html);
   })
 }
+
