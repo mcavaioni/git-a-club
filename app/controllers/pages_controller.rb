@@ -3,6 +3,13 @@ class PagesController < ApplicationController
 
   end
 
+  def test_data
+    # render 'pages/dji'
+    data = {'2010-10-01' => 0.0037035252073270622, '2010-09-30' => -0.0044213895215559915, '2010-09-29' => -0.002090628275240782, '2010-09-28' => 0.004467222024357327, '2010-09-27' => -0.00441895648538722}
+    binding.pry
+    redner json: data
+  end
+
   def analytics
     @listings_under_5 = Listing.percent_under_five
     @uniq_club_ratio = Listing.uniq_club_ratio
