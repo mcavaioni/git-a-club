@@ -23,7 +23,10 @@ class ApplicationController < ActionController::Base
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless @user == current_user
+    unless @user == current_user
+      flash[:notice] = "You must be logged in as the correct user to do this."
+      redirect_to(root_url)
+    end
   end
 
   def json_request?
