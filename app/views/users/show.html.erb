@@ -51,6 +51,8 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="/reservations/show_upcoming" data-toggle="tab" aria-expanded="true" data-remote='true' class='upcoming-reservations' data-target="#upcoming-reservations" >Upcoming Reservations</a></li>
         <li class=""><a href="/reservations/show_past" data-toggle="tab" aria-expanded="false" data-remote='true' class='past-reservations' data-target="#past-reservations">Past Reservations</a></li>
+        <li class=""><a href="/listings/show_clubs" data-toggle="tab" aria-expanded="false" data-remote='true' class='club-listings' data-target="#club-listings">Club Listings</a></li>
+        <li class=""><a href="/listings/show_club_sets" data-toggle="tab" aria-expanded="false" data-remote='true' class='club-set-listings' data-target="#club-set-listings">Set Listings</a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="upcoming-reservations">
@@ -59,9 +61,15 @@
         <div class="tab-pane fade" id="past-reservations">
 
         </div>
+        <div class="tab-pane fade" id="club-listings">
+
+        </div>
+        <div class="tab-pane fade" id="club-set-listings">
+
+        </div>
       </div>
    </div>
-   <div class="col-xs-2" id='show-reservation-details'>
+   <div class="col-xs-2" id='show-details'>
       
    </div>
    <div class="col-xs-1"></div>
@@ -71,3 +79,6 @@
 
 <%= render 'users/reservation_details_handlebars.html.erb' %>
 
+<%= render 'users/listings_handlebars.html.erb' %>
+
+<%= render 'users/listing_details_handlebars.html.erb' %>

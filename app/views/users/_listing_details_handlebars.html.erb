@@ -1,0 +1,16 @@
+<script id="listing-details-template" type="text/x-handlebars-template">
+  <div class='row jumbotron'>
+    <div class='col-xs-12'>
+      <h5><strong><u>Reservations</u></strong></h5>
+      {{#each reservations as |reservation|}}
+        <hr>
+        <h6><strong>Renter:</strong><br>{{renter}}</h6>
+        <h6><strong>Email:</strong><br>{{email}}</h6>
+        <h6><strong>Phone:</strong><br>{{phone}}</h6>
+        <h6><strong>Pick-up Date:</strong><br>{{start_date}}</h6>
+        <h6><strong>Return Date:</strong><br>{{finish_date}}</h6>
+        <h6><strong>Total:</strong><br>${{total}}</h6>
+      {{/each}}
+    </div>
+  </div>
+</script>
