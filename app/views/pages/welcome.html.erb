@@ -1,12 +1,50 @@
 <body id="page-top" class="index">
-  <header>
-      <div class="container">
-          <div class="intro-text">
-              <h2 class='landing-page-text'>Want to play a round...</h2>
-              <h1 class='landing-page-text'>Git-A-Club</h1>
-              <% if !logged_in? %>
-                <a href="/login" class="btn btn-success">Login</a>
-              <% end %>
-          </div>
-      </div>
+  <header class='homepage-background'>
+    <div class="container">
+        <div class="row intro-text">
+          <br>
+          <h1 class='landing-page-text'><strong><u>Git-A-Club</u></strong></h1>
+          <h2 class='landing-page-text'>Want to play a round...</h2>
+          <% if !logged_in? %>
+            <a href="/login" class="btn btn-success">Login</a>
+          <% end %>
+        </div>
+    </div>
   </header>
+</body>
+<div class="row"><br><br></div>
+<div class='row'>
+  <div class='col-xs-4 text center'>
+    <img src="/assets/share.png" class='share-image' align='middle'>
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <h2>Community</h2>
+        <p>Join the community and view all the listings of individual clubs and sets that our advid golfers have put up for rent.</p>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+  </div>
+  <div class='col-xs-4 center'>
+    <img src="/assets/cash.png" class='cash-image' align='middle'>
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <h2>Earn</h2>
+        <p>You too can be a supplier to those golfers in need. Sign up to earn cash for clubs you aren't using.</p>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+  </div>
+  <div class='col-xs-4 center'>
+    <img src="/assets/golf.png" class='golf-image' align='middle'>
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <h2>Golf</h2>
+        <p>Missing clubs for the day? Rent from one someone close to you. No need for renting subpar clubs at the course.</p>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+  </div>
+</div>
