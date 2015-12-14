@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   end
 
-  def test_data
+  def cal_data
     data = ListingsHeatMapServiceObject.build_hash
     render json: data
   end

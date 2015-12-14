@@ -36,7 +36,7 @@ $(function(){
       .attr("class", "month")
       .attr("d", monthPath);
 
-  d3.json("dji.json", function(error, json) {
+  d3.json("cal_data.json", function(error, json) {
     if (error) throw error;
     var data = json
 

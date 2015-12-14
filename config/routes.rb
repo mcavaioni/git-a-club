@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   get 'pages/analytics' => 'pages#analytics'
-  get 'pages/dji' => 'pages#test_data'
+  get 'pages/cal_data' => 'pages#cal_data'
 
   resources :charges
 
