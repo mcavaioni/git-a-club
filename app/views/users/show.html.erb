@@ -1,6 +1,6 @@
 <div class="row">
    <div class="col-xs-1"></div>
-   <div class="col-xs-2 jumbotron">
+   <div class="col-xs-2 jumbotron profile">
       <div class="row">
          <center><img src="/assets/user.png" class='user-image' align='middle'></center>
       </div>
@@ -16,6 +16,7 @@
         <li class=""><a href="/listings/show_clubs" data-toggle="tab" aria-expanded="false" data-remote='true' class='club-listings' data-target="#club-listings">Club Listings</a></li>
         <li class=""><a href="/listings/show_club_sets" data-toggle="tab" aria-expanded="false" data-remote='true' class='club-set-listings' data-target="#club-set-listings">Set Listings</a></li>
         <li class=""><a href="/clubs" data-toggle="tab" aria-expanded="false" data-remote='true' class='clubs-index' data-target="#clubs-index">Clubs</a></li>
+        <li class=""><a href="/sets" data-toggle="tab" aria-expanded="false" data-remote='true' class='sets-index' data-target="#sets-index">Sets</a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="upcoming-reservations">
@@ -31,6 +32,9 @@
 
         </div>
         <div class="tab-pane fade" id="clubs-index">
+
+        </div>
+        <div class="tab-pane fade" id="sets-index">
 
         </div>
       </div>
@@ -50,3 +54,7 @@
 <%= render 'users/listing_details_handlebars.html.erb' %>
 
 <%= render 'users/clubs_handlebars.html.erb' %>
+
+<%= render 'users/club_details_handlebars.html.erb' %>
+
+<%= render 'users/club_sets_handlebars.html.erb' %>

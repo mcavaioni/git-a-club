@@ -7,13 +7,12 @@ class ClubsController < ApplicationController
   end
 
   def create
+    binding.pry
     @club = @supplier.clubs.build(club_params)
-    if @club.save #=> change to if when validation is added
-      flash.now[:notice] = "Club sucessfully created"
-      redirect_to @supplier
+    if @club.save
+      render json: {success: "Club sucessfully created!"}
     else
-      render :new
-      flash.now[:notice] = "Error, club not created"
+      render json: {errors: "Error, club could not be created."}
     end
   end
 
@@ -26,8 +25,12 @@ class ClubsController < ApplicationController
   end
 
   def index
+    @club = Club.new
+    @supplier = current_user.supplier
+    new_club_form = render_to_string template: 'clubs/_new_form', locals: {club: @club, supplier: @supplier}, layout: false  
+    # new_club_form = render_to_string template: 'clubs/_new_table_form', locals: {club: @club, supplier: @supplier}, layout: false  
     @clubs = current_user.supplier.clubs.where(active: true)
-    render json: ClubsJsonViewObject.new(@clubs).get_json
+    render json: {table: ClubsJsonViewObject.new(@clubs).get_json, form: new_club_form}
   end
 
 private

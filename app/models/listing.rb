@@ -30,12 +30,12 @@ class Listing < ActiveRecord::Base
     joins("INNER JOIN clubs ON listings.listable_id = clubs.id").
     joins("INNER JOIN suppliers ON supplier_id = suppliers.id").
     joins("INNER JOIN users ON user_id = users.id").
-    where("users.id = ?", user.id).where("listable_type='Club'")
+    where("users.id = ?", user.id).where("listable_type='Club'").where(active: true)
   end
 
   def self.find_club_set_listings_by_user(user)
     where(listable_type: 'ClubSet').
-    select{|listing| listing.listable.clubs.first.supplier.user = user}
+    select{|listing| listing.listable.clubs.first.supplier.user.id == user.id && listing.listable.active}
   end
 
   def self.average_price_active_club

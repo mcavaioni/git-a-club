@@ -13,17 +13,17 @@
           <th width='10%'>Options</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id='club-table-body'>
         {{#each clubs as |club|}}
           <tr>
-            <td width='23%'><a href={{url}} class='club-details-link' data-method='get' data-remote='true'>{{club_type}}</a></td>
-            <td width='15%'>{{brand}}</td>
-            <td width='7%'>{{male}}</td>
-            <td width='7%'>{{righty}}</td>
-            <td width='10%'>{{head_feature}}</td>
-            <td width='13%'>{{shaft_stiffness}}</td>
-            <td width='15%'>{{condition}}</td>
-            <th width='10%'><a href={{url}} data-method='delete'>Deactivate</a></th>
+            <td width='23%' class='club-url'><a href={{url}} class='club-details-link' data-method='get' data-remote='true'>{{club_type}}</a></td>
+            <td width='15%' class='club-brand'>{{brand}}</td>
+            <td width='7%' class='club-gender'>{{male}}</td>
+            <td width='7%' class='club-hand'>{{righty}}</td>
+            <td width='10%' class='club-head'>{{head_feature}}</td>
+            <td width='13%' class='club-shaft'>{{shaft_stiffness}}</td>
+            <td width='15%' class='club-condition'>{{condition}}</td>
+            <td width='10%' class='club-deactivate'><a href={{url}} data-method='delete'>Deactivate</a></td>
           </tr>
         {{/each}}
       </tbody>
