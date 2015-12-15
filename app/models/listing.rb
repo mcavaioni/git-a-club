@@ -35,7 +35,7 @@ class Listing < ActiveRecord::Base
   end
 
   def self.find_club_set_listings_by_user(user)
-    where(listable_type: 'ClubSet').
+    where(listable_type: 'ClubSet').where(active:true).
     select{|listing| listing.listable.clubs.first.supplier.user = user}
   end
 
