@@ -1,4 +1,14 @@
 $(document).on('page:load ready', function(){
+  $.getJSON('/reservations/show_upcoming', function(data){
+    var source = $('#reservations-template').html();
+    var template = Handlebars.compile(source);
+    var reservations_html = template(data);
+    $('#upcoming-reservations').append(reservations_html);
+    reservationDetails();
+  });
+})
+
+$(document).on('page:load ready', function(){
   $('.upcoming-reservations').on('ajax:success', function(event, data, status, xhr){
     $('#show-details').children().remove();
     $('#upcoming-reservations').children().remove();
