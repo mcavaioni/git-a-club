@@ -121,6 +121,24 @@ function clubDetails(){
   });
 }
 
+$(document).on('page:load ready', function(){
+  $('.sets-index').on('ajax:success', function(event, data, status, xhr){
+    // debugger;
+    $('#new_club_container').remove();
+    $('#show-details').children().remove();
+    $('#sets-index').children().remove();
+    var source = $('#club_sets-template').html();
+    var template = Handlebars.compile(source);
+    var club_sets_html = template(data.table);
+    $('#sets-index').append(club_sets_html);
+    cancelHandler();
+  });
+})
+
+
+
+
+
 function listingForm(){
   $('#new_listing').on('ajax:success', function(event, data, status, xhr){
     $('#listing-form-notice').removeClass();

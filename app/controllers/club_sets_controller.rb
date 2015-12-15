@@ -2,6 +2,15 @@ class ClubSetsController < ApplicationController
   before_action :find_supplier, only: [:new, :create, :show, :destroy]
   before_action :find_club_set, only: [:show, :destroy]
 
+  def index
+    @club_set = ClubSet.new
+    @supplier = current_user.supplier
+    # new_club_form = render_to_string template: 'clubs/_new_form', locals: {club: @club, supplier: @supplier}, layout: false
+    # new_club_form = render_to_string template: 'clubs/_new_table_form', locals: {club: @club, supplier: @supplier}, layout: false
+    @club_sets = current_user.supplier.club_sets.select{|club_set| club_set.active}
+    render json: {table: ClubSetsJsonViewObject.new(@club_sets).get_json}
+  end
+
   def new
     @club_set = ClubSet.new
   end

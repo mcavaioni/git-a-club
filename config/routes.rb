@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'listings/:id/details' => 'listings#details'
   delete 'listings/:id/details' => 'listings#destroy'
   resources :clubs, only: [:index]
+  resources :club_sets, only: [:index]
 
   resources :users do
     # get 'users/:user_id/clubs/new' => 'users#clubs', as: 'clubs'
