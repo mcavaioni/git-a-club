@@ -10,6 +10,7 @@ $(document).on('page:load ready', function(){
 
 $(document).on('page:load ready', function(){
   $('.upcoming-reservations').on('ajax:success', function(event, data, status, xhr){
+    $('#new_club_container').remove();
     $('#show-details').children().remove();
     $('#upcoming-reservations').children().remove();
     var source = $('#reservations-template').html();
@@ -22,6 +23,7 @@ $(document).on('page:load ready', function(){
 
 $(document).on('page:load ready', function(){
   $('.past-reservations').on('ajax:success', function(event, data, status, xhr){
+    $('#new_club_container').remove();
     $('#show-details').children().remove();
     $('#past-reservations').children().remove();
     var source = $('#reservations-template').html();
@@ -44,6 +46,7 @@ function reservationDetails(){
   
 $(document).on('page:load ready', function(){
   $('.club-listings').on('ajax:success', function(event, data, status, xhr){
+    $('#new_club_container').remove();
     $('#show-details').children().remove();
     $('#club-listings').children().remove();
     var source = $('#listings-template').html();
@@ -56,6 +59,7 @@ $(document).on('page:load ready', function(){
 
 $(document).on('page:load ready', function(){
   $('.club-set-listings').on('ajax:success', function(event, data, status, xhr){
+    $('#new_club_container').remove();
     $('#show-details').children().remove();
     $('#club-set-listings').children().remove();
     var source = $('#listings-template').html();
@@ -78,13 +82,16 @@ function listingDetails(){
 
 $(document).on('page:load ready', function(){
   $('.clubs-index').on('ajax:success', function(event, data, status, xhr){
+    $('#new_club_container').remove();
     $('#show-details').children().remove();
     $('#clubs-index').children().remove();
     var source = $('#clubs-template').html();
     var template = Handlebars.compile(source);
-    var clubs_html = template(data);
+    var clubs_html = template(data.table);
     $('#clubs-index').append(clubs_html);
     clubDetails();
+    $('.profile').append($.parseHTML(data.form));
+    clubForm();
   });
 })
 
@@ -110,6 +117,20 @@ function listingForm(){
     } else {
       $('#listing-form-notice').toggleClass('alert alert-dismissible alert-danger');
       $('#listing-form-notice').text(data.errors)
+    }
+  });
+}
+
+function clubForm(){
+  $('#new_club').on('ajax:success', function(event, data, status, xhr){
+    $('#club-form-notice').removeClass();
+    $('#club-form-notice').empty();
+    if(data.errors == undefined){
+      $('#club-form-notice').toggleClass('alert alert-dismissible alert-success');
+      $('#club-form-notice').text(data.success)
+    } else {
+      $('#club-form-notice').toggleClass('alert alert-dismissible alert-danger');
+      $('#club-form-notice').text(data.errors)
     }
   });
 }
