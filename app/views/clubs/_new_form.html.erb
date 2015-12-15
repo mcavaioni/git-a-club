@@ -1,0 +1,40 @@
+<div id='new_club_container'>
+  <hr>
+  <div id='club-form-notice'><%= flash[:notice] %></div>
+  <h5><strong><u>Add Club</u></strong></h5>
+  <%= form_for(club, url: supplier_clubs_path(supplier), remote: true) do |f| %>
+    <%= f.fields_for :generic_club, GenericClub.new do |field|%>
+      <p>
+        <%= f.label :generic_club_type %>
+        <%= field.select :club_type, GenericClub::ClubTypes %>
+      </p>
+      <p>
+        <%= f.label :generic_club_brand %>
+        <%= field.text_field :brand%>
+      </p>
+      <p>
+        <%= f.label :gender %>:
+        <%= field.radio_button :male, true, checked: true%>Male
+        <%= field.radio_button :male, false%>Female
+      </p>
+      <p>
+        <%= f.label :righty %>:
+        <%= field.radio_button :righty, true, checked: true%>Righty
+        <%= field.radio_button :righty, false%>Lefty
+      </p>
+      <p>
+        <%= f.label :generic_club_head_feature %>
+        <%= field.select :head_feature, GenericClub::HeadFeatures %>
+      </p>
+      <p>
+        <%= f.label :generic_club_shaft_stiffness %>
+        <%= field.select :shaft_stiffness, GenericClub::ShaftStiffnesses %>
+      </p>
+    <% end %>
+    <p>
+      <%= f.label :club_condition %>
+      <%= f.select :condition, Club::Conditions %>
+    </p>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

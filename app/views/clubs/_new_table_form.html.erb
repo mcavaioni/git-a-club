@@ -1,0 +1,30 @@
+<div class='row'>
+  <%= form_for(club, url: supplier_clubs_path(supplier), remote: true) do |f| %>
+    <%= f.fields_for :generic_club, GenericClub.new do |field|%>
+      <div width='23%'>
+        <%= field.select :club_type, GenericClub::ClubTypes %>
+      </div>
+      <div width='15%'>
+        <%= field.text_field :brand %>
+      </div>
+      <div width='7%'>
+        <%= field.select :male, [['Male', true], ['Female', false]] %>
+      </div>
+      <div width='7%'>
+        <%= field.select :righty, [['Righty', true], ['Lefty', false]] %>
+      </div>
+      <div width='10%'>
+        <%= field.select :head_feature, GenericClub::HeadFeatures %>
+      </div>
+      <div width='13%'>
+        <%= field.select :shaft_stiffness, GenericClub::ShaftStiffnesses %>
+      </div>
+    <% end %>
+    <div width='15%'>
+      <%= f.select :condition, Club::Conditions %>
+    </div>
+    <div width='10%'>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
