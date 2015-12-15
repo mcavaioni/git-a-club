@@ -7,11 +7,10 @@ class ListingsController < ApplicationController
   before_action :require_user, only: [:create, :show, :new, :destroy]
 
   def new
-    binding.pry
     @obj = Club.find_by(id: params[:club_id]) || ClubSet.find_by(id: params[:club_set_id])
     @supplier = Supplier.find_by(id: params[:supplier_id])
     # obj_json =  @obj.class == 'Club' ? ClubsJsonViewObject.new([@obj]).get_json.first : 1 # change to club set once implemented
-    # obj_json = ClubsJsonViewObject.new([@obj]).get_json.first if @obj.class == 'Club'
+    obj_json = ClubsJsonViewObject.new([@obj]).get_json if @obj.class.to_s == 'Club'
     new_listing_form = render_to_string template: 'listings/_new_form', locals: {obj: @obj, supplier: @supplier}, layout: false  
     render json: {form: new_listing_form, obj: obj_json}
   end
@@ -60,14 +59,13 @@ class ListingsController < ApplicationController
 
   def create
     priced_params = listing_params
-    priced_params[:price] = listing_params[:price].to_i * 100
+    priced_params[:price] = listing_params[:price].to_f * 100
     @listing = Listing.new(priced_params)
 
     if @listing.save
-      html_string = render_to_string 'listings/_listing', locals: {listing: @listing}, layout: false
-      render json: {template: html_string}
+      render json: {success: 'Listing created!'}
     else
-      render json: {errors: 'Dates selected are not correct.'}
+      render json: {errors: 'Dates selected are not valid.'}
     end
   end
 

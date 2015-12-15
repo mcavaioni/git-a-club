@@ -80,16 +80,26 @@ $(document).on('page:load ready', function(){
 
 function clubDetails(){
   $('.club-details-link').on('ajax:success', function(event, data, status, xhr){
-    debugger;
-
-    var brand = $(this).parent().siblings('.club-brand').text();
-    var gender = $(this).parent().siblings('.club-gender').text();
-    var hand = $(this).parent().siblings('.club-hand').text();
-    // $('#show-details').children().remove();
-    // var source = $('#listing-details-template').html();
-    // var template = Handlebars.compile(source);
-    // var reservation_details_html = template(data);
-    // $('#show-details').append(reservation_details_html);
-  })
+    $('#show-details').children().remove();
+    var source = $('#club-details-template').html();
+    var template = Handlebars.compile(source);
+    var club_details_html = template(data.obj.clubs[0]);
+    $('#show-details').append(club_details_html);
+    $('#details').append($.parseHTML(data.form));
+    listingForm();
+  });
 }
 
+function listingForm(){
+  $('#new_listing').on('ajax:success', function(event, data, status, xhr){
+    $('#listing-form-notice').removeClass();
+    $('#listing-form-notice').empty();
+    if(data.errors == undefined){
+      $('#listing-form-notice').toggleClass('alert alert-dismissible alert-success');
+      $('#listing-form-notice').text(data.success)
+    } else {
+      $('#listing-form-notice').toggleClass('alert alert-dismissible alert-danger');
+      $('#listing-form-notice').text(data.errors)
+    }
+  });
+}
