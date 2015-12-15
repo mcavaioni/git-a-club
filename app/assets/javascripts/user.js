@@ -91,6 +91,7 @@ $(document).on('page:load ready', function(){
     $('#clubs-index').append(clubs_html);
     clubDetails();
     $('.profile').append($.parseHTML(data.form));
+    // $('#club-table-body').prepend($.parseHTML(data.form));
     clubForm();
   });
 })

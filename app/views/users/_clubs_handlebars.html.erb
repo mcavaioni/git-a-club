@@ -13,7 +13,7 @@
           <th width='10%'>Options</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id='club-table-body'>
         {{#each clubs as |club|}}
           <tr>
             <td width='23%' class='club-url'><a href={{url}} class='club-details-link' data-method='get' data-remote='true'>{{club_type}}</a></td>
@@ -23,7 +23,7 @@
             <td width='10%' class='club-head'>{{head_feature}}</td>
             <td width='13%' class='club-shaft'>{{shaft_stiffness}}</td>
             <td width='15%' class='club-condition'>{{condition}}</td>
-            <th width='10%' class='club-deactivate'><a href={{url}} data-method='delete'>Deactivate</a></th>
+            <td width='10%' class='club-deactivate'><a href={{url}} data-method='delete'>Deactivate</a></td>
           </tr>
         {{/each}}
       </tbody>
