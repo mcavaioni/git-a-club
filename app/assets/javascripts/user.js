@@ -18,8 +18,17 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#upcoming-reservations').append(reservations_html);
     reservationDetails();
+    cancelHandler();
+    clearFlash();
   });
 })
+
+// $(document).on('page:change', function(){
+//   debugger;
+//   cancelHandler();
+//   clearFlash();
+// })
+
 
 $(document).on('page:load ready', function(){
   $('.past-reservations').on('ajax:success', function(event, data, status, xhr){
@@ -31,6 +40,7 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#past-reservations').append(reservations_html);
     reservationDetails();
+    cancelHandler();
   });
 })
 
@@ -43,7 +53,7 @@ function reservationDetails(){
     $('#show-details').append(reservation_details_html);
   })
 }
-  
+
 $(document).on('page:load ready', function(){
   $('.club-listings').on('ajax:success', function(event, data, status, xhr){
     $('#new_club_container').remove();
@@ -54,6 +64,7 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#club-listings').append(reservations_html);
     listingDetails();
+    cancelHandler();
   });
 })
 
@@ -67,6 +78,7 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#club-set-listings').append(reservations_html);
     listingDetails();
+    cancelHandler();
   });
 })
 
@@ -93,6 +105,7 @@ $(document).on('page:load ready', function(){
     $('.profile').append($.parseHTML(data.form));
     // $('#club-table-body').prepend($.parseHTML(data.form));
     clubForm();
+    cancelHandler();
   });
 })
 
@@ -132,6 +145,24 @@ function clubForm(){
     } else {
       $('#club-form-notice').toggleClass('alert alert-dismissible alert-danger');
       $('#club-form-notice').text(data.errors)
+    }
+  });
+}
+
+
+function clearFlash(){
+  $('a:not(.user-page-cancel)').on('click', function(event, data, status, xhr){
+    $('.text-warning').text('');
+  });
+}
+
+function cancelHandler(){
+  $('a.user-page-cancel').on('ajax:success', function(event, data, status, xhr){
+    if (data.errors == null) {
+      $(this).parent().parent().remove()
+    }else{
+      var error = data.errors[0];
+      $('.text-warning').text(error);
     }
   });
 }

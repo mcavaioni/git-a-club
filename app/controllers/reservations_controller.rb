@@ -45,10 +45,7 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation.destroy
-    respond_to do |format|
-      format.html redirect_to renter_reservations_path(@renter)
-      format.json render json: {errors: @reservation.errors.messages[:status]}
-    end
+    render json: {errors: @reservation.errors.messages[:status]}
   end
 
   private
