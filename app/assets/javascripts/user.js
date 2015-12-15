@@ -12,6 +12,13 @@ $(document).on('page:load ready', function(){
   });
 })
 
+// $(document).on('page:change', function(){
+//   debugger;
+//   cancelHandler();
+//   clearFlash();
+// })
+
+
 $(document).on('page:load ready', function(){
   $('.past-reservations').on('ajax:success', function(event, data, status, xhr){
     $('#show-details').children().remove();
@@ -21,6 +28,7 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#past-reservations').append(reservations_html);
     reservationDetails();
+    cancelHandler();
   });
 })
 
@@ -43,6 +51,7 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#club-listings').append(reservations_html);
     listingDetails();
+    cancelHandler();
   });
 })
 
@@ -55,6 +64,7 @@ $(document).on('page:load ready', function(){
     var reservations_html = template(data);
     $('#club-set-listings').append(reservations_html);
     listingDetails();
+    cancelHandler();
   });
 })
 
@@ -77,12 +87,12 @@ $(document).on('page:load ready', function(){
     var clubs_html = template(data);
     $('#clubs-index').append(clubs_html);
     clubDetails();
+    cancelHandler();
   });
 })
 
 function clubDetails(){
   $('.club-details-link').on('ajax:success', function(event, data, status, xhr){
-    debugger;
     // $('#show-details').children().remove();
     // var source = $('#listing-details-template').html();
     // var template = Handlebars.compile(source);
@@ -94,20 +104,16 @@ function clubDetails(){
 function clearFlash(){
   $('a:not(.user-page-cancel)').on('click', function(event, data, status, xhr){
     $('.text-warning').text('');
-    cancelHandler();
   });
 }
 
 function cancelHandler(){
   $('a.user-page-cancel').on('ajax:success', function(event, data, status, xhr){
-      debugger;
     if (data.errors == null) {
-      // figure out how to remove 'this'
-      // do nothing yet
+      $(this).parent().parent().remove()
     }else{
       var error = data.errors[0];
       $('.text-warning').text(error);
-      debugger;
     }
   });
 }
