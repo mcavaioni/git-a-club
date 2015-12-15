@@ -70,7 +70,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @listing.active = false
     @listing.save
-    render json: {errors: @listing.errors.messages[:status]}
+    render json: {errors: @listing}
   end
 
   private
