@@ -34,4 +34,3 @@ A Marketplace application for golfers to connect with one another. Golfers can l
  * gem 'active_model_serializers'
  * gem 'rack-cors', :require => 'rack/cors'
 * Connect back end Rails API with a front end Ember application
-* 
