@@ -18,13 +18,20 @@ A Marketplace application for golfers to connect with one another. Golfers can l
   * `rails s`
 
 ### Technologies used in this project
-* Rails
+* Ruby on Rails
 * jQuery
 * jQuery UI
-* Handlebars
+* Handlebars.js
 * Chart.js
 * D3.js
 
 ### Running the test suite
 * `bin/rake db:migrate RAILS_ENV=test`
 * `rspec`
+
+### Future Features
+* Convert Rails backend to purely an API with the use of the following
+ * gem 'active_model_serializers'
+ * gem 'rack-cors', :require => 'rack/cors'
+* Connect back end Rails API with a front end Ember application
+* 
