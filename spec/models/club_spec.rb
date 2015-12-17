@@ -59,7 +59,7 @@ RSpec.describe Club do
       generic_club.save
       club.generic_club_id = generic_club.id
       club.save
-      expect(club.description).to eq("nike driver (M:R)")
+      expect(club.description).to eq("nike Driver (M:R)")
     end
   end
 
