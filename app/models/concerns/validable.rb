@@ -30,7 +30,7 @@ module Validable
       wedges_array = ["lob_wedge", "gap_wedge", "sand_wedge", "pitching_wedge"]
       wedge_intersection = default_wedge & wedges_array
       if wedge_intersection.empty?
-        errors.add(:clubSet, "a set must have a wedge")
+        errors.add(:clubSet, "A set must have a wedge")
       end
     end
 

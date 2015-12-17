@@ -1,6 +1,6 @@
 <div id='new_club_container'>
   <hr>
-  <div id='club-form-notice'><%= flash[:notice] %></div>
+  <div id='club-set-form-notice'><%= flash[:notice] %></div>
   <h5><strong><u>Add Set</u></strong></h5>
   <%= form_for(club_set, url: supplier_club_sets_path(supplier), remote: true) do |f| %>
     <%= f.label :name %>

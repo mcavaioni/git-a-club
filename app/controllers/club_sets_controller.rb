@@ -16,12 +16,18 @@ class ClubSetsController < ApplicationController
   end
 
   def create
-    # Change to JSON
+    # @club_set = ClubSet.new(club_set_params)
+    # if @club_set.save
+    #   redirect_to supplier_club_set_path(@supplier, @club_set)
+    # else
+    #   render 'club_sets/new'
+    # end
+
     @club_set = ClubSet.new(club_set_params)
     if @club_set.save
-      redirect_to supplier_club_set_path(@supplier, @club_set)
+      index
     else
-      render 'club_sets/new'
+      render json: {errors: @club_set.errors.full_messages}
     end
   end
 
@@ -33,7 +39,8 @@ class ClubSetsController < ApplicationController
     @club_set.active = false
     @club_set.save
     flash.now[:notice] = "Your club set has been removed."
-    redirect_to @supplier
+    # redirect_to @supplier
+    render json: {errors: @club_set.errors.messages[:status]}
   end
 
   private

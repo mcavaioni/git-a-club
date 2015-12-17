@@ -198,7 +198,7 @@ function clubSetsDisplay(data) {
   $('#sets-index').append(club_sets_html);
   clubSetDetails();
   $('.profile').append($.parseHTML(data.form));
-  // clubSetForm();
+  clubSetForm();
   cancelHandler();
   clearFlash();
 }
@@ -217,8 +217,14 @@ function clubSetDetails(){
 
 function clubSetForm(){
   $('#new_club_set').on('ajax:success', function(event, data, status, xhr){
-    debugger;
-    clubsDisplay(data);
+    $('#club-set-form-notice').removeClass();
+    $('#club-set-form-notice').empty();
+    if(data.errors == undefined){
+      clubSetsDisplay(data);
+    } else {
+      $('#club-set-form-notice').toggleClass('alert alert-dismissible alert-danger');
+      $('#club-set-form-notice').text(data.errors);
+    }
   });
 }
 
