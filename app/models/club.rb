@@ -50,12 +50,16 @@ class Club < ActiveRecord::Base
 
   def gender_handed
     handed = generic_club.righty ? "R" : "L"
-    gender = generic_club.righty ? "M" : "W"
+    gender = generic_club.male ? "M" : "W"
     "(#{gender}:#{handed})"
   end
 
   def description
-    "#{generic_club.brand} #{generic_club.club_type} #{gender_handed}"
+    "#{generic_club.brand} #{generic_club.club_type.capitalize} #{gender_handed}"
+  end
+
+  def complete_description
+    "#{description}\nHead Feature: #{generic_club.head_feature}\nShaft Stiffness: #{generic_club.shaft_stiffness}\nCondition: #{condition}"
   end
 
   def club_set_member

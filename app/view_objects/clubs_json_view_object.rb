@@ -20,7 +20,8 @@ class ClubsJsonViewObject
       condition: club.condition.capitalize,
       url: "/suppliers/#{club.supplier_id}/clubs/#{club.id}/listings/new",
       club_url: "/suppliers/#{club.supplier_id}/clubs/#{club.id}",
-      obj_class: club.class.to_s
+      obj_class: club.class.to_s,
+      description: club.complete_description
     }
   end
 end

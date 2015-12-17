@@ -10,7 +10,11 @@ class ListingsController < ApplicationController
     @obj = Club.find_by(id: params[:club_id]) || ClubSet.find_by(id: params[:club_set_id])
     @supplier = Supplier.find_by(id: params[:supplier_id])
     # obj_json =  @obj.class == 'Club' ? ClubsJsonViewObject.new([@obj]).get_json.first : 1 # change to club set once implemented
-    obj_json = ClubsJsonViewObject.new([@obj]).get_json if @obj.class.to_s == 'Club'
+    if @obj.class.to_s == 'Club'
+      obj_json = ClubsJsonViewObject.new([@obj]).get_json
+    else
+      obj_json = ClubSetJsonViewObject.new(@obj).get_json
+    end
     new_listing_form = render_to_string template: 'listings/_new_form', locals: {obj: @obj, supplier: @supplier}, layout: false  
     render json: {form: new_listing_form, obj: obj_json}
   end

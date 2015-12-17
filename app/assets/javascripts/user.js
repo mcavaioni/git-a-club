@@ -41,6 +41,7 @@ $(document).on('page:load ready', function(){
     $('#past-reservations').append(reservations_html);
     reservationDetails();
     cancelHandler();
+    clearFlash();
   });
 })
 
@@ -65,6 +66,7 @@ $(document).on('page:load ready', function(){
     $('#club-listings').append(reservations_html);
     listingDetails();
     cancelHandler();
+    clearFlash();
   });
 })
 
@@ -79,6 +81,7 @@ $(document).on('page:load ready', function(){
     $('#club-set-listings').append(reservations_html);
     listingDetails();
     cancelHandler();
+    clearFlash();
   });
 })
 
@@ -123,6 +126,7 @@ function clubsDisplay(data) {
   // $('#club-table-body').prepend($.parseHTML(data.form));
   clubForm();
   cancelHandler();
+  clearFlash();
 }
 
 function clubDetails(){
@@ -136,24 +140,6 @@ function clubDetails(){
     listingForm();
   });
 }
-
-$(document).on('page:load ready', function(){
-  $('.sets-index').on('ajax:success', function(event, data, status, xhr){
-    // debugger;
-    $('#new_club_container').remove();
-    $('#show-details').children().remove();
-    $('#sets-index').children().remove();
-    var source = $('#club_sets-template').html();
-    var template = Handlebars.compile(source);
-    var club_sets_html = template(data.table);
-    $('#sets-index').append(club_sets_html);
-    cancelHandler();
-  });
-})
-
-
-
-
 
 function listingForm(){
   $('#new_listing').on('ajax:success', function(event, data, status, xhr){
@@ -183,6 +169,67 @@ function clubForm(){
     clubsDisplay(data);
   });
 }
+
+$(document).on('page:load ready', function(){
+  $('.sets-index').on('ajax:success', function(event, data, status, xhr){
+    // $('#new_club_container').remove();
+    // $('#show-details').children().remove();
+    // $('#sets-index').children().remove();
+    // var source = $('#club_sets-template').html();
+    // var template = Handlebars.compile(source);
+    // var club_sets_html = template(data.table);
+    // $('#sets-index').append(club_sets_html);
+    // clubSetDetails();
+    // $('.profile').append($.parseHTML(data.form));
+    // // clubSetForm();
+    // cancelHandler();
+    // clearFlash();
+    clubSetsDisplay(data);
+  });
+})
+
+function clubSetsDisplay(data) {
+  $('#new_club_container').remove();
+  $('#show-details').children().remove();
+  $('#sets-index').children().remove();
+  var source = $('#club_sets-template').html();
+  var template = Handlebars.compile(source);
+  var club_sets_html = template(data.table);
+  $('#sets-index').append(club_sets_html);
+  clubSetDetails();
+  $('.profile').append($.parseHTML(data.form));
+  // clubSetForm();
+  cancelHandler();
+  clearFlash();
+}
+
+function clubSetDetails(){
+  $('.club-set-details-link').on('ajax:success', function(event, data, status, xhr){
+    $('#show-details').children().remove();
+    var source = $('#club-set-details-template').html();
+    var template = Handlebars.compile(source);
+    var club_set_details_html = template(data.obj);
+    $('#show-details').append(club_set_details_html);
+    $('#details').append($.parseHTML(data.form));
+    listingForm();
+  });
+}
+
+function clubSetForm(){
+  $('#new_club_set').on('ajax:success', function(event, data, status, xhr){
+    debugger;
+    clubsDisplay(data);
+  });
+}
+
+
+
+
+
+
+
+
+
 
 
 function clearFlash(){

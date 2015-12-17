@@ -72,7 +72,7 @@ class ClubSet < ActiveRecord::Base
   def description
     first_club = self.clubs.first
     number_of_clubs = self.clubs.length
-    "#{number_of_clubs} club set #{first_club.gender_handed}"
+    "#{number_of_clubs} Clubs Set #{first_club.gender_handed}"
   end
 
   # ClubSet.joins(club_set_clubs:{club: :generic_club})

@@ -1,0 +1,16 @@
+<script id="club-set-details-template" type="text/x-handlebars-template">
+  <div class='row jumbotron'>
+    <div class='col-xs-12' id='details'>
+      <h5><strong><u>Set Details</u></strong></h5>
+        <h6><strong>Name:</strong><br>{{name}}</h6>
+        <h6><strong>Summary:</strong><br>{{summary}}</h6>
+        <h6><strong><u>Clubs:</u></strong></h6>
+        <ul>
+        {{#each club_set.clubs as |club|}}
+          <li><h6>{{description}}</h6></li>
+        {{/each}}
+        </ul>
+        <hr>
+    </div>
+  </div>
+</script>

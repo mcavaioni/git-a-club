@@ -5,10 +5,10 @@ class ClubSetsController < ApplicationController
   def index
     @club_set = ClubSet.new
     @supplier = current_user.supplier
-    # new_club_form = render_to_string template: 'clubs/_new_form', locals: {club: @club, supplier: @supplier}, layout: false
+    new_club_set_form = render_to_string template: 'club_sets/_new_form', locals: {club_set: @club_set, supplier: @supplier}, layout: false
     # new_club_form = render_to_string template: 'clubs/_new_table_form', locals: {club: @club, supplier: @supplier}, layout: false
     @club_sets = current_user.supplier.club_sets.select{|club_set| club_set.active}
-    render json: {table: ClubSetsJsonViewObject.new(@club_sets).get_json}
+    render json: {table: ClubSetsJsonViewObject.new(@club_sets).get_json, form: new_club_set_form}
   end
 
   def new
@@ -16,6 +16,7 @@ class ClubSetsController < ApplicationController
   end
 
   def create
+    # Change to JSON
     @club_set = ClubSet.new(club_set_params)
     if @club_set.save
       redirect_to supplier_club_set_path(@supplier, @club_set)

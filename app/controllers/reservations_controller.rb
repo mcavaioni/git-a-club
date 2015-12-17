@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
     @reservation = @renter.reservations.build(reservation_params)
     @reservation.save
     flash[:notice] = 'Reservation Confirmed!'
-    redirect_to renter_reservations_path(@renter)
+    redirect_to current_user
   end
 
   def index
