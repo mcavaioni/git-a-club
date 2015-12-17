@@ -8,11 +8,13 @@ class ClubsController < ApplicationController
 
   def create
     @club = @supplier.clubs.build(club_params)
-    if @club.save
-      render json: {success: "Club sucessfully created!"}
-    else
-      render json: {errors: "Error, club could not be created."}
-    end
+    @club.save
+    index
+    # if @club.save
+    #   render json: {success: "Club sucessfully created!"}
+    # else
+    #   render json: {errors: "Error, club could not be created."}
+    # end
   end
 
   def destroy

@@ -94,20 +94,36 @@ function listingDetails(){
 
 $(document).on('page:load ready', function(){
   $('.clubs-index').on('ajax:success', function(event, data, status, xhr){
-    $('#new_club_container').remove();
-    $('#show-details').children().remove();
-    $('#clubs-index').children().remove();
-    var source = $('#clubs-template').html();
-    var template = Handlebars.compile(source);
-    var clubs_html = template(data.table);
-    $('#clubs-index').append(clubs_html);
-    clubDetails();
-    $('.profile').append($.parseHTML(data.form));
-    // $('#club-table-body').prepend($.parseHTML(data.form));
-    clubForm();
-    cancelHandler();
+    // $('#new_club_container').remove();
+    // $('#show-details').children().remove();
+    // $('#clubs-index').children().remove();
+    // var source = $('#clubs-template').html();
+    // var template = Handlebars.compile(source);
+    // var clubs_html = template(data.table);
+    // $('#clubs-index').append(clubs_html);
+    // clubDetails();
+    // $('.profile').append($.parseHTML(data.form));
+    // // $('#club-table-body').prepend($.parseHTML(data.form));
+    // clubForm();
+    // cancelHandler();
+    clubsDisplay(data);
   });
 })
+
+function clubsDisplay(data) {
+  $('#new_club_container').remove();
+  $('#show-details').children().remove();
+  $('#clubs-index').children().remove();
+  var source = $('#clubs-template').html();
+  var template = Handlebars.compile(source);
+  var clubs_html = template(data.table);
+  $('#clubs-index').append(clubs_html);
+  clubDetails();
+  $('.profile').append($.parseHTML(data.form));
+  // $('#club-table-body').prepend($.parseHTML(data.form));
+  clubForm();
+  cancelHandler();
+}
 
 function clubDetails(){
   $('.club-details-link').on('ajax:success', function(event, data, status, xhr){
@@ -155,15 +171,16 @@ function listingForm(){
 
 function clubForm(){
   $('#new_club').on('ajax:success', function(event, data, status, xhr){
-    $('#club-form-notice').removeClass();
-    $('#club-form-notice').empty();
-    if(data.errors == undefined){
-      $('#club-form-notice').toggleClass('alert alert-dismissible alert-success');
-      $('#club-form-notice').text(data.success)
-    } else {
-      $('#club-form-notice').toggleClass('alert alert-dismissible alert-danger');
-      $('#club-form-notice').text(data.errors)
-    }
+    // $('#club-form-notice').removeClass();
+    // $('#club-form-notice').empty();
+    // if(data.errors == undefined){
+    //   $('#club-form-notice').toggleClass('alert alert-dismissible alert-success');
+    //   $('#club-form-notice').text(data.success)
+    // } else {
+    //   $('#club-form-notice').toggleClass('alert alert-dismissible alert-danger');
+    //   $('#club-form-notice').text(data.errors)
+    // }
+    clubsDisplay(data);
   });
 }
 
