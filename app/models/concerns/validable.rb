@@ -39,8 +39,9 @@ module Validable
         club.generic_club.club_type
       end
       clubs_array = ["driver", "putter", "5_iron_or_hybrid", "6_iron", "7_iron", "8_iron", "9_iron"]
+      
       club_intersection = default_club & clubs_array
-      if club_intersection != clubs_array
+      if club_intersection.length != clubs_array.length
         errors.add(:clubSet, "A set must have a driver, putter and 5 - 9 irons")
       end
     end
