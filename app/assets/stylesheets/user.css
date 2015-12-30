@@ -1,0 +1,28 @@
+#notice {
+background-image: url(/assets/profilepage.jpg);
+background-repeat: none;
+background-attachment: scroll;
+background-position:center bottom;
+-webkit-background-size:cover;
+-moz-background-size:cover;background-size:cover;
+-o-background-size:cover;text-align:center;
+color:#fff;
+height: 1000px;
+z-index: -1;
+}
+
+#user-show-button-rent {
+  position: fixed;
+  top: 100px;
+  left: 120px;
+  display: inline-block;
+  float: left;
+}
+
+#user-show-button-supply {
+  position: fixed;
+  top: 100px;
+  display: inline-block;
+  float: left;
+}
+
