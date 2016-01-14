@@ -25,8 +25,6 @@ class Club < ActiveRecord::Base
 
   after_save :club_set_member
 
-  # accepts_nested_attributes_for :generic_club
-
   # These conditions were taken from Kelley Blue Book
   Conditions = ['excellent','very_good','good','fair']
 
@@ -39,7 +37,6 @@ class Club < ActiveRecord::Base
   end
 
   def generic_club_attributes=(generic_club_attributes_hash)
-    # generic_club_attributes_hash[:brand].downcase!
     generic_club = GenericClub.find_or_create_by(generic_club_attributes_hash)
     self.generic_club_id = generic_club.id
   end
